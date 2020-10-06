@@ -176,10 +176,16 @@ void MainWindow::saveConfigFile() {
 
     QString savedpath, cproxy = ("proxy:") ,cport = ("port:"), cproxy_user = ("uproxy:"),
             cproxy_pass = ("pproxy:"), cpicta_user = ("upicta:"), cpicta_pass = ("ppicta:");
-    QString crytopass_picta = crypto_pass.encryptToString(picta_pass),crytopass_proxy;
+    QString crytopass_picta,crytopass_proxy;
+
     if(!proxy_pass.isEmpty())
     {
         crytopass_proxy =crypto_pass.encryptToString(proxy_pass);
+    }
+
+    if(!picta_pass.isEmpty())
+    {
+        crytopass_picta =crypto_pass.encryptToString(picta_pass);
     }
 
     savedpath = defaultDownloadpath;
@@ -204,9 +210,11 @@ void MainWindow::on_toolButton_clicked()
     if (downloadFolder.isEmpty())
         return;
     QChar slash(92);
+    QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
+    loadConfigFile(roaming);
     defaultDownloadpath = downloadFolder;
-    saveConfigFile();
     ui->lineEdit_Location->setText(downloadFolder.replace("/", slash));
+    saveConfigFile();
 }
 
 bool MainWindow::PasteFromClipboard()
@@ -214,6 +222,7 @@ bool MainWindow::PasteFromClipboard()
         const QClipboard *clipboard = QApplication::clipboard();
         const QMimeData *mimeData = clipboard->mimeData();
         QString CopyTextClip = clipboard->text();
+
         if (mimeData->hasImage()) {
             QMessageBox::information(this, "Error al Pegar", "No se puede pegar una imagen\n\n"
             "Sólo puede pegar Urls que sean del sitio de Picta ejemplo:\n\n"
@@ -293,7 +302,7 @@ void MainWindow::get_filename()
     pictadl.setProgram(pictadlDLLpath);
 
     QStringList args;
-    args << "--config-location" << picta_conf << "--abort-on-error" << "--socket-timeout" << "10" << "--retries" << "3";;
+    args << "--config-location" << picta_conf << "--abort-on-error" << "--socket-timeout" << "10" << "--retries" << "6";
     args << "--get-filename";
 
     if (!ui->chckBox_Playlist->isChecked())
@@ -438,6 +447,15 @@ void MainWindow::URL_Process_Error(QString error)
       QApplication::alert(this);
     }
 
+    if (error.contains("ERROR: Unable to download JSON metadata: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED]" ,Qt::CaseSensitive ))
+    {
+      QMessageBox::critical(this, "Error al Procesar la URL", "Ha habido un error de certificado SSL de su sistema\n\n"
+                                  "Si tiene una versión recientemente de Windows 10 (2004)\n"
+                                  "es posible que tenga que actualizar sus sistema con los últimos parches de seguridad. Vea en la ayuda los F.A.Q"
+                                 );
+      QApplication::alert(this);
+    }
+
     if (error.contains("ERROR: Failed to download MPD manifest:" ,Qt::CaseSensitive ))
     {
       QMessageBox::critical(this, "Error al Procesar la URL", "Ha habido un error de conexión con el servidor\n\n"
@@ -501,7 +519,7 @@ void MainWindow::Downloadfiles()
 
 //Prepare arguments
     QStringList args;
-    args << "--config-location" << picta_conf << "--abort-on-error" << "--socket-timeout" << "10" << "--retries" << "3";
+    args << "--config-location" << picta_conf << "--abort-on-error" << "--socket-timeout" << "10" << "--retries" << "6";
 
     if (!ui->chckBox_Playlist->isChecked())
     {

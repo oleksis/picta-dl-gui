@@ -1,5 +1,6 @@
 #include "configuration.h"
 #include "ui_configuration.h"
+#include <QDebug>
 
 configuration::configuration(QWidget *parent) :
     QDialog(parent),
@@ -102,6 +103,11 @@ void configuration::saveConfigFile() {
     if(!proxy_pass.isEmpty())
     {
         crytopass_proxy =crypto_pass.encryptToString(proxy_pass);
+    }
+
+    if(!picta_pass.isEmpty())
+    {
+        crytopass_picta =crypto_pass.encryptToString(picta_pass);
     }
 
     out << savedpath.append('\n').replace(' ', '*')

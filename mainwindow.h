@@ -14,7 +14,6 @@
 #include <QClipboard>
 #include <QMimeData>
 #include <QRegularExpression>
-#include <QTimer>
 #include <QMovie>
 #include <QtNetwork/QNetworkInterface>
 #include "configuration.h"
@@ -72,7 +71,7 @@ private:
     QString picta_user;
     QString picta_pass;
     SimpleCrypt crypto_pass;
-    quint64 crytokey = 1596880491598749;
+    quint64 crytokey = // Here the crytokey;
     QString pasteUrl;
     QProcess pictadl;
     QProcess pictadlfiles;
