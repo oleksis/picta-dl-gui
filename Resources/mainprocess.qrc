@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>picta-dl.dll</file>
+		<file>ffmpeg.dll</file>
+    </qresource>
+</RCC>

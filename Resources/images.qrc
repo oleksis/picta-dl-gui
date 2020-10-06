@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Logos/picta-dl-gui_logo.png</file>
+        <file>Logos/picta_dl_gui_icon.ico</file>
+        <file>Logos/configuration_icon.png</file>
+        <file>Logos/qt.png</file>
+        <file>Logos/refreshbutton.png</file>
+        <file>Logos/downloadbutton.png</file>
+        <file>Logos/stopbutton.png</file>
+        <file>Logos/deletebutton.png</file>
+        <file>Logos/helpbutton.png</file>
+        <file>Logos/refresh_rotate.gif</file>
+        <file>Logos/download_animated.gif</file>
+        <file>Ayuda/picta-dl-config.png</file>
+        <file>Ayuda/icono_de_lista.png</file>
+        <file>Ayuda/picta_lista_canal.png</file>
+    </qresource>
+</RCC>
