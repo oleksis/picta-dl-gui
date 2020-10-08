@@ -44,9 +44,10 @@ RESOURCES += \
     Resources/mainprocess.qrc
 # Code added by me
 
-QMAKE_LFLAGS += /INCREMENTAL:NO
+#QMAKE_LFLAGS += /INCREMENTAL:NO
 
 RC_ICONS = Resources/Logos/picta_dl_gui_icon.ico
 VERSION = 1.0.0.0
-RC_FILE = Resources/resManifest.rc
+# Fix rc for Windowx 64 and Visual Studio 2019 GitHub Actions
+#RC_FILE = Resources/resManifest.rc
 # End
