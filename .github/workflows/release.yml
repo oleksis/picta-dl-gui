@@ -1,0 +1,71 @@
+name: Build-Release
+
+on: 
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build_windows_exe:
+    # https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
+    runs-on: windows-2019
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      sha2_windows: ${{ steps.sha2_file_exe.outputs.sha2_windows }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Qt 5.15.0
+      uses: jurplel/install-qt-action@v2
+      with:
+          version: '5.15.0'
+          host: 'windows'
+          target: 'desktop'
+          arch: 'win64_msvc2019_64'
+    - name: Build x64 release GUI
+      id: build_x64_release
+      shell: cmd
+      run: |
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+        qmake
+        nmake release
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: picta-dl-gui 
+        body: "Picta Downloader GUI ${{ github.ref }}"
+        draft: false
+        prerelease: false
+    - name: Upload Executable Picta-dl_GUI.exe
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./release/Picta-dl_GUI.exe
+        asset_name: Picta-dl_GUI.exe
+        asset_content_type: application/octet-stream
+    - name: Get SHA2-256SUMS for Picta-dl_GUI.exe
+      id: sha2_file_exe
+      env:
+        SHA2: ${{ hashFiles('release/Picta-dl_GUI.exe') }}
+      run: echo "::set-output name=sha2_windows::${env:SHA2}"
+    - name: Make SHA2-256SUMS file
+      env:
+        SHA2_WINDOWS: ${{ steps.sha2_file_exe.outputs.sha2_windows }}
+      run: |
+        echo "$SHA2_WINDOWS Picta-dl_GUI.exe" > SHA2-256SUMS
+    - name: Upload SHA2-256SUMS to Release
+      id: upload-release-sha2 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./SHA2-256SUMS
+        asset_name: SHA2-256SUMS
+        asset_content_type: text/plain
