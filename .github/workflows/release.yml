@@ -69,7 +69,7 @@ jobs:
       env:
         SHA2_WINDOWS: ${{ steps.sha2_file_exe.outputs.sha2_windows }}
       run: |
-        echo "$SHA2_WINDOWS Picta-dl_GUI.exe" > SHA2-256SUMS
+        echo "${env:SHA2_WINDOWS} Picta-dl_GUI.exe" > SHA2-256SUMS
     - name: Upload SHA2-256SUMS to Release
       id: upload-release-sha2 
       uses: actions/upload-release-asset@v1
