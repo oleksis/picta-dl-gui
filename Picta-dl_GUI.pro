@@ -44,6 +44,8 @@ RESOURCES += \
     Resources/mainprocess.qrc
 # Code added by me
 
+QMAKE_LFLAGS += /INCREMENTAL:NO
+
 RC_ICONS = Resources/Logos/picta_dl_gui_icon.ico
 VERSION = 1.0.0.0
 RC_FILE = Resources/resManifest.rc
