@@ -21,7 +21,7 @@ jobs:
         msystem: MINGW64
         release: true
         update: true
-        install: base-devel git gcc mingw-w64-x86_64-qt5-static
+        install: base-devel git mingw-w64-x86_64-toolchain mingw-w64-x86_64-qt5-static
         path-type: minimal
     - uses: actions/checkout@v2
     - name: Get Tag version
