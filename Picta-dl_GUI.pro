@@ -42,12 +42,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     Resources/images.qrc \
     Resources/mainprocess.qrc
+
 # Code added by me
-
-#QMAKE_LFLAGS += /INCREMENTAL:NO
-
 RC_ICONS = Resources/Logos/picta_dl_gui_icon.ico
 VERSION = 1.0.0.0
-# Fix rc for Windowx 64 and Visual Studio 2019 GitHub Actions
-#RC_FILE = Resources/resManifest.rc
+RC_FILE = Resources/resManifest.rc
+
 # End

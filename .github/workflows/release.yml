@@ -12,34 +12,31 @@ jobs:
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
       sha2_windows: ${{ steps.sha2_file_exe.outputs.sha2_windows }}
+    defaults:
+      run:
+        shell: msys2 {0}
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Qt 5.15.0
-      uses: jurplel/install-qt-action@v2
+    - uses: msys2/setup-msys2@v2
       with:
-          version: '5.15.0'
-          host: 'windows'
-          target: 'desktop'
-          arch: 'win64_msvc2019_64'
+        release: true
+        update: true
+        install: base-devel git gcc mingw-w64-x86_64-qt5-static
+        path-type: minimal
+    - uses: actions/checkout@v2
     - name: Get Tag version
       id: get_version
-      shell: bash
       run: echo "::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}"
     - name: Write CryToKey from Secrets to Headers files
       id: crytokey
       env:
         CRYTOKEY: ${{ secrets.CRYTOKEY }}
       run: |
-        ((Get-Content -Path .\configuration.h -Raw) -Replace "crytokey = 1596880491598749", "crytokey = ${env:CRYTOKEY}") | Set-Content -Path .\configuration.h
-        ((Get-Content -Path .\mainwindow.h -Raw) -Replace "crytokey = 1596880491598749", "crytokey = ${env:CRYTOKEY}") | Set-Content -Path .\mainwindow.h
+        sed -i -r 's/crytokey = ([0-9]+)/crytokey = ${CRYTOKEY}/' configuration.h mainwindow.h
     - name: Build x64 release GUI
       id: build_x64_release
-      shell: cmd
       run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-        nmake clean
-        qmake -config release
-        nmake
+        qmake
+        mingw32-make -j2
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -65,12 +62,12 @@ jobs:
       id: sha2_file_exe
       env:
         SHA2: ${{ hashFiles('release/Picta-dl_GUI.exe') }}
-      run: echo "::set-output name=sha2_windows::${env:SHA2}"
+      run: echo "::set-output name=sha2_windows::${SHA2}"
     - name: Make SHA2-256SUMS file
       env:
         SHA2_WINDOWS: ${{ steps.sha2_file_exe.outputs.sha2_windows }}
       run: |
-        echo "${env:SHA2_WINDOWS} Picta-dl_GUI.exe" > SHA2-256SUMS
+        echo "${SHA2_WINDOWS} Picta-dl_GUI.exe" > SHA2-256SUMS
     - name: Upload SHA2-256SUMS to Release
       id: upload-release-sha2 
       uses: actions/upload-release-asset@v1
