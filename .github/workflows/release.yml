@@ -33,7 +33,7 @@ jobs:
       env:
         CRYTOKEY: ${{ secrets.CRYTOKEY }}
       run: |
-        sed -i -r 's/crytokey = ([0-9]+)/crytokey = ${CRYTOKEY}/' configuration.h mainwindow.h
+        sed -i -r "s/crytokey = ([0-9]+)/crytokey = ${CRYTOKEY}/" configuration.h mainwindow.h
     - name: Build x64 release GUI
       id: build_x64_release
       run: |
