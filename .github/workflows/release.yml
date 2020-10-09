@@ -18,6 +18,7 @@ jobs:
     steps:
     - uses: msys2/setup-msys2@v2
       with:
+        msystem: MINGW64
         release: true
         update: true
         install: base-devel git gcc mingw-w64-x86_64-qt5-static
@@ -25,6 +26,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get Tag version
       id: get_version
+      shell: bash
       run: echo "::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}"
     - name: Write CryToKey from Secrets to Headers files
       id: crytokey
@@ -35,6 +37,10 @@ jobs:
     - name: Build x64 release GUI
       id: build_x64_release
       run: |
+        # Actualizar Qt install bins 
+        PATH=/mingw64/qt5-static/bin/:$PATH
+        echo $PATH
+        ls -l
         qmake
         mingw32-make -j2
     - name: Create Release
