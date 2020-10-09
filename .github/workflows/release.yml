@@ -39,10 +39,8 @@ jobs:
       run: |
         # Actualizar Qt install bins 
         PATH=/mingw64/qt5-static/bin/:$PATH
-        echo $PATH
-        ls -l
         qmake
-        mingw32-make -j2
+        make -j 4
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
