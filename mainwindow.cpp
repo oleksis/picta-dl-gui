@@ -728,6 +728,9 @@ void MainWindow::onFinishDowloadfiles()
                                      );
           QApplication::alert(this);
           errString.clear();
+          ui->cmmd_stop->setEnabled(false);
+          ui->cmmd_process->setEnabled(true);
+          ui->cmmd_dlte->setEnabled(true);
         }
       }
    }
