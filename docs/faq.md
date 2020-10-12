@@ -28,7 +28,7 @@ Si, parece que las versiones recientes de Windows 10 cuando el sistema está rec
 
 En el sitio de Picta puede crear listas personalizadas con los videos que Ud. seleccione, en cada video le aparecerá un icono para agregar los contenidos a una lista ya creada o si no tiene ninguna puede crearlas en ese momento y adicionarlos, posteriormente puede acceder a esa lista desde su perfil y pasar la URL de esta a este programa y después de procesarla verá todo el contenido y la podrá descargar. 
 
-![icon list](Resources/Ayuda/icono_de_lista.png)
+![icon list](../Resources/Ayuda/icono_de_lista.png)
 
 ### ¿Puedo descargar más de una lista de reproducción?
 
@@ -38,7 +38,7 @@ Si, cuando quiera descargar una lista solo pegue la URL, procese, descargue y as
 
 Las listas creadas en el sitio por las personas que suben contenidos a los canales se pueden identificar por el icono que se muestra a la derecha donde se ve la lista de los vídeos que contiene, cuando copia esa URL y la pasa a esta aplicación y la procesa verá el listado de los mismos, aquí una imagen de una lista de reproducción: 
 
-![picta channel list](Resources/Ayuda/picta_lista_canal.png)
+![picta channel list](../Resources/Ayuda/picta_lista_canal.png)
 
 ### ¿Debo instalar algo adicional para que funcione esta aplicación?
 
