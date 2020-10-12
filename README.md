@@ -2,6 +2,26 @@
 __Picta Downloader GUI__ es una aplicación que le permite descargar contenidos audiovisuales desde [Picta](https://www.picta.cu), la misma es una __GUI__ (interfaz gráfica de usuario) o del inglés
 (graphical user interface) de la app de descargar por consola [picta-dl](https://github.com/oleksis/youtube-dl).
 
+# Captura de pantalla
+![picta-dl-gui main window](docs/picta-dl-gui.gif)
+
+# Configuración
+La configuración actual de __Picta Downloader GUI__ es muy sencilla, consta de 3 partes de las cuales una es opcional para el caso que necesite configurar conexión a través de Proxy.
+
+## Las opciones son las siguientes:
+
+1. Debe poner su usuario y contraseña de [Picta](https://www.picta.cu) . Es una configuración obligatoria ya que sin esto la aplicación no puede obtener las listas de contenidos o listas de  reproducción (vídeo y audio) que brindan las URL y por tanto tampoco podrá descargar.
+
+2. Si su conexión es a través de un Proxy puede agregar la IP y puerto de este para que pueda conectarse; las autenticaciones que requieran usuario y contraseña del proxy no están implementadas en la aplicación, ya que estas pueden ser de diversos tipos en dependencia de la configuración de su RED. No obstante, tenemos esa opción, pero no activada y quizás a futuro se pueda implementar. 
+
+3. Siempre debe guardar los cambios con el botón Guardar, en caso que no desee guardarlos pues simplemente cancele.
+
+Imagen de muestra con las opciones:
+![picta-dl-gui config window](Resources/Ayuda/picta-dl-config.png)
+
+# Preguntas y respuestas frecuentes (F.A.Q)
+[FAQ](docs/faq.md)
+
 # Instrucciones para Desarrolladores
 Muchos usuarios no necesitan compilar __Picta Downloader GUI__, la última versión puede ser descargada desde [latest releases](https://github.com/oleksis/picta-dl-gui/releases/latest)
 
@@ -32,6 +52,10 @@ En cualquier caso __Muchas Gracias__ por su interés y contribuciones!
 
 # Contribuciones
 Lista de personas que han contribuido al desarrollo de __Picta Downloader GUI__ en [CONTRIBUTORS](CONTRIBUTORS.md)
+
+## Telegram ![favicon](https://telegram.org/favicon.ico?3)
+* Chat: __Picta Downloader Chat__ [@picta_dl_chat](https://t.me/picta_dl_chat)
+* Grupo: __Picta Downloader__ [@picta_dl](https://t.me/picta_dl)
 
 # License
 [MIT](LICENSE)
