@@ -53,6 +53,10 @@ En cualquier caso __Muchas Gracias__ por su interés y contribuciones!
 # Contribuciones
 Lista de personas que han contribuido al desarrollo de __Picta Downloader GUI__ en [CONTRIBUTORS](CONTRIBUTORS.md)
 
+## Errores y sugerencias
+
+Errores y sugerencias deben ser reportados en [ GitHub Issues](https://github.com/oleksis/picta-dl-gui/issues)
+
 ## Telegram ![favicon](https://telegram.org/favicon.ico?3)
 * Chat: __Picta Downloader Chat__ [@picta_dl_chat](https://t.me/picta_dl_chat)
 * Grupo: __Picta Downloader__ [@picta_dl](https://t.me/picta_dl)
