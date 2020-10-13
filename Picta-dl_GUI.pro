@@ -20,12 +20,14 @@ CONFIG += c++11
 CONFIG += resources_big
 
 SOURCES += main.cpp\
+    RunGuard.cpp \
         mainwindow.cpp \
     configuration.cpp \
     simplecrypt.cpp \
     information.cpp
 
 HEADERS += mainwindow.h \
+    RunGuard.h \
     configuration.h \
     simplecrypt.h \
     information.h
