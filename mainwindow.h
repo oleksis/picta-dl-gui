@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "configuration.h"
 #include <QMessageBox>
 #include <QFile>
 #include <QFileInfo>
