@@ -737,7 +737,7 @@ QGroupBox::title {
             <property name="maximumSize">
              <size>
               <width>60</width>
-              <height>16777215</height>
+              <height>68</height>
              </size>
             </property>
             <property name="cursor">
@@ -803,7 +803,7 @@ QGroupBox::title {
             <property name="maximumSize">
              <size>
               <width>60</width>
-              <height>16777215</height>
+              <height>68</height>
              </size>
             </property>
             <property name="cursor">
@@ -869,7 +869,7 @@ QGroupBox::title {
             <property name="maximumSize">
              <size>
               <width>60</width>
-              <height>16777215</height>
+              <height>68</height>
              </size>
             </property>
             <property name="cursor">
@@ -934,8 +934,8 @@ QGroupBox::title {
             </property>
             <property name="maximumSize">
              <size>
-              <width>60</width>
-              <height>16777215</height>
+              <width>45</width>
+              <height>68</height>
              </size>
             </property>
             <property name="cursor">
@@ -962,7 +962,7 @@ QGroupBox::title {
          <widget class="QLabel" name="lbl_stop_2">
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>45</width>
             <height>13</height>
            </size>
           </property>
