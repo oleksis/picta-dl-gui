@@ -34,5 +34,4 @@ jobs:
         qmake TestPicta-dl_GUI.pro -spec win32-g++
         make -j 4
     - name: Run Tests
-      run: |
-        release/Picta-dl_GUI_Test.exe
+      run: ./release/Picta-dl_GUI_Test.exe
