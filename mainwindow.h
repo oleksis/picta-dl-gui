@@ -100,9 +100,11 @@ private:
     bool find_line(QString stringline, QString stringsearch);
     void get_filename();
     void Downloadfiles();
-    QString CutName(QString name, int chars);
     void URL_Process_Error(QString error);
     bool IsNetworkConnected();
+
+public:
+    QString CutName(QString name, int chars);
 };
 
 #endif // MAINWINDOW_H

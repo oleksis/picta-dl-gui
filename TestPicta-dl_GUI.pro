@@ -1,8 +1,9 @@
 QT       += core gui
 QT       += network
+QT       += testlib
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Picta-dl_GUI
+TARGET = Picta-dl_GUI_Test
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -19,18 +20,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 CONFIG += resources_big
 
-SOURCES += main.cpp\
-    RunGuard.cpp \
-    mainwindow.cpp \
+SOURCES += mainwindow.cpp \
     configuration.cpp \
     simplecrypt.cpp \
-    information.cpp
+    information.cpp \
+    tests/testmainwindow.cpp
 
 HEADERS += mainwindow.h \
-    RunGuard.h \
     configuration.h \
     simplecrypt.h \
-    information.h
+    information.h \
+    tests/testmainwindow.h
 
 FORMS += mainwindow.ui \
     configuration.ui \

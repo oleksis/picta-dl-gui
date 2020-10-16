@@ -39,7 +39,7 @@ jobs:
       run: |
         # Actualizar Qt install bins 
         PATH=/mingw64/qt5-static/bin/:$PATH
-        qmake
+        qmake Picta-dl_GUI.pro -spec win32-g++
         make -j 4
     - name: Create Release
       id: create_release

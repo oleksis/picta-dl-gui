@@ -1,0 +1,38 @@
+name: Tests
+
+on: 
+  push:
+
+
+jobs:
+  tests:
+    # https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
+    runs-on: windows-2019
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        release: true
+        update: true
+        install: base-devel git mingw-w64-x86_64-toolchain mingw-w64-x86_64-qt5-static
+        path-type: minimal
+    - uses: actions/checkout@v2
+    - name: Write CryToKey from Secrets to Headers files
+      id: crytokey
+      env:
+        CRYTOKEY: ${{ secrets.CRYTOKEY }}
+      run: |
+        sed -i -r "s/crytokey = ([0-9]+)/crytokey = ${CRYTOKEY}/" configuration.h mainwindow.h
+    - name: Build Test x64 release
+      id: build_test_x64_release
+      run: |
+        # Actualizar Qt install bins 
+        PATH=/mingw64/qt5-static/bin/:$PATH
+        qmake TestPicta-dl_GUI.pro -spec win32-g++
+        make -j 4
+    - name: Run Tests
+      run: |
+        release/Picta-dl_GUI_Test.exe
