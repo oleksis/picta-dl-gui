@@ -32,4 +32,4 @@ jobs:
         # Actualizar Qt install bins 
         PATH=/mingw64/qt5-static/bin/:$PATH
         qmake TestPicta-dl_GUI.pro -spec win32-g++
-        make check
+        # make check
