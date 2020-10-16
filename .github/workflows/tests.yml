@@ -2,7 +2,8 @@ name: Tests
 
 on: 
   push:
-
+    tags:
+      - 'test*'
 
 jobs:
   tests:
@@ -26,10 +27,17 @@ jobs:
         CRYTOKEY: ${{ secrets.CRYTOKEY }}
       run: |
         sed -i -r "s/crytokey = ([0-9]+)/crytokey = ${CRYTOKEY}/" configuration.h mainwindow.h
-    - name: Build and Run Test x64 release
-      id: build_run_test
+    - name: Build Test x64 release
+      id: build_test
       run: |
         # Actualizar Qt install bins 
         PATH=/mingw64/qt5-static/bin/:$PATH
         qmake TestPicta-dl_GUI.pro -spec win32-g++
+        # GitHub runner dont execute (Tests) .exe?
         # make check
+        make -j 4 release
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Picta-dl_GUI_Test.exe
+        path: ${{ HOME }}/Picta-dl_GUI_Test.exe
+        if-no-files-found: error
