@@ -26,13 +26,10 @@ jobs:
         CRYTOKEY: ${{ secrets.CRYTOKEY }}
       run: |
         sed -i -r "s/crytokey = ([0-9]+)/crytokey = ${CRYTOKEY}/" configuration.h mainwindow.h
-    - name: Build Test x64 release
-      id: build_test_x64_release
+    - name: Build and Run Test x64 release
+      id: build_run_test
       run: |
         # Actualizar Qt install bins 
         PATH=/mingw64/qt5-static/bin/:$PATH
         qmake TestPicta-dl_GUI.pro -spec win32-g++
-        make -j 4
-    - name: Run Tests
-      shell: cmd
-      run: .\release\Picta-dl_GUI_Test.exe
+        make check

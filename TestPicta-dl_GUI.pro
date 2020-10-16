@@ -19,6 +19,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 CONFIG += resources_big
+CONFIG += testcase
+DESTDIR = ${HOME}
+# QMAKE_POST_LINK +=$${TARGET}
 
 SOURCES += mainwindow.cpp \
     configuration.cpp \
