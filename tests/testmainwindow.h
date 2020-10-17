@@ -12,13 +12,14 @@ public:
 
 private slots:
     void initTestCase();
+    void check_crytokey();
     void CutName();
+    void find_line();
     void cleanupTestCase();
 
 private:
     MainWindow w;
-
-
+    bool FindCrytoKey(QString);
 };
 
 #endif // TESTMAINWINDOW_H

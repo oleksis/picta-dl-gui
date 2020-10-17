@@ -97,7 +97,6 @@ private:
     bool loadConfigFile(QDir &roaming);
     void saveConfigFile();
     bool PasteFromClipboard();
-    bool find_line(QString stringline, QString stringsearch);
     void get_filename();
     void Downloadfiles();
     void URL_Process_Error(QString error);
@@ -105,6 +104,7 @@ private:
 
 public:
     QString CutName(QString name, int chars);
+    bool find_line(QString stringline, QString stringsearch);
 };
 
 #endif // MAINWINDOW_H

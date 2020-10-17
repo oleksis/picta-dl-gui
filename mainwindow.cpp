@@ -66,8 +66,8 @@ bool MainWindow::loadConfigFile(QDir &roaming) {
         in >> cpicta_pass;
 
         filePath.replace('*', ' ');
-        QChar slash(92);
-        ui->lineEdit_Location->setText(filePath.replace("/", slash));
+        QChar backslash(92);
+        ui->lineEdit_Location->setText(filePath.replace("/", backslash));
 
         defaultDownloadpath = filePath;
         crypto_pass.setKey(crytokey);
@@ -118,8 +118,8 @@ void MainWindow::createConfigFile(QDir &roaming) {
 
      QString PictaFormat = ("-o \"%(title)s.%(ext)s\"");
      QString ffmpeg_conf = (ffmpegDLLpath);
-     QChar slash(92);
-     ffmpeg_conf = ffmpeg_conf.replace("/", slash);
+     QChar backslash(92);
+     ffmpeg_conf = ffmpeg_conf.replace("/", backslash);
      ffmpeg_conf.prepend("\"");ffmpeg_conf.append("\"");
 
      QString FFmpegPath = ("--ffmpeg-location " + ffmpeg_conf);
@@ -212,11 +212,11 @@ void MainWindow::on_toolButton_clicked()
                                                              | QFileDialog::DontResolveSymlinks));
     if (downloadFolder.isEmpty())
         return;
-    QChar slash(92);
+    QChar backslash(92);
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
     loadConfigFile(roaming);
     defaultDownloadpath = downloadFolder;
-    ui->lineEdit_Location->setText(downloadFolder.replace("/", slash));
+    ui->lineEdit_Location->setText(downloadFolder.replace("/", backslash));
     saveConfigFile();
 }
 
@@ -569,8 +569,8 @@ void MainWindow::Downloadfiles()
     args << "-u" << picta_user << "-p" << picta_pass << pasteUrl;
 
     QString filePath = ui->lineEdit_Location->text();
-    QChar slash(92);
-    args << "-o" << filePath.append(slash) + "%(title)s.%(ext)s";
+    QChar backslash(92);
+    args << "-o" << filePath.append(backslash) + "%(title)s.%(ext)s";
 
     IsVideo = false;
     IsAudio = false;
