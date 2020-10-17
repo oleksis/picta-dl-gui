@@ -39,5 +39,5 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: Picta-dl_GUI_Test.exe
-        path: $HOME/Picta-dl_GUI_Test.exe
+        path: '~/Picta-dl_GUI_Test.exe'
         if-no-files-found: error
