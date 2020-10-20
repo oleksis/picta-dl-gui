@@ -17,9 +17,10 @@
 #include <QtNetwork/QNetworkInterface>
 #include "configuration.h"
 #include "simplecrypt.h"
-#include"information.h"
-namespace Ui {
-class MainWindow;
+#include "information.h"
+namespace Ui
+{
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
@@ -30,9 +31,13 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    inline QString withExtension(const QString & fileName) {
+    inline QString withExtension(const QString &fileName)
+    {
         return fileName.right(fileName.length() - fileName.lastIndexOf("."));
     }
+
+    QString CutName(QString name, int chars);
+    bool find_line(QString stringline, QString stringsearch);
 
 private slots:
     void on_cmmd_config_clicked();
@@ -101,10 +106,6 @@ private:
     void Downloadfiles();
     void URL_Process_Error(QString error);
     bool IsNetworkConnected();
-
-public:
-    QString CutName(QString name, int chars);
-    bool find_line(QString stringline, QString stringsearch);
 };
 
 #endif // MAINWINDOW_H

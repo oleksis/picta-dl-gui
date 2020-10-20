@@ -3,8 +3,9 @@
 
 #include <QDialog>
 
-namespace Ui {
-class information;
+namespace Ui
+{
+    class information;
 }
 
 class information : public QDialog

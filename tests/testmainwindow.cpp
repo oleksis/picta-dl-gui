@@ -4,15 +4,12 @@
 
 TestMainWindow::TestMainWindow(QObject *parent) : QObject(parent)
 {
-
 }
-
 
 void TestMainWindow::initTestCase()
 {
     // w.show();
 }
-
 
 bool TestMainWindow::FindCrytoKey(QString filename)
 {
@@ -20,7 +17,8 @@ bool TestMainWindow::FindCrytoKey(QString filename)
     QFile file(filename);
     QTextStream in(&file);
 
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return finded;
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return finded;
 
     QString header(in.readAll());
     file.close();
@@ -32,7 +30,6 @@ bool TestMainWindow::FindCrytoKey(QString filename)
     return finded;
 }
 
-
 void TestMainWindow::check_crytokey()
 {
     QString ROOT(PROJECT_PATH);
@@ -42,7 +39,6 @@ void TestMainWindow::check_crytokey()
     QVERIFY(FindCrytoKey(mainwindow_path));
     QVERIFY(FindCrytoKey(configuration_path));
 }
-
 
 void TestMainWindow::CutName()
 {
@@ -55,7 +51,6 @@ void TestMainWindow::CutName()
 
     QCOMPARE(w.CutName(name, chars), QString("Buena Fe - Vales.mp4"));
 }
-
 
 void TestMainWindow::find_line()
 {
@@ -70,11 +65,8 @@ void TestMainWindow::find_line()
     QCOMPARE(w.find_line(stringline, stringsearch), false);
 }
 
-
 void TestMainWindow::cleanupTestCase()
 {
-
 }
-
 
 QTEST_MAIN(TestMainWindow)

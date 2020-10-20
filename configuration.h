@@ -10,8 +10,9 @@
 #include <QTextStream>
 #include "simplecrypt.h"
 
-namespace Ui {
-class configuration;
+namespace Ui
+{
+    class configuration;
 }
 
 class configuration : public QDialog
