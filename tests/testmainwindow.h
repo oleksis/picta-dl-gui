@@ -14,6 +14,7 @@ private slots:
     void initTestCase();
     void check_crytokey();
     void CutName();
+    void withExtension();
     void find_line();
     void cleanupTestCase();
 

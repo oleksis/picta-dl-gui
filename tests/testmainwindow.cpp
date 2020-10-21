@@ -40,6 +40,21 @@ void TestMainWindow::check_crytokey()
     QVERIFY(FindCrytoKey(configuration_path));
 }
 
+void TestMainWindow::withExtension()
+{
+    QString fileName("Buena Fe - Vales.mp4");
+
+    QCOMPARE(w.withExtension(fileName), QString(".mp4"));
+
+    fileName = QString("No Extension.");
+
+    QCOMPARE(w.withExtension(fileName), QString("."));
+
+    fileName = QString("No Extension");
+
+    QCOMPARE(w.withExtension(fileName), QString(""));
+}
+
 void TestMainWindow::CutName()
 {
     QString name("Among Us Momentos Divertidos.mp4");

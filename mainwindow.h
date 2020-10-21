@@ -33,7 +33,14 @@ public:
 
     inline QString withExtension(const QString &fileName)
     {
-        return fileName.right(fileName.length() - fileName.lastIndexOf("."));
+        int dotIndex = fileName.lastIndexOf(".");
+
+        if (dotIndex == -1)
+        {
+            return QString("");
+        }
+
+        return fileName.right(fileName.length() - dotIndex);
     }
 
     QString CutName(QString name, int chars);
