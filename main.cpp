@@ -12,6 +12,8 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     a.setApplicationName("Picta-dl_GUI");
+    // Register QSettings
+    QSettings::setDefaultFormat(QSettings::IniFormat);
     MainWindow w;
     w.show();
 

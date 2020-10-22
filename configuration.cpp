@@ -23,7 +23,9 @@ void configuration::on_BntCancel_clicked()
 void configuration::loadConfigFile()
 {
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-    QFile configFile(roaming.absolutePath().append("\\picta-dl-gui.conf"));
+    QFile configFile(roaming.absolutePath().append("/picta-dl-gui.conf"));
+    QFileInfo configInfo(configFile);
+    QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
     QString qmbTitle("Error fatal");
     QString infoText("No se puede leer el archivo de configuración picta-dl-gui.conf\n"
@@ -40,26 +42,30 @@ void configuration::loadConfigFile()
             exit(-1);
         }
 
-        QTextStream in(&configFile);
+        configFile.close();
+
         QString filePath, cproxy, cport, cproxy_user, cproxy_pass, cpicta_user, cpicta_pass;
 
-        in >> filePath;
-        in >> cproxy;
-        in >> cport;
-        in >> cproxy_user;
-        in >> cproxy_pass;
-        in >> cpicta_user;
-        in >> cpicta_pass;
+        settings.beginGroup("General");
 
-        filePath.replace('*', ' ');
+        filePath = settings.value("savedPath").toString();
+        cproxy = settings.value("proxy").toString();
+        cport = settings.value("port").toString();
+        cproxy_user = settings.value("uproxy").toString();
+        cproxy_pass = settings.value("pproxy").toString();
+        cpicta_user = settings.value("upicta").toString();
+        cpicta_pass = settings.value("ppicta").toString();
+
+        settings.endGroup();
+
         defaultDownloadpath = filePath;
         crypto_pass.setKey(crytokey);
-        proxy = cproxy.mid(6);
-        port = cport.mid(5);
-        proxy_user = cproxy_user.mid(7);
-        proxy_pass = crypto_pass.decryptToString(cproxy_pass.mid(7));
-        picta_user = cpicta_user.mid(7);
-        picta_pass = crypto_pass.decryptToString(cpicta_pass.mid(7));
+        proxy = cproxy;
+        port = cport;
+        proxy_user = cproxy_user;
+        proxy_pass = crypto_pass.decryptToString(cproxy_pass);
+        picta_user = cpicta_user;
+        picta_pass = crypto_pass.decryptToString(cpicta_pass);
 
         ui->lnEdit_user_picta->setText(picta_user);
         ui->lnEdit_pass_picta->setText(picta_pass);
@@ -77,46 +83,47 @@ void configuration::loadConfigFile()
 
 void configuration::saveConfigFile()
 {
-    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("\\picta-dl-gui.conf"));
+    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("/picta-dl-gui.conf"));
+    QFileInfo configInfo(configFile);
+    QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
-    if (!configFile.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (!settings.isWritable())
         return;
 
-    QTextStream out(&configFile);
-
-    QString savedpath, cproxy = ("proxy:"), cport = ("port:"), cproxy_user = ("uproxy:"),
-                       cproxy_pass = ("pproxy:"), cpicta_user = ("upicta:"), cpicta_pass = ("ppicta:");
+    QString savedpath, cproxy, cport, cproxy_user,
+        cproxy_pass, cpicta_user, cpicta_pass;
 
     savedpath = defaultDownloadpath;
     crypto_pass.setKey(crytokey);
-    picta_user = ui->lnEdit_user_picta->text();
-    picta_pass = ui->lnEdit_pass_picta->text();
-    proxy = ui->lnEdit_ip_proxy->text();
-    port = ui->lnEdit_port_proxy->text();
-    proxy_user = ui->lnEdit_user_proxy->text();
-    proxy_pass = ui->lnEdit_pass_proxy->text();
-    QString crytopass_picta = crypto_pass.encryptToString(picta_pass), crytopass_proxy;
-    if (!proxy_pass.isEmpty())
+    cpicta_user = ui->lnEdit_user_picta->text();
+    cpicta_pass = ui->lnEdit_pass_picta->text();
+    cproxy = ui->lnEdit_ip_proxy->text();
+    cport = ui->lnEdit_port_proxy->text();
+    cproxy_user = ui->lnEdit_user_proxy->text();
+    cproxy_pass = ui->lnEdit_pass_proxy->text();
+    QString crytopass_picta = crypto_pass.encryptToString(cpicta_pass), crytopass_proxy;
+
+    if (!cproxy_pass.isEmpty())
     {
-        crytopass_proxy = crypto_pass.encryptToString(proxy_pass);
+        crytopass_proxy = crypto_pass.encryptToString(cproxy_pass);
     }
 
-    if (!picta_pass.isEmpty())
+    if (!cpicta_pass.isEmpty())
     {
-        crytopass_picta = crypto_pass.encryptToString(picta_pass);
+        crytopass_picta = crypto_pass.encryptToString(cpicta_pass);
     }
 
-    out << savedpath.append('\n').replace(' ', '*')
-        << cproxy.append(proxy + '\n')
-        << cport.append(port + '\n')
-        << cproxy_user.append(proxy_user + '\n')
-        << cproxy_pass.append(crytopass_proxy + '\n')
-        << cpicta_user.append(picta_user + '\n')
-        << cpicta_pass.append(crytopass_picta + '\n')
-        << QString("NOTE: This file must not contain spaces (except this line). "
-                   "ALL '*' characters morph into spaces when this file is load.");
+    settings.beginGroup("General");
 
-    configFile.close();
+    settings.setValue("savedPath", savedpath);
+    settings.setValue("proxy", cproxy);
+    settings.setValue("port", cport);
+    settings.setValue("uproxy", cproxy_user);
+    settings.setValue("pproxy", crytopass_proxy);
+    settings.setValue("upicta", cpicta_user);
+    settings.setValue("ppicta", crytopass_picta);
+
+    settings.endGroup();
 }
 
 void configuration::on_BntSave_clicked()

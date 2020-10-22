@@ -26,6 +26,7 @@ void MainWindow::configure()
 {
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
     QString defaultpath(QStandardPaths::standardLocations(QStandardPaths::DownloadLocation)[0]);
+    QChar backslash(92);
 
     if (!roaming.exists())
     {
@@ -36,7 +37,8 @@ void MainWindow::configure()
     pictadlDLLpath = roaming.absolutePath().append("\\picta-dl.exe");
     ffmpegDLLpath = roaming.absolutePath().append("\\ffmpeg.exe");
     defaultDownloadpath = defaultpath;
-    ui->lineEdit_Location->setText(defaultDownloadpath);
+
+    ui->lineEdit_Location->setText(defaultpath.replace("/", backslash));
     crypto_pass.setKey(crytokey);
 
     if (!loadConfigFile(roaming))
@@ -47,36 +49,42 @@ void MainWindow::configure()
 
 bool MainWindow::loadConfigFile(QDir &roaming)
 {
-    QFile configFile(roaming.absolutePath().append("\\picta-dl-gui.conf"));
+    QFile configFile(roaming.absolutePath().append("/picta-dl-gui.conf"));
+    QFileInfo configInfo(configFile);
+    QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
     if (configFile.exists())
     {
         if (!configFile.open(QIODevice::ReadOnly | QIODevice::Text))
             return false;
+        
+        configFile.close();
 
-        QTextStream in(&configFile);
         QString filePath, cproxy, cport, cproxy_user, cproxy_pass, cpicta_user, cpicta_pass;
 
-        in >> filePath;
-        in >> cproxy;
-        in >> cport;
-        in >> cproxy_user;
-        in >> cproxy_pass;
-        in >> cpicta_user;
-        in >> cpicta_pass;
+        settings.beginGroup("General");
 
-        filePath.replace('*', ' ');
+        filePath = settings.value("savedPath").toString();
+        cproxy = settings.value("proxy").toString();
+        cport = settings.value("port").toString();
+        cproxy_user =  settings.value("uproxy").toString();
+        cproxy_pass =  settings.value("pproxy").toString();
+        cpicta_user  =  settings.value("upicta").toString();
+        cpicta_pass  =  settings.value("ppicta").toString();
+
+        settings.endGroup();
+
         QChar backslash(92);
         ui->lineEdit_Location->setText(filePath.replace("/", backslash));
 
         defaultDownloadpath = filePath;
         crypto_pass.setKey(crytokey);
-        proxy = cproxy.mid(6);
-        port = cport.mid(5);
-        proxy_user = cproxy_user.mid(7);
-        proxy_pass = crypto_pass.decryptToString(cproxy_pass.mid(7));
-        picta_user = cpicta_user.mid(7);
-        picta_pass = crypto_pass.decryptToString(cpicta_pass.mid(7));
+        proxy = cproxy;
+        port = cport;
+        proxy_user = cproxy_user;
+        proxy_pass = crypto_pass.decryptToString(cproxy_pass);
+        picta_user = cpicta_user;
+        picta_pass = crypto_pass.decryptToString(cpicta_pass);
 
         return true;
     }
@@ -86,28 +94,28 @@ bool MainWindow::loadConfigFile(QDir &roaming)
 
 void MainWindow::createConfigFile(QDir &roaming)
 {
-    QFile configFile(roaming.absolutePath().append("\\picta-dl-gui.conf"));
+    QFile configFile(roaming.absolutePath().append("/picta-dl-gui.conf"));
+    QFileInfo configInfo(configFile);
+    QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
-    if (!configFile.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (!settings.isWritable())
         return;
 
-    QTextStream out(&configFile);
-
-    QString savedpath, cproxy = ("proxy:"), cport = ("port:"), cproxy_user = ("uproxy:"),
-                       cproxy_pass = ("pproxy:"), cpicta_user = ("upicta:"), cpicta_pass = ("ppicta:");
+    QString savedpath, cproxy, cport, cproxy_user ,
+                       cproxy_pass , cpicta_user , cpicta_pass;
     savedpath = defaultDownloadpath;
 
-    out << savedpath.append('\n').replace(' ', '*')
-        << cproxy.append('\n')
-        << cport.append('\n')
-        << cproxy_user.append('\n')
-        << cproxy_pass.append('\n')
-        << cpicta_user.append('\n')
-        << cpicta_pass.append('\n')
-        << QString("NOTE: This file must not contain spaces (except this line). "
-                   "ALL '*' characters morph into spaces when this file is load.");
+    settings.beginGroup("General");
 
-    configFile.close();
+    settings.setValue("savedPath", savedpath);
+    settings.setValue("proxy", cproxy);
+    settings.setValue("port", cport);
+    settings.setValue("uproxy", cproxy_user);
+    settings.setValue("pproxy", cproxy_pass);
+    settings.setValue("upicta", cpicta_user);
+    settings.setValue("ppicta", cpicta_pass);
+    
+    settings.endGroup();
 
     //Creating default picta.conf
 
@@ -172,16 +180,18 @@ void MainWindow::checkExistenceOfMainProcess()
 
 void MainWindow::saveConfigFile()
 {
-    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("\\picta-dl-gui.conf"));
+    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("/picta-dl-gui.conf"));
+    QFileInfo configInfo(configFile);
+    QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
-    if (!configFile.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (!settings.isWritable())
         return;
 
-    QTextStream out(&configFile);
+    QString savedpath;
+    savedpath = defaultDownloadpath;
+    crypto_pass.setKey(crytokey);
 
-    QString savedpath, cproxy = ("proxy:"), cport = ("port:"), cproxy_user = ("uproxy:"),
-                       cproxy_pass = ("pproxy:"), cpicta_user = ("upicta:"), cpicta_pass = ("ppicta:");
-    QString crytopass_picta, crytopass_proxy;
+    QString crytopass_picta = crypto_pass.encryptToString(picta_pass), crytopass_proxy;
 
     if (!proxy_pass.isEmpty())
     {
@@ -193,19 +203,17 @@ void MainWindow::saveConfigFile()
         crytopass_picta = crypto_pass.encryptToString(picta_pass);
     }
 
-    savedpath = defaultDownloadpath;
+    settings.beginGroup("General");
 
-    out << savedpath.append('\n').replace(' ', '*')
-        << cproxy.append(proxy + '\n')
-        << cport.append(port + '\n')
-        << cproxy_user.append(proxy_user + '\n')
-        << cproxy_pass.append(crytopass_proxy + '\n')
-        << cpicta_user.append(picta_user + '\n')
-        << cpicta_pass.append(crytopass_picta + '\n')
-        << QString("NOTE: This file must not contain spaces (except this line). "
-                   "ALL '*' characters morph into spaces when this file is load.");
+    settings.setValue("savedPath", savedpath);
+    settings.setValue("proxy", proxy);
+    settings.setValue("port", port);
+    settings.setValue("uproxy", proxy_user);
+    settings.setValue("pproxy", crytopass_proxy);
+    settings.setValue("upicta", picta_user);
+    settings.setValue("ppicta", crytopass_picta);
 
-    configFile.close();
+    settings.endGroup();
 }
 
 void MainWindow::on_toolButton_clicked()

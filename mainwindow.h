@@ -15,6 +15,7 @@
 #include <QRegularExpression>
 #include <QMovie>
 #include <QtNetwork/QNetworkInterface>
+#include <QSettings>
 #include "configuration.h"
 #include "simplecrypt.h"
 #include "information.h"
