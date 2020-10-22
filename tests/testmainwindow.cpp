@@ -2,7 +2,8 @@
 #include <QtTest/QtTest>
 #include <QDebug>
 
-TestMainWindow::TestMainWindow(QObject *parent) : QObject(parent)
+TestMainWindow::TestMainWindow(QObject *parent) : 
+    QObject(parent)
 {
 }
 

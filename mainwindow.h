@@ -84,6 +84,8 @@ private:
     QString picta_pass;
     SimpleCrypt crypto_pass;
     quint64 crytokey = 1596880491598749;
+    QString pictaGuiConfigFile;
+    QString pictaConfigFile;
     QString pasteUrl;
     QProcess pictadl;
     QProcess pictadlfiles;

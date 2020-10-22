@@ -21,7 +21,7 @@ class configuration : public QDialog
     Q_OBJECT
 
 public:
-    explicit configuration(QWidget *parent = 0);
+    explicit configuration(QWidget *parent = 0, const QString &filename = QString("picta-dl-gui.conf"));
     ~configuration();
 
 private slots:
@@ -40,6 +40,7 @@ private:
     SimpleCrypt crypto_pass;
     quint64 crytokey = 1596880491598749;
     QString defaultDownloadpath;
+    QString pictaGuiConfigFile;
 
     void loadConfigFile();
     void saveConfigFile();

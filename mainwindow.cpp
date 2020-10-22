@@ -2,11 +2,13 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
-                                          ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : 
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    pictaGuiConfigFile = QString("picta-dl-gui.conf");
+    pictaConfigFile = QString("picta-dl.conf");
     configure();
 }
 
@@ -49,7 +51,7 @@ void MainWindow::configure()
 
 bool MainWindow::loadConfigFile(QDir &roaming)
 {
-    QFile configFile(roaming.absolutePath().append("/picta-dl-gui.conf"));
+    QFile configFile(roaming.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
@@ -74,10 +76,11 @@ bool MainWindow::loadConfigFile(QDir &roaming)
 
         settings.endGroup();
 
+        defaultDownloadpath = filePath;
+
         QChar backslash(92);
         ui->lineEdit_Location->setText(filePath.replace("/", backslash));
 
-        defaultDownloadpath = filePath;
         crypto_pass.setKey(crytokey);
         proxy = cproxy;
         port = cport;
@@ -94,7 +97,7 @@ bool MainWindow::loadConfigFile(QDir &roaming)
 
 void MainWindow::createConfigFile(QDir &roaming)
 {
-    QFile configFile(roaming.absolutePath().append("/picta-dl-gui.conf"));
+    QFile configFile(roaming.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
@@ -119,7 +122,8 @@ void MainWindow::createConfigFile(QDir &roaming)
 
     //Creating default picta.conf
 
-    QFile configPictaFile(roaming.absolutePath().append("\\picta-dl.conf"));
+    QFile configPictaFile(roaming.absolutePath().append("/") + pictaConfigFile);
+    
     if (!configPictaFile.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
@@ -127,6 +131,7 @@ void MainWindow::createConfigFile(QDir &roaming)
 
     QString PictaFormat = ("-o \"%(title)s.%(ext)s\"");
     QString ffmpeg_conf = (ffmpegDLLpath);
+    // If Win32
     QChar backslash(92);
     ffmpeg_conf = ffmpeg_conf.replace("/", backslash);
     ffmpeg_conf.prepend("\"");
@@ -180,7 +185,7 @@ void MainWindow::checkExistenceOfMainProcess()
 
 void MainWindow::saveConfigFile()
 {
-    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("/picta-dl-gui.conf"));
+    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 

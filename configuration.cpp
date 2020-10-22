@@ -2,8 +2,10 @@
 #include "ui_configuration.h"
 #include <QDebug>
 
-configuration::configuration(QWidget *parent) : QDialog(parent),
-                                                ui(new Ui::configuration)
+configuration::configuration(QWidget *parent, const QString &filename) : 
+    QDialog(parent),
+    ui(new Ui::configuration),
+    pictaGuiConfigFile(filename)
 {
     ui->setupUi(this);
 
@@ -23,7 +25,7 @@ void configuration::on_BntCancel_clicked()
 void configuration::loadConfigFile()
 {
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-    QFile configFile(roaming.absolutePath().append("/picta-dl-gui.conf"));
+    QFile configFile(roaming.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
@@ -83,7 +85,7 @@ void configuration::loadConfigFile()
 
 void configuration::saveConfigFile()
 {
-    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("/picta-dl-gui.conf"));
+    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
