@@ -2,9 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent) : 
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
+                                          ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     pictaGuiConfigFile = QString("picta-dl-gui.conf");
@@ -59,7 +58,7 @@ bool MainWindow::loadConfigFile(QDir &roaming)
     {
         if (!configFile.open(QIODevice::ReadOnly | QIODevice::Text))
             return false;
-        
+
         configFile.close();
 
         QString filePath, cproxy, cport, cproxy_user, cproxy_pass, cpicta_user, cpicta_pass;
@@ -69,10 +68,10 @@ bool MainWindow::loadConfigFile(QDir &roaming)
         filePath = settings.value("savedPath").toString();
         cproxy = settings.value("proxy").toString();
         cport = settings.value("port").toString();
-        cproxy_user =  settings.value("uproxy").toString();
-        cproxy_pass =  settings.value("pproxy").toString();
-        cpicta_user  =  settings.value("upicta").toString();
-        cpicta_pass  =  settings.value("ppicta").toString();
+        cproxy_user = settings.value("uproxy").toString();
+        cproxy_pass = settings.value("pproxy").toString();
+        cpicta_user = settings.value("upicta").toString();
+        cpicta_pass = settings.value("ppicta").toString();
 
         settings.endGroup();
 
@@ -104,8 +103,8 @@ void MainWindow::createConfigFile(QDir &roaming)
     if (!settings.isWritable())
         return;
 
-    QString savedpath, cproxy, cport, cproxy_user ,
-                       cproxy_pass , cpicta_user , cpicta_pass;
+    QString savedpath, cproxy, cport, cproxy_user,
+        cproxy_pass, cpicta_user, cpicta_pass;
     savedpath = defaultDownloadpath;
 
     settings.beginGroup("General");
@@ -117,13 +116,13 @@ void MainWindow::createConfigFile(QDir &roaming)
     settings.setValue("pproxy", cproxy_pass);
     settings.setValue("upicta", cpicta_user);
     settings.setValue("ppicta", cpicta_pass);
-    
+
     settings.endGroup();
 
     //Creating default picta.conf
 
     QFile configPictaFile(roaming.absolutePath().append("/") + pictaConfigFile);
-    
+
     if (!configPictaFile.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
@@ -366,7 +365,16 @@ void MainWindow::get_filename()
 
         if (!proxy.isEmpty())
         {
-            args << "--proxy" << proxy + ":" + port;
+            if (!proxy_user.isEmpty() && !proxy_pass.isEmpty())
+            {
+                args << "--proxy"
+                     << "https://" + proxy_user + ":" + proxy_pass + "@" + proxy + ":" + port;
+            }
+            else
+            {
+                args << "--proxy"
+                     << "https://" + proxy + ":" + port;
+            }
         }
 
         args << "-u" << picta_user << "-p" << picta_pass << pasteUrl;
@@ -608,7 +616,16 @@ void MainWindow::Downloadfiles()
 
     if (!proxy.isEmpty())
     {
-        args << "--proxy" << proxy + ":" + port;
+        if (!proxy_user.isEmpty() && !proxy_pass.isEmpty())
+        {
+            args << "--proxy"
+                 << "https://" + proxy_user + ":" + proxy_pass + "@" + proxy + ":" + port;
+        }
+        else
+        {
+            args << "--proxy"
+                 << "https://" + proxy + ":" + port;
+        }
     }
 
     args << "-u" << picta_user << "-p" << picta_pass << pasteUrl;

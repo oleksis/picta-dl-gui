@@ -200,7 +200,7 @@ QGroupBox::title {
     <item row="9" column="6">
      <widget class="QLineEdit" name="lnEdit_pass_proxy">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">border-color: rgb(0, 0, 127);</string>
@@ -277,7 +277,7 @@ QGroupBox::title {
     <item row="9" column="2" colspan="3">
      <widget class="QLineEdit" name="lnEdit_user_proxy">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">border-color: rgb(0, 0, 127);</string>
@@ -358,6 +358,16 @@ QGroupBox::title {
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lnEdit_user_picta</tabstop>
+  <tabstop>lnEdit_pass_picta</tabstop>
+  <tabstop>lnEdit_ip_proxy</tabstop>
+  <tabstop>lnEdit_port_proxy</tabstop>
+  <tabstop>lnEdit_user_proxy</tabstop>
+  <tabstop>lnEdit_pass_proxy</tabstop>
+  <tabstop>BntSave</tabstop>
+  <tabstop>BntCancel</tabstop>
+ </tabstops>
  <resources>
   <include location="Resources/images.qrc"/>
  </resources>
