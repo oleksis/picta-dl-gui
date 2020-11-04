@@ -12,7 +12,7 @@ La configuración actual de __Picta Downloader GUI__ es muy sencilla, consta de 
 
 1. Debe poner su usuario y contraseña de [Picta](https://www.picta.cu) . Es una configuración obligatoria ya que sin esto la aplicación no puede obtener las listas de contenidos o listas de  reproducción (vídeo y audio) que brindan las URL y por tanto tampoco podrá descargar.
 
-2. Si su conexión es a través de un Proxy puede agregar la IP y puerto de este para que pueda conectarse; las autenticaciones que requieran usuario y contraseña del proxy no están implementadas en la aplicación, ya que estas pueden ser de diversos tipos en dependencia de la configuración de su RED. No obstante, tenemos esa opción, pero no activada y quizás a futuro se pueda implementar. 
+2. Si su conexión es a través de un Proxy puede agregar la IP y puerto de este para que pueda conectarse; si requiere autenticación Básica puede agragar usuario y contraseña del proxy.
 
 3. Siempre debe guardar los cambios con el botón Guardar, en caso que no desee guardarlos pues simplemente cancele.
 
