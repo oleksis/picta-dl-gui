@@ -481,50 +481,57 @@ void MainWindow::URL_Process_Error(QString error)
                                              "Revise que tiene configurado correctamente su usuario y contraseña del sitio de picta.");
         QApplication::alert(this);
     }
-
-    if (error.contains("ERROR: Playlist no exists!", Qt::CaseSensitive))
+    else if (error.contains("ERROR: Playlist no exists!", Qt::CaseSensitive))
     {
         QMessageBox::warning(this, qmbTitle, "No existe la lista de reproducción que intenta procesar\n\n"
                                              "Revise que aún existe la lista de reproducción en el sitio.");
         QApplication::alert(this);
     }
-
-    if (error.contains("ERROR: no suitable InfoExtractor for URL", Qt::CaseSensitive))
+    else if (error.contains("ERROR: no suitable InfoExtractor for URL", Qt::CaseSensitive))
     {
         QMessageBox::warning(this, qmbTitle, "Es incorrecta la URL que intenta procesar\n\n"
                                              "Revise que este correcta en el sitio:\n\n"
                                              "https://www.picta.cu/");
         QApplication::alert(this);
     }
-
-    if (error.contains("ERROR: Unable to download JSON metadata:", Qt::CaseSensitive))
-    {
-        QMessageBox::critical(this, qmbTitle, "Ha habido un error de conexión con el servidor\n\n"
-                                              "Revise que esta conectado a la red o que el sitio de Picta este disponible.");
-        QApplication::alert(this);
-    }
-
-    if (error.contains("ERROR: Unable to download JSON metadata: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED]", Qt::CaseSensitive))
+    else if (error.contains("ERROR: Unable to download JSON metadata: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED]", Qt::CaseSensitive))
     {
         QMessageBox::critical(this, qmbTitle, "Ha habido un error de certificado SSL de su sistema\n\n"
                                               "Si tiene una versión recientemente de Windows 10 (2004)\n"
                                               "es posible que tenga que actualizar sus sistema con los últimos parches de seguridad. Vea en la ayuda los F.A.Q");
         QApplication::alert(this);
     }
-
-    if (error.contains("ERROR: Failed to download MPD manifest:", Qt::CaseSensitive))
+    else if (error.contains("ERROR: Unable to download JSON metadata: <urlopen error Tunnel connection failed: 407 Proxy Authentication Required", Qt::CaseSensitive))
+    {
+        QMessageBox::critical(this, qmbTitle, "Ha habido un error de autenticación con el servidor Proxy\n\n"
+                                              "Revise el nombre de usuario o contraseña de la configuración del Proxy.");
+        QApplication::alert(this);
+    }
+    else if (error.contains("ERROR: Unable to download JSON metadata:", Qt::CaseSensitive))
     {
         QMessageBox::critical(this, qmbTitle, "Ha habido un error de conexión con el servidor\n\n"
                                               "Revise que esta conectado a la red o que el sitio de Picta este disponible.");
         QApplication::alert(this);
     }
-
-    if (error.contains("ERROR: Cannot find video!", Qt::CaseSensitive) || error.isEmpty())
+    else if (error.contains("ERROR: Failed to download MPD manifest:", Qt::CaseSensitive))
     {
-        QMessageBox::warning(this, qmbTitle, "¡No se ha encontrado el vídeo en el sitio !\n\n"
+        QMessageBox::critical(this, qmbTitle, "Ha habido un error de conexión con el servidor\n\n"
+                                              "Revise que esta conectado a la red o que el sitio de Picta este disponible.");
+        QApplication::alert(this);
+    }
+    else if (error.contains("ERROR: Cannot find video!", Qt::CaseSensitive) || error.isEmpty())
+    {
+        QMessageBox::warning(this, qmbTitle, "¡No se ha encontrado el vídeo en el sitio!\n\n"
                                              "Revise que este correcta la URL en el sitio.");
         QApplication::alert(this);
     }
+    else
+    {
+        QMessageBox::warning(this, qmbTitle, "¡Ha ocurrido un error inesperado!\n\n"
+                                             "Vuelva a intentarlo dentro de un rato.");
+        QApplication::alert(this);
+    }
+
     ui->cmmd_process->setEnabled(true);
     ui->cmmd_stop->setEnabled(false);
     ui->cmmd_dlte->setEnabled(true);
