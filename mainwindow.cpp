@@ -609,17 +609,17 @@ void MainWindow::Downloadfiles()
              << "0";
     }
 
-    //    if (!ui->chckBox_Onlyaudio->isChecked())
-    //    {
-    //        if (ui->radBnt_Alta->isChecked())
-    //        {
-    //            args << "-f 0+5";
-    //        } else if (ui->radBnt_Media->isChecked()) {
-    //            args << "-f 2+5";
-    //        } else {
-    //            args << "-f 4+5";
-    //        }
-    //     }
+        if (!ui->chckBox_Onlyaudio->isChecked())
+        {
+            if (ui->radBnt_Alta->isChecked())
+            {
+                args << "-f" << "0+5";
+            } else if (ui->radBnt_Media->isChecked()) {
+                args << "-f" << "2+5";
+            } else {
+                args << "-f" << "4+5";
+            }
+         }
 
     if (!proxy.isEmpty())
     {
