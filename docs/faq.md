@@ -12,10 +12,6 @@ Si, la contraseña se guarda encriptada.
 
 La aplicación de momento permite conectarse usando un proxy por la dirección IP y puerto pero no esta implementada la autenticación con usuario y contraseña, le recomendamos que use algún programa que proxifique su conexión como Proxifier, ProxyCap u algun otro. Quizás en futuras versiones se implemente este tipo de autenticación.
 
-### ¿Porque aparecen deshabilitadas las opciones de calidad de vídeo Media y baja?
-
-Para poder obtener los vídeos en esas calidades se necesita conocer el formato con que se publican en el sitio  de Picta y de momento picta-dl no puedo obtenerlos, cuando este detalle se arregle se activaran esas opciones
-
 ### ¿Puedo usar este programa en sistemas que sean de 32 bits?
 
 Lamentablemente no, el programa picta-dl está compilado solo para versiones de 64bits de Windows
