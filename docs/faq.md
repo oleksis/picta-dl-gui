@@ -20,6 +20,8 @@ Lamentablemente no, el programa picta-dl está compilado solo para versiones de 
 
 Si, parece que las versiones recientes de Windows 10 cuando el sistema está recien instalado sin parches de seguridad da problemas de certificados de conexión, estamos trabajando en resolver ese problema.
 
+Nota: A partir de la versión de Windows 10 20H2 (actualización de octubre de 2020) ya no tiene este problema.
+
 ### ¿Cómo creo las listas de reproducción para descargarlas?
 
 En el sitio de Picta puede crear listas personalizadas con los videos que Ud. seleccione, en cada video le aparecerá un icono para agregar los contenidos a una lista ya creada o si no tiene ninguna puede crearlas en ese momento y adicionarlos, posteriormente puede acceder a esa lista desde su perfil y pasar la URL de esta a este programa y después de procesarla verá todo el contenido y la podrá descargar. 
