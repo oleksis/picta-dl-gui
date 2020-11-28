@@ -115,6 +115,7 @@ private:
     void get_filename();
     void Downloadfiles();
     void URL_Process_Error(QString error);
+    void Download_Process_Error(QString error);
     bool IsNetworkConnected();
 };
 

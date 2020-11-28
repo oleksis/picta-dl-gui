@@ -527,8 +527,8 @@ void MainWindow::URL_Process_Error(QString error)
     }
     else
     {
-        QMessageBox::warning(this, qmbTitle, "¡Ha ocurrido un error inesperado!\n\n"
-                                             "Vuelva a intentarlo dentro de un rato.");
+        QMessageBox::critical(this, qmbTitle, "¡Ha ocurrido un error inesperado!\n\n"
+                                              "Vuelva a intentarlo dentro de un rato.");
         QApplication::alert(this);
     }
 
@@ -609,17 +609,24 @@ void MainWindow::Downloadfiles()
              << "0";
     }
 
-        if (!ui->chckBox_Onlyaudio->isChecked())
+    if (!ui->chckBox_Onlyaudio->isChecked())
+    {
+        if (ui->radBnt_Alta->isChecked())
         {
-            if (ui->radBnt_Alta->isChecked())
-            {
-                args << "-f" << "0+5";
-            } else if (ui->radBnt_Media->isChecked()) {
-                args << "-f" << "2+5";
-            } else {
-                args << "-f" << "4+5";
-            }
-         }
+            args << "-f"
+                 << "bestvideo+bestaudio";
+        }
+        else if (ui->radBnt_Media->isChecked())
+        {
+            args << "-f"
+                 << "2+5/1+bestaudio/best";
+        }
+        else
+        {
+            args << "-f"
+                 << "4+5/2+bestaudio/best";
+        }
+    }
 
     if (!proxy.isEmpty())
     {
@@ -653,11 +660,10 @@ void MainWindow::Downloadfiles()
     ui->cmmd_stop->setEnabled(true);
     ui->cmmd_dlte->setEnabled(false);
 
-    //Debug() << "Arguments Download: " << args;
-
     connect(&pictadlfiles, &QProcess::readyReadStandardOutput, this, [&]() {
         stdoutString = pictadlfiles.readAllStandardOutput();
 
+        //qDebug() << "STDOut:" << stdoutString;
         if (stdoutString.contains("Writing video subtitles", Qt::CaseSensitive))
         {
             ui->tableWidget->item(itemlist, Colsubtitle)->setText("✔");
@@ -806,19 +812,40 @@ void MainWindow::onFinishDowloadfiles()
         }
         else
         {
-            if (errString.contains("ERROR: unable to download video data:", Qt::CaseSensitive))
-            {
-                QMessageBox::critical(this, "Error al Descargar archivos", "Ha habido un error de conexión con el servidor\n\n"
-                                                                           "Revise que esta conectado a la red "
-                                                                           "o que el sitio de Picta este disponible.");
-                QApplication::alert(this);
-                errString.clear();
-                ui->cmmd_stop->setEnabled(false);
-                ui->cmmd_process->setEnabled(true);
-                ui->cmmd_dlte->setEnabled(true);
-            }
+            Download_Process_Error(errString);
         }
     }
+}
+
+void MainWindow::Download_Process_Error(QString error)
+{
+    QString qmbTitle("Error al Descargar");
+
+    if (error.contains("ERROR: unable to download video data:", Qt::CaseSensitive))
+    {
+        QMessageBox::warning(this, qmbTitle, "Ha habido un error de conexión con el servidor\n\n"
+                                             "Revise que esta conectado a la red "
+                                             "o que el sitio de Picta este disponible.");
+        QApplication::alert(this);
+    }
+    else if (error.contains("ERROR: requested format not available", Qt::CaseSensitive))
+    {
+        QMessageBox::warning(this, qmbTitle, "No existe la calidad de vídeo selecciona para la descarga\n\n"
+                                             "Por favor seleccione otra y pruebe de nuevo.");
+        QApplication::alert(this);
+    }
+
+    else
+    {
+        QMessageBox::critical(this, qmbTitle, "¡Ha ocurrido un error inesperado!\n\n"
+                                              "Vuelva a intentarlo dentro de un rato.");
+        QApplication::alert(this);
+    }
+
+    ui->cmmd_process->setEnabled(true);
+    ui->cmmd_download->setEnabled(true);
+    ui->cmmd_stop->setEnabled(false);
+    ui->cmmd_dlte->setEnabled(true);
 }
 
 QString MainWindow::CutName(QString name, int chars)
