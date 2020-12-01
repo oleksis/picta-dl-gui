@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>442</width>
-    <height>303</height>
+    <height>371</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -326,7 +326,7 @@ QGroupBox::title {
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>250</y>
+     <y>320</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -345,7 +345,7 @@ QGroupBox::title {
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>250</y>
+     <y>320</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -355,6 +355,46 @@ QGroupBox::title {
    </property>
    <property name="text">
     <string>Guardar</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkSystray">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>331</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Minimizar en el área de notificaciones&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;El área de notificación se encuentra en el extremo derecho de la barra de tareas. Si selecciona esta opción el icono de Picta Downloader se mostrará ahí y no en la barra de tareas. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:10pt;
+font-weight:600;</string>
+   </property>
+   <property name="text">
+    <string>Minimizar en el área de notificación de Sistema</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkNotified">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>291</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Mostrar en las notificaciones del Sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Esta opción le mostrará una notificación de Sistema cuando termine de procesar una URL, las descargas estén completada y los errores &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:10pt;
+font-weight:600;</string>
+   </property>
+   <property name="text">
+    <string>Mostrar en las notificaciones del Sistema</string>
    </property>
   </widget>
  </widget>

@@ -41,6 +41,8 @@ private:
     quint64 crytokey = 1596880491598749;
     QString defaultDownloadpath;
     QString pictaGuiConfigFile;
+    bool systray;
+    bool notification;
 
     void loadConfigFile();
     void saveConfigFile();

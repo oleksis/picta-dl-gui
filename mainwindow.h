@@ -16,6 +16,11 @@
 #include <QMovie>
 #include <QtNetwork/QNetworkInterface>
 #include <QSettings>
+#include <QMenu>
+#include <QSystemTrayIcon>
+#include <QAction>
+#include <QCloseEvent>
+#include <QDate>
 #include "configuration.h"
 #include "simplecrypt.h"
 #include "information.h"
@@ -47,6 +52,14 @@ public:
     QString CutName(QString name, int chars);
     bool find_line(QString stringline, QString stringsearch);
 
+protected:
+    /* Virtual function of the parent class in our class
+     * Overridden to change the behavior of the application,
+     * That it is minimized to tray when we want
+     */
+    //void closeEvent(QCloseEvent * event);
+    void changeEvent ( QEvent *event );
+
 private slots:
     void on_cmmd_config_clicked();
 
@@ -69,6 +82,10 @@ private slots:
     void on_cmmd_dlte_clicked();
 
     void on_cmmd_help_clicked();
+
+    void messageClicked();
+    void iconActivated(QSystemTrayIcon::ActivationReason reason);
+    void MinimizeWindows();
 
 private:
     Ui::MainWindow *ui;
@@ -106,6 +123,15 @@ private:
     QStringList ItemOut;
     bool stopped = false;
 
+    QSystemTrayIcon *trayIcon;
+    QMenu *trayIconMenu;
+    QAction *minimizeAction;
+    QAction *maximizeAction;
+    QAction *restoreAction;
+    QAction *quitAction;
+    bool systray;
+    bool notification;
+
     void configure();
     void checkExistenceOfMainProcess();
     void createConfigFile(QDir &roaming);
@@ -116,7 +142,13 @@ private:
     void Downloadfiles();
     void URL_Process_Error(QString error);
     void Download_Process_Error(QString error);
+    void ShowErrorMessage(QString Title, QString Error);
     bool IsNetworkConnected();
+
+    void createActions();
+    void createTrayIcon();
+    void showMessage();
+    void showNotifiedMessage(QString message);
 };
 
 #endif // MAINWINDOW_H

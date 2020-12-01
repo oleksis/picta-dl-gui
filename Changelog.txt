@@ -1,0 +1,31 @@
+v0.9.0
+
++ Ahora puede resumir las descargas en caso que la haya detenido o no se pudo completar anteriormente.
+    Cuando detenga las descargas le aparecera un mensaje donde le dice que puede dar clic en "Descargar" para resumir o puede volver a procesar la URL
++ Agregadas las opciones de minimizar en la bandeja del sistema (SystemTray) y no en la barra de tareas y mostrar las notificaciones de la aplicación en área de notificaciones del sistema.
+
+
+v0.8.0
+
+* Modificadas las combinaciones para obtener los formatos de descarga con el parámetro -f:
+
+  "bestvideo+bestaudio" --> Alta
+
+  "2+5/1+bestaudio/best" --> Media
+
+  "4+5/2+bestaudio/best" ---> baja
+
++ Agregado un modulo para manejar los errores en la descarga:
+
+   MainWindow::Download_Process_Error(QString error)
+
+Con esto se evita que se quede "colgada" la aplicación si ocurre un error en las descargas que no este registrado
+
+* Actualizado el Tooltip con la descripción de las calidades de video a descargar
+
+
+
+
+
+
+

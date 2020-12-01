@@ -57,6 +57,8 @@ void configuration::loadConfigFile()
         cproxy_pass = settings.value("pproxy").toString();
         cpicta_user = settings.value("upicta").toString();
         cpicta_pass = settings.value("ppicta").toString();
+        systray = settings.value("systray").toBool();
+        notification = settings.value("notification").toBool();
 
         settings.endGroup();
 
@@ -75,6 +77,13 @@ void configuration::loadConfigFile()
         ui->lnEdit_port_proxy->setText(port);
         ui->lnEdit_user_proxy->setText(proxy_user);
         ui->lnEdit_pass_proxy->setText(proxy_pass);
+
+        if (systray) {
+            ui->checkSystray->setChecked(true);
+        }
+        if (notification) {
+            ui->checkNotified->setChecked(true);
+        }
     }
     else
     {
@@ -103,6 +112,8 @@ void configuration::saveConfigFile()
     cport = ui->lnEdit_port_proxy->text();
     cproxy_user = ui->lnEdit_user_proxy->text();
     cproxy_pass = ui->lnEdit_pass_proxy->text();
+    systray = ui->checkSystray->isChecked() ? true:false;
+    notification = ui->checkNotified->isChecked() ? true:false;
     QString crytopass_picta = crypto_pass.encryptToString(cpicta_pass), crytopass_proxy;
 
     if (!cproxy_pass.isEmpty())
@@ -124,6 +135,8 @@ void configuration::saveConfigFile()
     settings.setValue("pproxy", crytopass_proxy);
     settings.setValue("upicta", cpicta_user);
     settings.setValue("ppicta", crytopass_picta);
+    settings.setValue("systray",systray);
+    settings.setValue("notification", notification);
 
     settings.endGroup();
 }
