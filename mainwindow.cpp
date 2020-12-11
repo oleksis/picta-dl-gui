@@ -2,8 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
-                                          ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : 
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     pictaGuiConfigFile = QString("picta-dl-gui.conf");
@@ -54,6 +55,9 @@ void MainWindow::configure()
     trayIcon->show();
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
+
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    ui->tableWidget->verticalHeader()->setDefaultAlignment(Qt::AlignVCenter);
 }
 
 bool MainWindow::loadConfigFile(QDir &roaming)
@@ -82,6 +86,9 @@ bool MainWindow::loadConfigFile(QDir &roaming)
         cpicta_pass = settings.value("ppicta").toString();
         systray = settings.value("systray").toBool();
         notification = settings.value("notification").toBool();
+        envpictadl = settings.value("envpictadl").toBool();
+        envffmpeg = settings.value("envffmpeg").toBool();
+
         settings.endGroup();
 
         defaultDownloadpath = filePath;
@@ -127,6 +134,8 @@ void MainWindow::createConfigFile(QDir &roaming)
     settings.setValue("ppicta", cpicta_pass);
     settings.setValue("systray", false);
     settings.setValue("notification", false);
+    settings.setValue("envpictadl", false);
+    settings.setValue("envffmpeg", false);
 
     settings.endGroup();
 
@@ -229,6 +238,8 @@ void MainWindow::saveConfigFile()
     settings.setValue("ppicta", crytopass_picta);
     settings.setValue("systray", systray);
     settings.setValue("notification", notification);
+    settings.setValue("envpictadl", envpictadl);
+    settings.setValue("envffmpeg", envffmpeg);
 
     settings.endGroup();
 }
@@ -350,15 +361,34 @@ void MainWindow::get_filename()
         connect(&progressAni, SIGNAL(frameChanged(int)), this, SLOT(setRefreshIcon()));
         //Prepare process for url list
         pictadl.setProcessChannelMode(QProcess::MergedChannels);
-        pictadl.setProgram(pictadlDLLpath);
-
         QStringList args;
-        args << "--config-location" << picta_conf << "--abort-on-error"
+
+        if (envpictadl)
+        {
+            pictadl.setProgram("picta-dl.exe");
+        }
+        else
+        {
+            pictadl.setProgram(pictadlDLLpath);
+        }
+
+        if (envffmpeg)
+        {
+            args << "--ignore-config"
+                 << "-o"
+                 << "%(title)s.%(ext)s";
+        }
+        else
+        {
+            args << "--config-location" << picta_conf;
+        }
+
+        args << "--abort-on-error"
              << "--socket-timeout"
              << "10"
              << "--retries"
-             << "6";
-        args << "--get-filename";
+             << "6"
+             << "--get-filename";
 
         if (!ui->chckBox_Playlist->isChecked())
         {
@@ -437,25 +467,25 @@ void MainWindow::onFinishGetfilenames()
                 ShortName = CutName(ListItem, 23);
                 ui->tableWidget->insertRow(ui->tableWidget->rowCount());
 
-                ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, 0, new QTableWidgetItem(ShortName));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, 0)->setToolTip(ListItem);
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, 0)->setTextAlignment(Qt::AlignLeft);
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, 0)->setTextAlignment(Qt::AlignVCenter);
+                ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColFile, new QTableWidgetItem(ShortName));
+                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColFile)->setToolTip(ListItem);
+                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColFile)->setTextAlignment(Qt::AlignLeft);
+                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColFile)->setTextAlignment(Qt::AlignVCenter);
 
                 ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColVideo, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, 1)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColVideo)->setTextAlignment(Qt::AlignCenter);
 
                 ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColAudio, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, 2)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColAudio)->setTextAlignment(Qt::AlignCenter);
 
                 ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, Colsubtitle, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, 3)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, Colsubtitle)->setTextAlignment(Qt::AlignCenter);
 
                 ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColVelocidad, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, 4)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColVelocidad)->setTextAlignment(Qt::AlignCenter);
 
                 ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColProcess, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, 5)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColProcess)->setTextAlignment(Qt::AlignCenter);
             }
 
         } while (!listfile.atEnd());
@@ -576,7 +606,7 @@ void MainWindow::on_cmmd_process_clicked()
 
     if (!IsNetworkConnected())
     {
-        QMessageBox::critical(this, qmbTitle, "¡NO ESTA CONECTADO A LA RED!\n\n"
+        QMessageBox::critical(this, qmbTitle, "¡No está conectado a la Red!\n\n"
                                               "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
         QApplication::alert(this);
     }
@@ -585,6 +615,13 @@ void MainWindow::on_cmmd_process_clicked()
 
         QMessageBox::warning(this, qmbTitle, "¡Debe configurar su usuario y contraseña de Picta!\n\n"
                                              "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
+        QApplication::alert(this);
+    }
+    else if (envpictadl && !ExistsProgram("picta-dl"))
+    {
+        QMessageBox::warning(this, qmbTitle, "¡No se ha encontrado picta-dl en su Sistema!\n\n"
+                                             "¡Revise que este bien configurado en las variables de entorno\n"
+                                             "y picta-dl esté disponible en su ubicación!");
         QApplication::alert(this);
     }
     else
@@ -613,7 +650,26 @@ void MainWindow::Downloadfiles()
 
     //Prepare arguments
     QStringList args;
-    args << "--config-location" << picta_conf << "--abort-on-error"
+    if (envpictadl)
+    {
+        pictadlfiles.setProgram("picta-dl.exe");
+    }
+    else
+    {
+        pictadlfiles.setProgram(pictadlDLLpath);
+    }
+
+    if (envffmpeg)
+    {
+        args << "--ignore-config"
+             << "-o"
+             << "%(title)s.%(ext)s";
+    }
+    else
+    {
+        args << "--config-location" << picta_conf;
+    }
+    args << "--abort-on-error"
          << "--socket-timeout"
          << "10"
          << "--retries"
@@ -685,7 +741,6 @@ void MainWindow::Downloadfiles()
     //Prepare Process for download
     pictadlfiles.setArguments(args);
     pictadlfiles.setProcessChannelMode(QProcess::MergedChannels);
-    pictadlfiles.setProgram(pictadlDLLpath);
     pictadlfiles.start();
     ui->cmmd_download->setEnabled(false);
     ui->cmmd_stop->setEnabled(true);
@@ -693,6 +748,17 @@ void MainWindow::Downloadfiles()
 
     connect(&pictadlfiles, &QProcess::readyReadStandardOutput, this, [&]() {
         stdoutString = pictadlfiles.readAllStandardOutput();
+        //qDebug() << "Stdout: " << stdoutString;
+
+        if (stdoutString.contains("WARNING: You have requested multiple formats but ffmpeg or avconv are not installed", Qt::CaseInsensitive))
+        {
+            errString = stdoutString;
+            emit onFinishDowloadfiles();
+            ui->cmmd_stop->setEnabled(false);
+            ui->cmmd_process->setEnabled(true);
+            ui->cmmd_download->setEnabled(false);
+            ui->cmmd_dlte->setEnabled(true);
+        }
 
         if (stdoutString.contains("Writing video subtitles", Qt::CaseSensitive))
         {
@@ -838,7 +904,7 @@ void MainWindow::on_cmmd_download_clicked()
 
     if (!IsNetworkConnected())
     {
-        QMessageBox::critical(this, qmbTitle, "¡NO ESTA CONECTADO A LA RED!\n\n"
+        QMessageBox::critical(this, qmbTitle, "¡No está conectado a la Red!\n\n"
                                               "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
         QApplication::alert(this);
     }
@@ -847,6 +913,13 @@ void MainWindow::on_cmmd_download_clicked()
 
         QMessageBox::warning(this, qmbTitle, "¡Debe configurar su usuario y contraseña de Picta!\n\n"
                                              "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
+        QApplication::alert(this);
+    }
+    else if (envffmpeg && !ExistsProgram("ffmpeg"))
+    {
+        QMessageBox::warning(this, qmbTitle, "¡No se ha encontrado ffmpeg en su Sistema!\n\n"
+                                             "¡Revise que este bien configurado en las variables de entorno\n"
+                                             "y ffmpeg esté disponible en su ubicación!");
         QApplication::alert(this);
     }
     else
@@ -904,7 +977,15 @@ void MainWindow::Download_Process_Error(QString error)
     QString qmbTitle("Error al Descargar:\n");
     QString qmbError;
 
-    if (error.contains("ERROR: unable to download video data:", Qt::CaseSensitive))
+    if (error.contains("WARNING: You have requested multiple formats but ffmpeg or avconv are not installed", Qt::CaseInsensitive))
+    {
+        qmbError = "¡No tiene instalado FFmpeg!\n"
+                   "Posible que no esté bien configurado";
+
+        ShowErrorMessage(qmbTitle, qmbError);
+    }
+
+    else if (error.contains("ERROR: unable to download video data:", Qt::CaseSensitive))
     {
         qmbError = "Ha habido un error de conexión con el servidor\n"
                    "Revise su conexión a la RED y al sitio de Picta";
@@ -1149,4 +1230,35 @@ void MainWindow::ShowErrorMessage(QString Title, QString Error)
         QMessageBox::warning(this, Title, Error);
         QApplication::alert(this);
     }
+}
+
+bool MainWindow::ExistsProgram(QString program)
+{
+    QProcess prog;
+    QString prog_stdout;
+    QStringList args;
+    bool exitcode;
+
+    args << "/c" << program << "-h";
+
+    prog.setProcessChannelMode(QProcess::MergedChannels);
+    prog.setProgram("cmd.exe");
+    prog.setArguments(args);
+    prog.start();
+
+    if (!prog.waitForFinished())
+        return false;
+
+    prog_stdout = prog.readAllStandardOutput();
+
+    if (prog_stdout.contains("Usage: picta-dl [OPTIONS]", Qt::CaseSensitive) ||
+        prog_stdout.contains("usage: ffmpeg [options]", Qt::CaseSensitive))
+    {
+        exitcode = true;
+    }
+    else
+    {
+        exitcode = false;
+    }
+    return exitcode;
 }

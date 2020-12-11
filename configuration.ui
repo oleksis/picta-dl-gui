@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>442</width>
-    <height>371</height>
+    <height>492</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>450</width>
-    <height>392</height>
+    <height>492</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -326,7 +326,7 @@ QGroupBox::title {
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>320</y>
+     <y>430</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -345,7 +345,7 @@ QGroupBox::title {
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>320</y>
+     <y>430</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -362,7 +362,7 @@ QGroupBox::title {
     <rect>
      <x>20</x>
      <y>250</y>
-     <width>331</width>
+     <width>301</width>
      <height>17</height>
     </rect>
    </property>
@@ -371,7 +371,7 @@ QGroupBox::title {
    </property>
    <property name="styleSheet">
     <string notr="true">font-size:10pt;
-font-weight:600;</string>
+font-weight:400;</string>
    </property>
    <property name="text">
     <string>Minimizar en el área de notificación de Sistema</string>
@@ -382,7 +382,7 @@ font-weight:600;</string>
     <rect>
      <x>20</x>
      <y>280</y>
-     <width>291</width>
+     <width>261</width>
      <height>17</height>
     </rect>
    </property>
@@ -391,10 +391,92 @@ font-weight:600;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">font-size:10pt;
-font-weight:600;</string>
+font-weight:400;</string>
    </property>
    <property name="text">
     <string>Mostrar en las notificaciones del Sistema</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>320</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_AvanOpt">
+   <property name="geometry">
+    <rect>
+     <x>145</x>
+     <y>320</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Opciones Avanzadas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkEnvPictadl">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>350</y>
+     <width>331</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Usar picta-dl de las variables de entorno del sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Una &lt;b&gt;variable de entorno&lt;/b&gt; es una cadena de texto que los sistemas operativos como Windows, Linux o Mac usan para almacenar valores, en este caso seria el PATH o camino donde esta el binario ejecutable de picta-dl, por tanto si selecciona esta opción es que ya ud. tiene declara esta variable y no necesita el picta-dl que viene por defecto en la GUI. &lt;/span&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;: ¡Si no tiene configurada esa variable de entorno en el sistema no marque esta opción o tendrá problemas al usar la aplicación!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:10pt;
+font-weight:400;</string>
+   </property>
+   <property name="text">
+    <string>Usar picta-dl de las variables de entorno del sistema</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>320</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkEnvFFmpeg">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>380</y>
+     <width>331</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Usar FFmpeg de las variables de entorno del sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Una &lt;b&gt;variable de entorno&lt;/b&gt; es una cadena de texto que los sistemas operativos como Windows, Linux o Mac usan para almacenar valores, en este caso seria el PATH o camino donde esta el binario ejecutable de FFmpeg, por tanto si selecciona esta opción es que ya ud. tiene declara esta variable y no necesita el FFmpeg que viene por defecto en la GUI.&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;: ¡Si no tiene configurada esa variable de entorno en el sistema no marque esta opción o tendrá problemas al usar la aplicación!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:10pt;
+font-weight:400;</string>
+   </property>
+   <property name="text">
+    <string>Usar FFmpeg de las variables de entorno del sistema</string>
    </property>
   </widget>
  </widget>

@@ -20,7 +20,6 @@
 #include <QSystemTrayIcon>
 #include <QAction>
 #include <QCloseEvent>
-#include <QDate>
 #include "configuration.h"
 #include "simplecrypt.h"
 #include "information.h"
@@ -115,11 +114,13 @@ private:
     bool IsVideo;
     bool IsAudio;
     int itemlist = 0;
-    int ColVideo = 1;
-    int ColAudio = 2;
-    int Colsubtitle = 3;
-    int ColVelocidad = 4;
-    int ColProcess = 5;
+    int ColId = 0;
+    int ColFile = 1;
+    int ColVideo = 2;
+    int ColAudio = 3;
+    int Colsubtitle = 4;
+    int ColVelocidad = 5;
+    int ColProcess = 6;
     QStringList ItemOut;
     bool stopped = false;
 
@@ -131,6 +132,8 @@ private:
     QAction *quitAction;
     bool systray;
     bool notification;
+    bool envpictadl;
+    bool envffmpeg;
 
     void configure();
     void checkExistenceOfMainProcess();
@@ -144,6 +147,7 @@ private:
     void Download_Process_Error(QString error);
     void ShowErrorMessage(QString Title, QString Error);
     bool IsNetworkConnected();
+    bool ExistsProgram(QString program);
 
     void createActions();
     void createTrayIcon();

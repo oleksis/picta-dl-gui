@@ -43,6 +43,8 @@ private:
     QString pictaGuiConfigFile;
     bool systray;
     bool notification;
+    bool envpictadl;
+    bool envffmpeg;
 
     void loadConfigFile();
     void saveConfigFile();

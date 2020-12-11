@@ -59,6 +59,8 @@ void configuration::loadConfigFile()
         cpicta_pass = settings.value("ppicta").toString();
         systray = settings.value("systray").toBool();
         notification = settings.value("notification").toBool();
+        envpictadl = settings.value("envpictadl").toBool();
+        envffmpeg = settings.value("envffmpeg").toBool();
 
         settings.endGroup();
 
@@ -78,11 +80,22 @@ void configuration::loadConfigFile()
         ui->lnEdit_user_proxy->setText(proxy_user);
         ui->lnEdit_pass_proxy->setText(proxy_pass);
 
-        if (systray) {
+        if (systray)
+        {
             ui->checkSystray->setChecked(true);
         }
-        if (notification) {
+        if (notification)
+        {
             ui->checkNotified->setChecked(true);
+        }
+
+        if (envpictadl)
+        {
+            ui->checkEnvPictadl->setChecked(true);
+        }
+        if (envffmpeg)
+        {
+            ui->checkEnvFFmpeg->setChecked(true);
         }
     }
     else
@@ -112,8 +125,10 @@ void configuration::saveConfigFile()
     cport = ui->lnEdit_port_proxy->text();
     cproxy_user = ui->lnEdit_user_proxy->text();
     cproxy_pass = ui->lnEdit_pass_proxy->text();
-    systray = ui->checkSystray->isChecked() ? true:false;
-    notification = ui->checkNotified->isChecked() ? true:false;
+    systray = ui->checkSystray->isChecked() ? true : false;
+    notification = ui->checkNotified->isChecked() ? true : false;
+    envpictadl = ui->checkEnvPictadl->isChecked() ? true : false;
+    envffmpeg = ui->checkEnvFFmpeg->isChecked() ? true : false;
     QString crytopass_picta = crypto_pass.encryptToString(cpicta_pass), crytopass_proxy;
 
     if (!cproxy_pass.isEmpty())
@@ -135,8 +150,10 @@ void configuration::saveConfigFile()
     settings.setValue("pproxy", crytopass_proxy);
     settings.setValue("upicta", cpicta_user);
     settings.setValue("ppicta", crytopass_picta);
-    settings.setValue("systray",systray);
+    settings.setValue("systray", systray);
     settings.setValue("notification", notification);
+    settings.setValue("envpictadl", envpictadl);
+    settings.setValue("envffmpeg", envffmpeg);
 
     settings.endGroup();
 }
