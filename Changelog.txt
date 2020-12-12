@@ -1,3 +1,7 @@
+v0.10.3
+
+* Refactoring MainWindow::ExistsProgram using delay/TIMEOUT
+
 v0.10.2
 
 + Se agregó una función para hacer un "delay" que de tiempo a que termine el Qprocess:
