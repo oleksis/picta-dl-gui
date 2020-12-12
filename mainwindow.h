@@ -20,6 +20,7 @@
 #include <QSystemTrayIcon>
 #include <QAction>
 #include <QCloseEvent>
+#include <QTime>
 #include "configuration.h"
 #include "simplecrypt.h"
 #include "information.h"
@@ -148,6 +149,7 @@ private:
     void ShowErrorMessage(QString Title, QString Error);
     bool IsNetworkConnected();
     bool ExistsProgram(QString program);
+    void delay(int delaytime = 1);
 
     void createActions();
     void createTrayIcon();

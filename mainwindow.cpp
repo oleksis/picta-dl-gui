@@ -1252,3 +1252,10 @@ bool MainWindow::ExistsProgram(QString program)
     prog.waitForFinished(TIMEOUT);
     return true;
 }
+
+void MainWindow::delay(int delaytime)
+{
+    QTime dieTime= QTime::currentTime().addSecs(delaytime);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}

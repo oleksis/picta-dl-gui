@@ -1,3 +1,20 @@
+v0.10.2
+
++ Se agregó una función para hacer un "delay" que de tiempo a que termine el Qprocess:
+
+  void MainWindow::delay(int delaytime)
+
+
+v.0.10.1
+
+* Refactoring MainWindow::ExistsProgram using waitForStarted/Finished(TIMEOUT)
+
+
+v0.10.0
+
++  Check picta-dl and ffmpeg to the PATH environment variable
+
+
 v0.9.0
 
 + Ahora puede resumir las descargas en caso que la haya detenido o no se pudo completar anteriormente.
