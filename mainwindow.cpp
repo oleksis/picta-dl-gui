@@ -1234,10 +1234,9 @@ void MainWindow::ShowErrorMessage(QString Title, QString Error)
 
 bool MainWindow::ExistsProgram(QString program)
 {
+    const int TIMEOUT = 3000;
     QProcess prog;
-    QString prog_stdout;
     QStringList args;
-    bool exitcode;
 
     args << "/c" << program << "-h";
 
@@ -1246,19 +1245,10 @@ bool MainWindow::ExistsProgram(QString program)
     prog.setArguments(args);
     prog.start();
 
-    if (!prog.waitForFinished())
+    if (!prog.waitForStarted(TIMEOUT))
         return false;
-
-    prog_stdout = prog.readAllStandardOutput();
-
-    if (prog_stdout.contains("Usage: picta-dl [OPTIONS]", Qt::CaseSensitive) ||
-        prog_stdout.contains("usage: ffmpeg [options]", Qt::CaseSensitive))
-    {
-        exitcode = true;
-    }
-    else
-    {
-        exitcode = false;
-    }
-    return exitcode;
+    
+    prog.kill();
+    prog.waitForFinished(TIMEOUT);
+    return true;
 }
