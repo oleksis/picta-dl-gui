@@ -1237,7 +1237,7 @@ bool MainWindow::ExistsProgram(QString program)
     QProcess prog;
     QString prog_stdout;
     QStringList args;
-    bool exitcode;
+    bool exitcode = false;
 
     args << "/c" << program << "-h";
 
@@ -1255,10 +1255,7 @@ bool MainWindow::ExistsProgram(QString program)
     {
         exitcode = true;
     }
-    else
-    {
-        exitcode = false;
-    }
+
     return exitcode;
 }
 
