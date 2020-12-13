@@ -1,3 +1,7 @@
+v0.10.4
+
+* Refactoring MainWindow::delay passing a QProcess
+
 v0.10.3
 
 * Refactoring MainWindow::ExistsProgram using delay/TIMEOUT

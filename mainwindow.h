@@ -149,7 +149,7 @@ private:
     void ShowErrorMessage(QString Title, QString Error);
     bool IsNetworkConnected();
     bool ExistsProgram(QString program);
-    void delay(int delaytime = 1);
+    void delay(QProcess &process);
 
     void createActions();
     void createTrayIcon();

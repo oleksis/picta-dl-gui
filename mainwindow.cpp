@@ -1245,8 +1245,8 @@ bool MainWindow::ExistsProgram(QString program)
     prog.setProgram("cmd.exe");
     prog.setArguments(args);
     prog.start();
-    // TODO: Set/Read delay (TIMEOUT) from picta-dl-gui.conf
-    delay();
+
+    delay(prog);
     prog.kill();
     prog_stdout = prog.readAllStandardOutput();
 
@@ -1262,9 +1262,12 @@ bool MainWindow::ExistsProgram(QString program)
     return exitcode;
 }
 
-void MainWindow::delay(int delaytime)
+void MainWindow::delay(QProcess &process)
 {
-    QTime dieTime= QTime::currentTime().addSecs(delaytime);
-    while (QTime::currentTime() < dieTime)
+    while ( process.state() == QProcess::Running)
+    {
+        qDebug() << "Process Status:" << process.state();
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+        qDebug() << "Process Status:" << process.state();
+    }
 }
