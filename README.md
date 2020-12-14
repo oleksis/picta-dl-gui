@@ -3,7 +3,7 @@ __Picta Downloader GUI__ es una aplicación que le permite descargar contenidos 
 (graphical user interface) de la app de descargar por consola [picta-dl](https://github.com/oleksis/youtube-dl).
 
 # Captura de pantalla
-![picta-dl-gui main window](docs/picta-dl-gui.gif)
+![picta-dl-gui main window](docs/picta-dl-gui-actual.gif)
 
 # Configuración
 La configuración actual de __Picta Downloader GUI__ es muy sencilla, consta de 3 partes de las cuales una es opcional para el caso que necesite configurar conexión a través de Proxy.
