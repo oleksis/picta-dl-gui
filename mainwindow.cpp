@@ -354,6 +354,7 @@ void MainWindow::get_filename()
         QString playlist = roaming.absolutePath().append("/playlist.txt");
         ui->tableWidget->setRowCount(0);
         process_count = 0;
+        FixedArgs.clear();
         //Animated Process list
         progressAni.setFileName(":/Logos/refresh_rotate.gif");
         progressAni.start();
@@ -390,21 +391,9 @@ void MainWindow::get_filename()
              << "6"
              << "--get-filename";
 
-        if (!ui->chckBox_Playlist->isChecked())
-        {
-            args << "--no-playlist";
-        }
-        else
-        {
-            args << "--yes-playlist";
-        }
+        FixedArgs = GetArguments();
 
-        if (ui->chckBox_Onlyaudio->isChecked())
-        {
-            args << "-x"
-                 << "--audio-quality"
-                 << "0";
-        }
+        args << FixedArgs;
 
         if (!proxy.isEmpty())
         {
@@ -446,6 +435,7 @@ void MainWindow::onFinishGetfilenames()
     pictadl.terminate();
     pictadl.close();
     process_count++;
+    playlistitems.clear();
 
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableWidget->verticalHeader()->setDefaultAlignment(Qt::AlignVCenter);
@@ -458,7 +448,8 @@ void MainWindow::onFinishGetfilenames()
         playlistfile.open(QIODevice::ReadWrite | QIODevice::Text);
         QTextStream listfile(&playlistfile);
         QString ListItem, ShortName;
-
+        int LastRow;
+        ItemSelected.clear();
         do
         {
             ListItem = listfile.readLine();
@@ -466,26 +457,38 @@ void MainWindow::onFinishGetfilenames()
             {
                 ShortName = CutName(ListItem, 23);
                 ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+                LastRow = ui->tableWidget->rowCount() - 1;
 
-                ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColFile, new QTableWidgetItem(ShortName));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColFile)->setToolTip(ListItem);
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColFile)->setTextAlignment(Qt::AlignLeft);
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColFile)->setTextAlignment(Qt::AlignVCenter);
+                QPointer<QCheckBox> Id = new QCheckBox(this);                   // Create a QCheckbox pointer
 
-                ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColVideo, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColVideo)->setTextAlignment(Qt::AlignCenter);
+                QWidget *checkBoxWidget = new QWidget();                        // Create a QWiget container
+                QHBoxLayout *layoutCheckBox = new QHBoxLayout(checkBoxWidget);  // Create a Horizontal layout
+                layoutCheckBox->addWidget(Id);                                  // Add Widget to layout
+                layoutCheckBox->setAlignment(Qt::AlignCenter);                  // Center the checkbox
+                layoutCheckBox->setContentsMargins(0,0,0,0);                    // Set the zero padding
 
-                ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColAudio, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColAudio)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->setCellWidget(LastRow, ColId, checkBoxWidget); // Add a CheckBox with Layout to the Table
+                ItemSelected.append(Id);                                        // Add to list Pointer of QCheckbox
 
-                ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, Colsubtitle, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, Colsubtitle)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->setItem(LastRow, ColFile, new QTableWidgetItem(ShortName));
+                ui->tableWidget->item(LastRow, ColFile)->setToolTip(ListItem);
+                ui->tableWidget->item(LastRow, ColFile)->setTextAlignment(Qt::AlignLeft);
+                ui->tableWidget->item(LastRow, ColFile)->setTextAlignment(Qt::AlignVCenter);
 
-                ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColVelocidad, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColVelocidad)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->setItem(LastRow, ColVideo, new QTableWidgetItem("➖"));
+                ui->tableWidget->item(LastRow, ColVideo)->setTextAlignment(Qt::AlignCenter);
 
-                ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, ColProcess, new QTableWidgetItem("➖"));
-                ui->tableWidget->item(ui->tableWidget->rowCount() - 1, ColProcess)->setTextAlignment(Qt::AlignCenter);
+                ui->tableWidget->setItem(LastRow, ColAudio, new QTableWidgetItem("➖"));
+                ui->tableWidget->item(LastRow, ColAudio)->setTextAlignment(Qt::AlignCenter);
+
+                ui->tableWidget->setItem(LastRow, Colsubtitle, new QTableWidgetItem("➖"));
+                ui->tableWidget->item(LastRow, Colsubtitle)->setTextAlignment(Qt::AlignCenter);
+
+                ui->tableWidget->setItem(LastRow, ColVelocidad, new QTableWidgetItem("➖"));
+                ui->tableWidget->item(LastRow, ColVelocidad)->setTextAlignment(Qt::AlignCenter);
+
+                ui->tableWidget->setItem(LastRow, ColProcess, new QTableWidgetItem("➖"));
+                ui->tableWidget->item(LastRow, ColProcess)->setTextAlignment(Qt::AlignCenter);
             }
 
         } while (!listfile.atEnd());
@@ -640,7 +643,6 @@ void MainWindow::Downloadfiles()
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
     QString picta_conf = roaming.absolutePath().append("/picta-dl.conf");
     download_count = 0;
-    stopped = false;
     ui->cmmd_process->setEnabled(false);
     //Animated Process list
     downloadsAni.setFileName(":/Logos/download_animated.gif");
@@ -650,6 +652,7 @@ void MainWindow::Downloadfiles()
 
     //Prepare arguments
     QStringList args;
+
     if (envpictadl)
     {
         pictadlfiles.setProgram("picta-dl.exe");
@@ -669,19 +672,23 @@ void MainWindow::Downloadfiles()
     {
         args << "--config-location" << picta_conf;
     }
+
     args << "--abort-on-error"
          << "--socket-timeout"
          << "10"
          << "--retries"
          << "6";
 
-    if (!ui->chckBox_Playlist->isChecked())
+    args << FixedArgs;
+
+    if (!stopped)
     {
-        args << "--no-playlist";
+        playlistitems = GetSelectedItems();
     }
-    else
+
+    if (!playlistitems.isEmpty())
     {
-        args << "--yes-playlist";
+        args << "--playlist-items" << playlistitems;
     }
 
     if (ui->chckBox_Subt->isChecked())
@@ -689,14 +696,7 @@ void MainWindow::Downloadfiles()
         args << "--write-sub";
     }
 
-    if (ui->chckBox_Onlyaudio->isChecked())
-    {
-        args << "-x"
-             << "--audio-quality"
-             << "0";
-    }
-
-    if (!ui->chckBox_Onlyaudio->isChecked())
+    if (!args.contains("--audio-quality"))
     {
         if (ui->radBnt_Alta->isChecked())
         {
@@ -738,6 +738,7 @@ void MainWindow::Downloadfiles()
     IsVideo = false;
     IsAudio = false;
     errString = "";
+
     //Prepare Process for download
     pictadlfiles.setArguments(args);
     pictadlfiles.setProcessChannelMode(QProcess::MergedChannels);
@@ -748,17 +749,6 @@ void MainWindow::Downloadfiles()
 
     connect(&pictadlfiles, &QProcess::readyReadStandardOutput, this, [&]() {
         stdoutString = pictadlfiles.readAllStandardOutput();
-        //qDebug() << "Stdout: " << stdoutString;
-
-        if (stdoutString.contains("WARNING: You have requested multiple formats but ffmpeg or avconv are not installed", Qt::CaseInsensitive))
-        {
-            errString = stdoutString;
-            emit onFinishDowloadfiles();
-            ui->cmmd_stop->setEnabled(false);
-            ui->cmmd_process->setEnabled(true);
-            ui->cmmd_download->setEnabled(false);
-            ui->cmmd_dlte->setEnabled(true);
-        }
 
         if (stdoutString.contains("Writing video subtitles", Qt::CaseSensitive))
         {
@@ -1246,7 +1236,7 @@ bool MainWindow::ExistsProgram(QString program)
     prog.setArguments(args);
     prog.start();
 
-    delay(prog);
+    delayProcess(prog);
     prog.kill();
     prog_stdout = prog.readAllStandardOutput();
 
@@ -1259,12 +1249,68 @@ bool MainWindow::ExistsProgram(QString program)
     return exitcode;
 }
 
-void MainWindow::delay(QProcess &process)
+void MainWindow::delayProcess(QProcess &process)
 {
-    while ( process.state() == QProcess::Running)
+    while (process.state() == QProcess::Running)
     {
-        qDebug() << "Process Status:" << process.state();
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-        qDebug() << "Process Status:" << process.state();
     }
+}
+
+QStringList MainWindow::GetArguments()
+{
+    QStringList args;
+
+    if (!ui->chckBox_Playlist->isChecked())
+    {
+        args << "--no-playlist";
+    }
+    else
+    {
+        args << "--yes-playlist";
+    }
+
+    if (ui->chckBox_Onlyaudio->isChecked())
+    {
+        args << "-x"
+             << "--audio-quality"
+             << "0";
+    }
+
+    return args;
+}
+
+QString MainWindow::GetSelectedItems()
+{
+    QString args;
+    QString SelectItems;
+    int item = 0;
+    bool ischeckeditem = false;
+
+    for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
+    {
+        if (ItemSelected.at(i)->isChecked())
+        {
+            ischeckeditem = true;
+            item = i + 1;
+            SelectItems.append(QString::number(item) + ",");
+        }
+    }
+
+    if (ischeckeditem)
+    {
+        for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
+        {
+            if (!ItemSelected.at(i)->isChecked())
+            {
+                ui->tableWidget->removeRow(i);
+                delete ItemSelected.at(i);
+                ItemSelected.removeAt(i);
+                i = -1;
+            }
+        }
+    }
+
+    args = SelectItems.mid(0, SelectItems.length() - 1);
+    return args;
 }

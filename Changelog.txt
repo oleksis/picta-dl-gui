@@ -1,3 +1,20 @@
+v0.11.0
+
+* Optimizada la función de delayProcess(QProcess &process) para evitar que la GUI
+ se congele y permitir que cualquier QProcess termine su ejecución antes de que se destruya.
+
++ Agregada la variable FixedArgs y método GetArguments() para evitar un error cuando
+ el usuario procesa una lista y después cambiaba los parámetros de descarga, no se
+ muestran los elementos correctos al descargar, con esto se fijan los argumentos de
+ procesamiento de URL y en base a ellos es que se descarga, en caso de que cambie estos
+  debe volver a procesar la URL.
+
++ Agregada la opción de –-playlist-item la cual permite en la GUI seleccionar que elementos
+ quiere descargar marcándolos en un CheckBox.
+
+* Optimizado el código.
+
+
 v0.10.4
 
 * Refactoring MainWindow::delay passing a QProcess

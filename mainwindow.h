@@ -21,6 +21,7 @@
 #include <QAction>
 #include <QCloseEvent>
 #include <QTime>
+#include <QPointer>
 #include "configuration.h"
 #include "simplecrypt.h"
 #include "information.h"
@@ -29,9 +30,13 @@ namespace Ui
     class MainWindow;
 }
 
+class QCheckBox;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+    QList<QPointer<QCheckBox>> ItemSelected;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -149,7 +154,11 @@ private:
     void ShowErrorMessage(QString Title, QString Error);
     bool IsNetworkConnected();
     bool ExistsProgram(QString program);
-    void delay(QProcess &process);
+    void delayProcess(QProcess &process);
+    QStringList GetArguments();
+    QString GetSelectedItems();
+    QStringList FixedArgs;
+    QString playlistitems;
 
     void createActions();
     void createTrayIcon();
