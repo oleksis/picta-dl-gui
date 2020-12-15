@@ -50,4 +50,14 @@ RC_ICONS = Resources/Logos/picta_dl_gui_icon.ico
 VERSION = 1.0.0.0
 RC_FILE = Resources/resManifest.rc
 
+
+#MacOS app icon and info
+macx: QMAKE_INFO_PLIST = Resources/Logos/Info.plist
+macx: ICON = Resources/Logos/icon.icns
+
 # End
+
+DISTFILES += \
+    Resources/Logos/icon.icns
+
+

@@ -14,5 +14,6 @@
         <file>Ayuda/picta-dl-config.png</file>
         <file>Ayuda/icono_de_lista.png</file>
         <file>Ayuda/picta_lista_canal.png</file>
+        <file>Logos/icon.icns</file>
     </qresource>
 </RCC>

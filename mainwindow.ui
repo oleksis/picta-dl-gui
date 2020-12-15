@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
+    <width>734</width>
     <height>560</height>
    </rect>
   </property>
@@ -155,7 +155,7 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Opciones de Picta Downloader&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Aquí puede configurar las opciones necesarias para la descarga como el usuario y contraseña de Picta y si lo usa el proxy con el puerto.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;: Es &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;obligatorio&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; que configure su usuario y contraseña de Picta para que pueda descargar&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;  font-weight:600; color:#e80707;&quot;&gt;Opciones de Picta Downloader&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;Aquí puede configurar las opciones necesarias para la descarga como el usuario y contraseña de Picta y si lo usa el proxy con el puerto.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;  font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;: Es &lt;/span&gt;&lt;span style=&quot;  font-weight:600; color:#000000;&quot;&gt;obligatorio&lt;/span&gt;&lt;span style=&quot;  color:#000000;&quot;&gt; que configure su usuario y contraseña de Picta para que pueda descargar&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Picta-dl</string>
@@ -274,7 +274,7 @@
         <item>
          <widget class="QPushButton" name="bnt_clipboard">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;PEGAR URL&lt;/span&gt;&lt;br/&gt;Click aquí para pegar la URL de picta y procesar la lista de reproducción&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;: Cada vez copie al portapapeles una URL de Picta con este botón puede pegarla&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600; color:#e80707;&quot;&gt;PEGAR URL&lt;/span&gt;&lt;br/&gt;Click aquí para pegar la URL de picta y procesar la lista de reproducción&lt;span style=&quot;color:#000000;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;&quot;&gt;: Cada vez copie al portapapeles una URL de Picta con este botón puede pegarla&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Pegar URL</string>
@@ -296,7 +296,12 @@
       <item>
        <widget class="QGroupBox" name="gpBox_opt">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Opciones de descarga&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Seleccione&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; lo que desee descargar de la lista. Si selecciona &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Lista de Reproducción&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; le mostrará todos los archivos que esta contiene, de lo contrario sólo el elemento de esa URL, también si selecciona &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Sólo audio&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; se descargara nada más que el audio.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Por defecto viene seleccionado &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Subtítulos &lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;que si están disponibles se pueden descargar, la &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Calidad de Vídeo&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; puede ser: &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Alta&lt;/span&gt;, &lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Media&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; ó &lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Baja&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;, por defecto viene selecciona la Alta. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#b10a06;&quot;&gt;Opciones de descarga&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Seleccione&lt;/span&gt; lo que desee descargar de la lista. Si selecciona &lt;span style=&quot; font-weight:600;&quot;&gt;Lista de Reproducción&lt;/span&gt; le mostrará todos los archivos que esta contiene, de lo contrario sólo el elemento de esa URL, también si selecciona &lt;span style=&quot; font-weight:600;&quot;&gt;Sólo audio&lt;/span&gt; se descargara nada más que el audio.&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Por defecto viene seleccionado &lt;span style=&quot; font-weight:600;&quot;&gt;Subtítulos &lt;/span&gt;que si están disponibles se pueden descargar, la &lt;span style=&quot; font-weight:600;&quot;&gt;Calidad de Vídeo&lt;/span&gt; puede ser: &lt;span style=&quot; font-weight:600;&quot;&gt;Alta&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Media&lt;/span&gt; ó &lt;span style=&quot; font-weight:600;&quot;&gt;Baja&lt;/span&gt;, por defecto viene selecciona la Alta. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="autoFillBackground">
          <bool>false</bool>
@@ -353,17 +358,9 @@
            </item>
            <item>
             <widget class="QToolButton" name="toolButton">
-             <property name="minimumSize">
-              <size>
-               <width>75</width>
-               <height>23</height>
-              </size>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Carpeta por defecto para la descarga&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mantendrá guardada hasta que la cambie por otra.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#e80707;&quot;&gt;Carpeta por defecto para la descarga&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;
+Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mantendrá guardada hasta que la cambie por otra</string>
              </property>
              <property name="text">
               <string>...</string>
@@ -390,39 +387,28 @@
              </property>
              <item>
               <widget class="QCheckBox" name="chckBox_Playlist">
+               <property name="text">
+                <string>Lista de Reproducción</string>
+               </property>
                <property name="checked">
                 <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="lbl_playlist">
-               <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Lista de Reproducción&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="chckBox_Subt">
+               <property name="text">
+                <string>Subtítulos</string>
+               </property>
                <property name="checked">
                 <bool>true</bool>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="lbl_subtitles">
+              <widget class="QCheckBox" name="chckBox_Onlyaudio">
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Subtítulos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="chckBox_Onlyaudio"/>
-             </item>
-             <item>
-              <widget class="QLabel" name="lbl_audio">
-               <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sólo Audio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>Sólo Audio</string>
                </property>
               </widget>
              </item>
@@ -561,7 +547,7 @@
          <number>0</number>
         </property>
         <attribute name="horizontalHeaderVisible">
-         <bool>false</bool>
+         <bool>true</bool>
         </attribute>
         <attribute name="horizontalHeaderCascadingSectionResizes">
          <bool>true</bool>
@@ -576,7 +562,7 @@
          <bool>true</bool>
         </attribute>
         <attribute name="verticalHeaderVisible">
-         <bool>false</bool>
+         <bool>true</bool>
         </attribute>
         <attribute name="verticalHeaderMinimumSectionSize">
          <number>24</number>
@@ -588,12 +574,6 @@
          <property name="text">
           <string>ID</string>
          </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
          <property name="textAlignment">
           <set>AlignCenter</set>
          </property>
@@ -601,13 +581,6 @@
         <column>
          <property name="text">
           <string>Archivo</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>8</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
          </property>
          <property name="textAlignment">
           <set>AlignCenter</set>
@@ -617,13 +590,6 @@
          <property name="text">
           <string>Video</string>
          </property>
-         <property name="font">
-          <font>
-           <pointsize>8</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
          <property name="textAlignment">
           <set>AlignCenter</set>
          </property>
@@ -631,13 +597,6 @@
         <column>
          <property name="text">
           <string>Audio</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>8</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
          </property>
          <property name="textAlignment">
           <set>AlignCenter</set>
@@ -647,13 +606,6 @@
          <property name="text">
           <string>Subtítulo</string>
          </property>
-         <property name="font">
-          <font>
-           <pointsize>8</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
          <property name="textAlignment">
           <set>AlignCenter</set>
          </property>
@@ -662,13 +614,6 @@
          <property name="text">
           <string>Velocidad</string>
          </property>
-         <property name="font">
-          <font>
-           <pointsize>8</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
          <property name="textAlignment">
           <set>AlignCenter</set>
          </property>
@@ -676,13 +621,6 @@
         <column>
          <property name="text">
           <string>Procesado</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>8</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
          </property>
          <property name="textAlignment">
           <set>AlignCenter</set>
@@ -726,7 +664,7 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Procesar URL&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Antes de comenzar a descargar debe procesar el contenido de la lista que ofrece la URL.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;: Es &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;obligatorio&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; que realize este paso antes que la descarga, en caso contrario no se le activará el botón de Descarga.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;  font-weight:600; color:#e80707;&quot;&gt;Procesar URL&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;Antes de comenzar a descargar debe procesar el contenido de la lista que ofrece la URL.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;  font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;: Es &lt;/span&gt;&lt;span style=&quot;  font-weight:600; color:#000000;&quot;&gt;obligatorio&lt;/span&gt;&lt;span style=&quot;  color:#000000;&quot;&gt; que realize este paso antes que la descarga, en caso contrario no se le activará el botón de Descarga.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
@@ -792,7 +730,7 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Descargar&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Clic aquí para  comenzar a descargar los archivos.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;: Es &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;obligatorio&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; Procesar la URL Picta antes de comenzar a descargar.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;  font-weight:600; color:#e80707;&quot;&gt;Descargar&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;Clic aquí para  comenzar a descargar los archivos.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;  font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;: Es &lt;/span&gt;&lt;span style=&quot;  font-weight:600; color:#000000;&quot;&gt;obligatorio&lt;/span&gt;&lt;span style=&quot;  color:#000000;&quot;&gt; Procesar la URL Picta antes de comenzar a descargar.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="icon">
              <iconset resource="Resources/images.qrc">
@@ -858,7 +796,7 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Detener los procesos&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Con este botón puede detener tanto el procesamiento de la lista como la descarga de archivos&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;:  Sólo se activara cuando procese la lista o este descargando archivos.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;  font-weight:600; color:#e80707;&quot;&gt;Detener los procesos&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;Con este botón puede detener tanto el procesamiento de la lista como la descarga de archivos&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;  font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;:  Sólo se activara cuando procese la lista o este descargando archivos.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="icon">
              <iconset resource="Resources/images.qrc">
@@ -924,7 +862,7 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Limpiar Lista&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Con este botón puede limpiar el contenido de la lista de reproduccón que se muestra&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;:  Sólo se activara cuando no esté procesando la lista o descargando archivos. Elimina también la URL de descarga&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;  font-weight:600; color:#e80707;&quot;&gt;Limpiar Lista&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;Con este botón puede limpiar el contenido de la lista de reproduccón que se muestra&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;  font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;  color:#000000;&quot;&gt;:  Sólo se activara cuando no esté procesando la lista o descargando archivos. Elimina también la URL de descarga&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="icon">
              <iconset resource="Resources/images.qrc">
@@ -992,10 +930,81 @@
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>734</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuConfiguracion">
+    <property name="title">
+     <string>Configuracion</string>
+    </property>
+    <addaction name="actionSettings"/>
+   </widget>
+   <addaction name="menuConfiguracion"/>
+   <addaction name="menuAyuda"/>
+  </widget>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About Picta-dl_GUI</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Configuracion</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="Resources/images.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionSettings</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>on_cmmd_config_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>279</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>on_cmmd_help_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>279</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>on_cmmd_config_clicked()</slot>
+  <slot>on_cmmd_help_clicked()</slot>
+ </slots>
 </ui>
