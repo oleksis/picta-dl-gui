@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
         <key>NOTE</key>
-        <string>A Gui for icta-dl. https://github.com/oleksis/picta-dl-gui</string>
+        <string>A Gui for Picta-dl. https://github.com/oleksis/picta-dl-gui</string>
         <key>CFBundleIdentifier</key>
         <string>com.github.oleksis.picta-dl-gui</string>
         <key>NSSupportsAutomaticGraphicsSwitching</key>
