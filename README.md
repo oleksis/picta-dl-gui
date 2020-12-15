@@ -16,7 +16,10 @@ La configuración actual de __Picta Downloader GUI__ es muy sencilla, consta de 
 
 3. Siempre debe guardar los cambios con el botón Guardar, en caso que no desee guardarlos pues simplemente cancele.
 
+4. Opciones Avanzadas: En este apartado debe tener mucho cuidado y saber lo que esta haciendo pues una mala configuración puede hacer que no le funcione la GUI. Aquí ud. seleccionar si quiere usar picta-dl o FFmpeg que tenga configurado en las variables de entorno del sistema, si tiene dudas sobre de que trata esto puede pasar el mouse (ratón) sobre el texto de la opción y verá la explicación de la misma.
+
 Imagen de muestra con las opciones:
+
 ![picta-dl-gui config window](Resources/Ayuda/picta-dl-config.png)
 
 # Preguntas y respuestas frecuentes (F.A.Q)
