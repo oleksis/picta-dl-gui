@@ -1027,7 +1027,7 @@ bool MainWindow::IsNetworkConnected()
             bool isLoopback = (bool)(flags & QNetworkInterface::IsLoopBack);
             bool isP2P = (bool)(flags & QNetworkInterface::IsPointToPoint);
             bool isRunning = (bool)(flags & QNetworkInterface::IsRunning);
-            bool isUp = (bool)(flags && QNetworkInterface::IsUp);
+            bool isUp = (bool)(flags & QNetworkInterface::IsUp);
 
             // If this interface isn't running, we don't care about it
             if (!isRunning)

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
-    <height>492</height>
+    <width>383</width>
+    <height>415</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -23,462 +23,300 @@
    <iconset resource="Resources/images.qrc">
     <normaloff>:/Logos/picta_dl_gui_icon.ico</normaloff>:/Logos/picta_dl_gui_icon.ico</iconset>
   </property>
-  <widget class="QLabel" name="picta_dl_title">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>20</y>
-     <width>286</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>300</width>
-     <height>20</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#00007f;&quot;&gt;Configuración de Picta Downloader&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="textFormat">
-    <enum>Qt::AutoText</enum>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>55</x>
-     <y>10</y>
-     <width>31</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="Resources/images.qrc">:/Logos/configuration_icon.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>55</y>
-     <width>424</width>
-     <height>63</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QGroupBox {
-    border: 1px solid  rgb(0, 0, 127);
-    border-radius: 4.5px;
-    margin-top: 0.25em;
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 5px;
-    padding: -4px 1px 0px 1px;
-}</string>
-   </property>
-   <property name="title">
-    <string>Usuario de Picta</string>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="1" column="2">
-     <widget class="QLineEdit" name="lnEdit_user_picta">
-      <property name="maximumSize">
-       <size>
-        <width>130</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-color: rgb(0, 0, 127);</string>
-      </property>
-      <property name="maxLength">
-       <number>15</number>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="lbl_user_picta_3">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Usuario&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QLabel" name="lbl_pass_picta">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="4">
-     <widget class="QLineEdit" name="lnEdit_pass_picta">
-      <property name="styleSheet">
-       <string notr="true">border-color: rgb(0, 0, 127);</string>
-      </property>
-      <property name="maxLength">
-       <number>20</number>
-      </property>
-      <property name="echoMode">
-       <enum>QLineEdit::Password</enum>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" colspan="4">
-     <widget class="QLabel" name="lbl_user_picta">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600; color:#ff0000;&quot;&gt;*Obligatorio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>140</y>
-     <width>422</width>
-     <height>95</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QGroupBox {
-    border: 1px solid  rgb(0, 0, 127);
-    border-radius: 4.5px;
-    margin-top: 0.25em;
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 5px;
-    padding: -5px 1px 1px 1px;
-}</string>
-   </property>
-   <property name="title">
-    <string>Proxy</string>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_3">
-    <item row="9" column="6">
-     <widget class="QLineEdit" name="lnEdit_pass_proxy">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-color: rgb(0, 0, 127);</string>
-      </property>
-      <property name="maxLength">
-       <number>20</number>
-      </property>
-      <property name="echoMode">
-       <enum>QLineEdit::Password</enum>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="2" colspan="3">
-     <widget class="QLineEdit" name="lnEdit_ip_proxy">
-      <property name="styleSheet">
-       <string notr="true">border-color: rgb(0, 0, 127);</string>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="maxLength">
-       <number>16</number>
-      </property>
-      <property name="placeholderText">
-       <string>192.168.1.1</string>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="5">
-     <widget class="QLabel" name="lbl_port_proxy">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Puerto&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="6">
-     <widget class="QLineEdit" name="lnEdit_port_proxy">
-      <property name="styleSheet">
-       <string notr="true">border-color: rgb(0, 0, 127);</string>
-      </property>
-      <property name="maxLength">
-       <number>4</number>
-      </property>
-      <property name="placeholderText">
-       <string>3128</string>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4" colspan="2">
-     <widget class="QLabel" name="lbl_user_picta_2">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600; color:#ff0000;&quot;&gt;*Opcional&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="2" colspan="3">
-     <widget class="QLineEdit" name="lnEdit_user_proxy">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-color: rgb(0, 0, 127);</string>
-      </property>
-      <property name="maxLength">
-       <number>15</number>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="QLabel" name="lbl_ip_proxy">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Proxy&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="0" colspan="2">
-     <widget class="QLabel" name="lbl_user_proxy">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Usuario&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="5">
-     <widget class="QLabel" name="lbl_pass_proxy">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="BntCancel">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>430</y>
-     <width>111</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string>Cancelar</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="BntSave">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>430</y>
-     <width>111</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string>Guardar</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkSystray">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>250</y>
-     <width>301</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Minimizar en el área de notificaciones&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;El área de notificación se encuentra en el extremo derecho de la barra de tareas. Si selecciona esta opción el icono de Picta Downloader se mostrará ahí y no en la barra de tareas. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font-size:10pt;
-font-weight:400;</string>
-   </property>
-   <property name="text">
-    <string>Minimizar en el área de notificación de Sistema</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkNotified">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>280</y>
-     <width>261</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Mostrar en las notificaciones del Sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Esta opción le mostrará una notificación de Sistema cuando termine de procesar una URL, las descargas estén completada y los errores &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font-size:10pt;
-font-weight:400;</string>
-   </property>
-   <property name="text">
-    <string>Mostrar en las notificaciones del Sistema</string>
-   </property>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>320</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lbl_AvanOpt">
-   <property name="geometry">
-    <rect>
-     <x>145</x>
-     <y>320</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Opciones Avanzadas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkEnvPictadl">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>350</y>
-     <width>331</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Usar picta-dl de las variables de entorno del sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Una &lt;b&gt;variable de entorno&lt;/b&gt; es una cadena de texto que los sistemas operativos como Windows, Linux o Mac usan para almacenar valores, en este caso seria el PATH o camino donde esta el binario ejecutable de picta-dl, por tanto si selecciona esta opción es que ya ud. tiene declara esta variable y no necesita el picta-dl que viene por defecto en la GUI. &lt;/span&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;: ¡Si no tiene configurada esa variable de entorno en el sistema no marque esta opción o tendrá problemas al usar la aplicación!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font-size:10pt;
-font-weight:400;</string>
-   </property>
-   <property name="text">
-    <string>Usar picta-dl de las variables de entorno del sistema</string>
-   </property>
-  </widget>
-  <widget class="Line" name="line_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>320</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkEnvFFmpeg">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>380</y>
-     <width>331</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#e80707;&quot;&gt;Usar FFmpeg de las variables de entorno del sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Una &lt;b&gt;variable de entorno&lt;/b&gt; es una cadena de texto que los sistemas operativos como Windows, Linux o Mac usan para almacenar valores, en este caso seria el PATH o camino donde esta el binario ejecutable de FFmpeg, por tanto si selecciona esta opción es que ya ud. tiene declara esta variable y no necesita el FFmpeg que viene por defecto en la GUI.&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;: ¡Si no tiene configurada esa variable de entorno en el sistema no marque esta opción o tendrá problemas al usar la aplicación!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font-size:10pt;
-font-weight:400;</string>
-   </property>
-   <property name="text">
-    <string>Usar FFmpeg de las variables de entorno del sistema</string>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="Resources/images.qrc">:/Logos/configuration_icon.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="picta_dl_title">
+       <property name="maximumSize">
+        <size>
+         <width>300</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Configuración de Picta Downloader</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Usuario de Picta(Obligatorio)</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="lnEdit_user_picta">
+        <property name="maximumSize">
+         <size>
+          <width>130</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maxLength">
+         <number>15</number>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="lbl_user_picta_3">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Usuario&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLineEdit" name="lnEdit_pass_picta">
+        <property name="maxLength">
+         <number>20</number>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="lbl_pass_picta">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Proxy</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="3" column="2" colspan="3">
+       <widget class="QLineEdit" name="lnEdit_ip_proxy">
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="maxLength">
+         <number>16</number>
+        </property>
+        <property name="placeholderText">
+         <string>192.168.1.1</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QLabel" name="lbl_ip_proxy">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Proxy&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0" colspan="2">
+       <widget class="QLabel" name="lbl_user_proxy">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Usuario&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2" colspan="3">
+       <widget class="QLineEdit" name="lnEdit_user_proxy">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="maxLength">
+         <number>15</number>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="6">
+       <widget class="QLineEdit" name="lnEdit_port_proxy">
+        <property name="maxLength">
+         <number>4</number>
+        </property>
+        <property name="placeholderText">
+         <string>3128</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="6">
+       <widget class="QLineEdit" name="lnEdit_pass_proxy">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="maxLength">
+         <number>20</number>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="5">
+       <widget class="QLabel" name="lbl_port_proxy">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Puerto&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="5">
+       <widget class="QLabel" name="lbl_pass_proxy">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkSystray">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600; color:#e80707;&quot;&gt;Minimizar en el área de notificaciones&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;&quot;&gt;El área de notificación se encuentra en el extremo derecho de la barra de tareas. Si selecciona esta opción el icono de Picta Downloader se mostrará ahí y no en la barra de tareas. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Minimizar en el área de notificación de Sistema</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkNotified">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600; color:#e80707;&quot;&gt;Mostrar en las notificaciones del Sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;&quot;&gt;Esta opción le mostrará una notificación de Sistema cuando termine de procesar una URL, las descargas estén completada y los errores &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Mostrar en las notificaciones del Sistema</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Opciones Avanzadas</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QCheckBox" name="checkEnvPictadl">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600; color:#e80707;&quot;&gt;Usar picta-dl de las variables de entorno del sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;&quot;&gt;Una &lt;b&gt;variable de entorno&lt;/b&gt; es una cadena de texto que los sistemas operativos como Windows, Linux o Mac usan para almacenar valores, en este caso seria el PATH o camino donde esta el binario ejecutable de picta-dl, por tanto si selecciona esta opción es que ya ud. tiene declara esta variable y no necesita el picta-dl que viene por defecto en la GUI. &lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-weight:600; &quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;&quot;&gt;: ¡Si no tiene configurada esa variable de entorno en el sistema no marque esta opción o tendrá problemas al usar la aplicación!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Usar picta-dl de las variables de entorno del sistema</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkEnvFFmpeg">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600; color:#e80707;&quot;&gt;Usar FFmpeg de las variables de entorno del sistema&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;&quot;&gt;Una &lt;b&gt;variable de entorno&lt;/b&gt; es una cadena de texto que los sistemas operativos como Windows, Linux o Mac usan para almacenar valores, en este caso seria el PATH o camino donde esta el binario ejecutable de FFmpeg, por tanto si selecciona esta opción es que ya ud. tiene declara esta variable y no necesita el FFmpeg que viene por defecto en la GUI.&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-weight:600; &quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;&quot;&gt;: ¡Si no tiene configurada esa variable de entorno en el sistema no marque esta opción o tendrá problemas al usar la aplicación!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Usar FFmpeg de las variables de entorno del sistema</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="BntCancel">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>Cancelar</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="BntSave">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>Guardar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <tabstops>
   <tabstop>lnEdit_user_picta</tabstop>
@@ -488,7 +326,6 @@ font-weight:400;</string>
   <tabstop>lnEdit_user_proxy</tabstop>
   <tabstop>lnEdit_pass_proxy</tabstop>
   <tabstop>BntSave</tabstop>
-  <tabstop>BntCancel</tabstop>
  </tabstops>
  <resources>
   <include location="Resources/images.qrc"/>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>730</width>
-    <height>626</height>
+    <height>593</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -29,238 +29,318 @@
    <iconset resource="Resources/images.qrc">
     <normaloff>:/Logos/picta_dl_gui_icon.ico</normaloff>:/Logos/picta_dl_gui_icon.ico</iconset>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>60</y>
-     <width>715</width>
-     <height>511</height>
-    </rect>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
-   <property name="contextMenuPolicy">
-    <enum>Qt::NoContextMenu</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="currentIndex">
-    <number>2</number>
-   </property>
-   <widget class="QWidget" name="tabHelp">
-    <property name="font">
-     <font>
-      <family>Arial</family>
-     </font>
-    </property>
-    <property name="contextMenuPolicy">
-     <enum>Qt::PreventContextMenu</enum>
-    </property>
-    <attribute name="title">
-     <string>Configurar Picta-dl</string>
-    </attribute>
-    <widget class="QTextEdit" name="txtConfig">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>711</width>
-       <height>511</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-      </font>
-     </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="picta_dl_title">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Picta Downloader Ayuda</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblpictagui">
+       <property name="maximumSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="Resources/images.qrc">:/Logos/picta-dl-gui_logo.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="contextMenuPolicy">
       <enum>Qt::NoContextMenu</enum>
      </property>
-     <property name="acceptDrops">
-      <bool>false</bool>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
+     <property name="currentIndex">
+      <number>2</number>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="lineWidth">
-      <number>0</number>
-     </property>
-     <property name="documentTitle">
-      <string/>
-     </property>
-     <property name="undoRedoEnabled">
-      <bool>false</bool>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+     <widget class="QWidget" name="tabHelp">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::PreventContextMenu</enum>
+      </property>
+      <attribute name="title">
+       <string>Configurar Picta-dl</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTextEdit" name="txtConfig">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::NoContextMenu</enum>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>0</number>
+         </property>
+         <property name="documentTitle">
+          <string/>
+         </property>
+         <property name="undoRedoEnabled">
+          <bool>false</bool>
+         </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:10px; margin-left:5px; margin-right:5px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;La configuración actual de Picta Downloader es muy sencilla, consta de 3 partes de las cuales una es opcional para el caso que necesite configurar conexión a través de Proxy.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Las opciones son las siguientes:&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;1 - Debe poner su usuario y contraseña del sitio &lt;/span&gt;&lt;a href=&quot; https://www.picta.cu&quot;&gt;&lt;span style=&quot; font-size:9.25pt; text-decoration: underline; color:#0000ff;&quot;&gt; https://www.picta.cu&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;  es una configuración obligatoria ya que sin esto la aplicación no puede obtener las listas de contenidos o listas de  reproducción (vídeo y audio) que brindan las URL y por tanto tampoco podrá descargar.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;2 - Si su conexión es a través de un Proxy puede agregar la IP y puerto de este para que pueda conectarse; si requiere autenticación Básica puede agregar usuario y contraseña del proxy. &lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;3 – Puede seleccionar si quiere ver los mensajes de la aplicación como notificaciones del Sistema y si quiere que esta no se minimize en la barra de tareas.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;4 – Opciones Avanzadas: En este apartado debe tener mucho cuidado y saber lo que esta haciendo pues una mala configuración puede hacer que no le funcione la GUI. Aquí ud. seleccionar si quiere usar picta-dl o FFmpeg que tenga configurado en las variables de entorno del sistema, si tiene dudas sobre de que trata esto puede pasar el mouse (ratón) sobre el texto de la opción y verá la explicación de la misma.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;- Siempre debe guardar los cambios con el botón Guardar, en caso que no desee guardarlos pues simplemente cancele.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Imagen de muestra con las opciones:&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;img src=&quot;:/Ayuda/picta-dl-config.png&quot; /&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tabFAQ">
-    <property name="font">
-     <font>
-      <family>Arial</family>
-     </font>
-    </property>
-    <attribute name="title">
-     <string>Preguntas y Respuestas Frecuentes (F.A.Q )</string>
-    </attribute>
-    <widget class="QTextEdit" name="txtFAQ">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>711</width>
-       <height>511</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-      </font>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="contextMenuPolicy">
-      <enum>Qt::NoContextMenu</enum>
-     </property>
-     <property name="acceptDrops">
-      <bool>false</bool>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="lineWidth">
-      <number>0</number>
-     </property>
-     <property name="documentTitle">
-      <string/>
-     </property>
-     <property name="undoRedoEnabled">
-      <bool>false</bool>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial','Arial';font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:10px; margin-bottom:10px; margin-left:5px; margin-right:5px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;La configuración actual de Picta Downloader es muy sencilla, consta de 3 partes de las cuales una es opcional para el caso que necesite configurar conexión a través de Proxy.&lt;br /&gt;&lt;br /&gt;Las opciones son las siguientes:&lt;br /&gt;&lt;br /&gt;1 - Debe poner su usuario y contraseña del sitio &lt;/span&gt;&lt;a href=&quot; https://www.picta.cu&quot;&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline; color:#007af4;&quot;&gt; https://www.picta.cu&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;  es una configuración obligatoria ya que sin esto la aplicación no puede obtener las listas de contenidos o listas de  reproducción (vídeo y audio) que brindan las URL y por tanto tampoco podrá descargar.&lt;br /&gt;&lt;br /&gt;2 - Si su conexión es a través de un Proxy puede agregar la IP y puerto de este para que pueda conectarse; si requiere autenticación Básica puede agregar usuario y contraseña del proxy. &lt;br /&gt;&lt;br /&gt;3 – Puede seleccionar si quiere ver los mensajes de la aplicación como notificaciones del Sistema y si quiere que esta no se minimize en la barra de tareas.&lt;br /&gt;&lt;br /&gt;4 – Opciones Avanzadas: En este apartado debe tener mucho cuidado y saber lo que esta haciendo pues una mala configuración puede hacer que no le funcione la GUI. Aquí ud. seleccionar si quiere usar picta-dl o FFmpeg que tenga configurado en las variables de entorno del sistema, si tiene dudas sobre de que trata esto puede pasar el mouse (ratón) sobre el texto de la opción y verá la explicación de la misma.&lt;br /&gt;&lt;br /&gt;- Siempre debe guardar los cambios con el botón Guardar, en caso que no desee guardarlos pues simplemente cancele.&lt;br /&gt;&lt;br /&gt;Imagen de muestra con las opciones:&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;img src=&quot;:/Ayuda/picta-dl-config.png&quot; /&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabFAQ">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <attribute name="title">
+       <string>Preguntas y Respuestas Frecuentes (F.A.Q )</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTextEdit" name="txtFAQ">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::NoContextMenu</enum>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>0</number>
+         </property>
+         <property name="documentTitle">
+          <string/>
+         </property>
+         <property name="undoRedoEnabled">
+          <bool>false</bool>
+         </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:10px; margin-bottom:10px; margin-left:5px; margin-right:5px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;span style=&quot; font-size:11.25pt; font-weight:600;&quot;&gt;Preguntas y respuestas frecuentes&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;¿Por qué debo poner obligatoriamente mí usuario y contraseña del sitio de Picta?&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: Es obligatorio porque para obtener las listas de reproducción del sitio y descargar sólo puede ser con un usuario registrado.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;¿Se guardan de forma segura los datos?&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: Si, la contraseña se guarda encriptada.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;¿Puedo conectarme a través de un Proxy con usuario y contraseña?&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: La aplicación de momento permite conectarse usando un proxy por la dirección IP y puerto. La autenticación con usuario y contraseña es utilizando el esquema &lt;/span&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:600;&quot;&gt;Básica&lt;/span&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;. Si utiliza otro esquema para la autenticación, le recomendamos que use algún programa que proxifique su conexión como Proxifier, ProxyCap u algun otro. Quizás en futuras versiones se implemente otros esquemas de autenticación.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;¿Puedo usar este programa en sistemas que sean de 32 bits?&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: Lamentablemente no, el programa picta-dl está compilado solo para versiones de 64bits de Windows&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;Tengo Windows 10 version 2004 recien instalado y me da problemas al descargar&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: Si, parece que las versiones recientes de Windows 10 cuando el sistema está recien instalado sin parches de seguridad da problemas de certificados de conexión.&lt;br /&gt;&lt;br /&gt; &lt;/span&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:600;&quot;&gt;Nota:&lt;/span&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt; A partir de la versión de &lt;/span&gt;&lt;span style=&quot; font-size:9.25pt; text-decoration: underline;&quot;&gt;Windows 10 20H2&lt;/span&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt; (actualización de octubre del 2020) ya no tiene este problema.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;¿Cómo creo las listas de reproducción para descargarlas?&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: En el sitio de Picta puede crear listas personalizadas con los videos que Ud. seleccione, en cada video le aparecerá un icono para agregar los contenidos a una lista ya creada o si no tiene ninguna puede crearlas en ese momento y adicionarlos, posteriormente puede acceder a esa lista desde su perfil y pasar la URL de esta a este programa y después de procesarla verá todo el contenido y la podrá descargar. &lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;img src=&quot;:/Ayuda/icono_de_lista.png&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;¿Puedo descargar más de una lista de reproducción?&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: Si, cuando quiera descargar una lista solo pegue la URL, procese, descargue y así por cada lista que tenga creada o de las que ya están creadas en el sitio.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;¿Cómo identifico las listas de reproducción en el sitio de Picta?&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: Las listas creadas en el sitio por las personas que suben contenidos a los canales se pueden identificar por el icono que se muestra a la derecha donde se ve la lista de los vídeos que contiene, cuando copia esa URL y la pasa a esta aplicación y la procesa verá el listado de los mismos, aquí una imagen de una lista de reproducción: &lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;img src=&quot;:/Ayuda/picta_lista_canal.png&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt; font-weight:496;&quot;&gt;¿Debo instalar algo adicional para que funcione esta aplicación?&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-size:9.25pt;&quot;&gt;Respuesta: No, ya todo lo necesario para funcione viene con ella, el picta-dl y el FFmpeg para procesar los vídeos.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tabCredits">
-    <attribute name="title">
-     <string>Créditos</string>
-    </attribute>
-    <widget class="QLabel" name="lblCredits">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>711</width>
-       <height>511</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial','Arial'; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:10px; margin-bottom:10px; margin-left:5px; margin-right:5px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:600;&quot;&gt;Preguntas y respuestas frecuentes&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;¿Por qué debo poner obligatoriamente mí usuario y contraseña del sitio de Picta?&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: Es obligatorio porque para obtener las listas de reproducción del sitio y descargar sólo puede ser con un usuario registrado.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;¿Se guardan de forma segura los datos?&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: Si, la contraseña se guarda encriptada.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;¿Puedo conectarme a través de un Proxy con usuario y contraseña?&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: La aplicación de momento permite conectarse usando un proxy por la dirección IP y puerto. La autenticación con usuario y contraseña es utilizando el esquema &lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:600;&quot;&gt;Básica&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;. Si utiliza otro esquema para la autenticación, le recomendamos que use algún programa que proxifique su conexión como Proxifier, ProxyCap u algun otro. Quizás en futuras versiones se implemente otros esquemas de autenticación.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;¿Puedo usar este programa en sistemas que sean de 32 bits?&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: Lamentablemente no, el programa picta-dl está compilado solo para versiones de 64bits de Windows&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;Tengo Windows 10 version 2004 recien instalado y me da problemas al descargar&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: Si, parece que las versiones recientes de Windows 10 cuando el sistema está recien instalado sin parches de seguridad da problemas de certificados de conexión.&lt;br /&gt;&lt;br /&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:600;&quot;&gt;Nota:&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt; A partir de la versión de &lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline;&quot;&gt;Windows 10 20H2&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt; (actualización de octubre del 2020) ya no tiene este problema.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;¿Cómo creo las listas de reproducción para descargarlas?&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: En el sitio de Picta puede crear listas personalizadas con los videos que Ud. seleccione, en cada video le aparecerá un icono para agregar los contenidos a una lista ya creada o si no tiene ninguna puede crearlas en ese momento y adicionarlos, posteriormente puede acceder a esa lista desde su perfil y pasar la URL de esta a este programa y después de procesarla verá todo el contenido y la podrá descargar. &lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;img src=&quot;:/Ayuda/icono_de_lista.png&quot; /&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;¿Puedo descargar más de una lista de reproducción?&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: Si, cuando quiera descargar una lista solo pegue la URL, procese, descargue y así por cada lista que tenga creada o de las que ya están creadas en el sitio.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;¿Cómo identifico las listas de reproducción en el sitio de Picta?&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: Las listas creadas en el sitio por las personas que suben contenidos a los canales se pueden identificar por el icono que se muestra a la derecha donde se ve la lista de los vídeos que contiene, cuando copia esa URL y la pasa a esta aplicación y la procesa verá el listado de los mismos, aquí una imagen de una lista de reproducción: &lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;img src=&quot;:/Ayuda/picta_lista_canal.png&quot; /&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:496;&quot;&gt;¿Debo instalar algo adicional para que funcione esta aplicación?&lt;/span&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;&lt;br /&gt;&lt;br /&gt;Respuesta: No, ya todo lo necesario para funcione viene con ella, el picta-dl y el FFmpeg para procesar los vídeos.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabCredits">
+      <attribute name="title">
+       <string>Créditos</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QTextEdit" name="textEdit">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:2px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/Logos/picta-dl-gui_logo.png&quot; width=&quot;64&quot; height=&quot;64&quot; /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:18pt; font-weight:600; color:#00007f;&quot;&gt;Picta Downloader&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:6px; margin-bottom:6px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;Picta   Downloader   es  una   aplicación   que le  permite  descargar   contenidos audiovisuales  &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;del  sitio  &lt;/span&gt;&lt;a href=&quot;https://www.picta.cu&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.picta.cu&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt; ,   la  misma  es   una GUI  (interfaz gráfica de usuario) o del inglés&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;(graphical user interface) de la app de descargar por consola picta-dl desarrollada por el ingeniero&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;Oleksis Fraga,  la cual se encuentra en  GitHub: &lt;/span&gt;&lt;a href=&quot;https://github.com/oleksis/picta-dl&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/oleksis/picta-dl&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;Desarrollador Principal: &lt;/span&gt;&lt;a href=&quot;https://t.me/Spheres_cu&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt; text-decoration: underline; color:#0000ff;&quot;&gt;@Spheres_cu&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt; (seudónimo y usuario en Telegram)&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;Colaborador principal : Oleksis Fraga &lt;/span&gt;&lt;a href=&quot;mailto:oleksis.fraga@gmail.com&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt; text-decoration: underline; color:#0000ff;&quot;&gt;oleksis.fraga@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;Repositorio en GitHub: &lt;/span&gt;&lt;a href=&quot;https://github.com/oleksis/picta-dl-gui&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt; text-decoration: underline; color:#0000ff;&quot;&gt;picta-dl-gui&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;Grupo en Telegram : &lt;/span&gt;&lt;a href=&quot;https://t.me/picta_dl_chat&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt; text-decoration: underline; color:#0000ff;&quot;&gt;picta_dl_chat&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;Canal en Telegram &lt;/span&gt;&lt;a href=&quot;https://t.me/picta_dl&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt; text-decoration: underline; color:#0000ff;&quot;&gt;picta_dl&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:10.25pt;&quot;&gt;© 2020 , La Habana, Cuba&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::RichText</enum>
-     </property>
-     <property name="openExternalLinks">
-      <bool>true</bool>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::TextBrowserInteraction</set>
-     </property>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial'; font-size:18pt; font-weight:600;&quot;&gt;Picta Downloader&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:6px; margin-bottom:6px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;Picta   Downloader   es  una   aplicación   que le  permite  descargar   contenidos audiovisuales  &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;del  sitio  &lt;/span&gt;&lt;a href=&quot;https://www.picta.cu&quot;&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline; color:#007af4;&quot;&gt;https://www.picta.cu&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt; ,   la  misma  es   una GUI  (interfaz gráfica de usuario) o del inglés&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;(graphical user interface) de la app de descargar por consola picta-dl desarrollada por el ingeniero&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;Oleksis Fraga,  la cual se encuentra en  GitHub: &lt;/span&gt;&lt;a href=&quot;https://github.com/oleksis/picta-dl&quot;&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline; color:#007af4;&quot;&gt;https://github.com/oleksis/picta-dl&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt; &lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;Desarrollador Principal: &lt;/span&gt;&lt;a href=&quot;https://t.me/Spheres_cu&quot;&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline; color:#007af4;&quot;&gt;@Spheres_cu&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt; (seudónimo y usuario en Telegram)&lt;br /&gt;&lt;br /&gt;Colaborador principal : Oleksis Fraga &lt;/span&gt;&lt;a href=&quot;mailto:oleksis.fraga@gmail.com&quot;&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline; color:#007af4;&quot;&gt;oleksis.fraga@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;Repositorio en GitHub: &lt;/span&gt;&lt;a href=&quot;https://github.com/oleksis/picta-dl-gui&quot;&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline; color:#007af4;&quot;&gt;picta-dl-gui&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;Grupo en Telegram : &lt;/span&gt;&lt;a href=&quot;https://t.me/picta_dl_chat&quot;&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline; color:#007af4;&quot;&gt;picta_dl_chat&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;Canal en Telegram &lt;/span&gt;&lt;a href=&quot;https://t.me/picta_dl&quot;&gt;&lt;span style=&quot; font-family:'Arial'; text-decoration: underline; color:#007af4;&quot;&gt;picta_dl&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:20px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arial';&quot;&gt;© 2020 , La Habana, Cuba&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
-   </widget>
-  </widget>
-  <widget class="QPushButton" name="Bnt_exit">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>580</y>
-     <width>75</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Salir</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="picta_dl_title">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>15</y>
-     <width>201</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#00007f;&quot;&gt;Picta Downloader Ayuda&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="textFormat">
-    <enum>Qt::AutoText</enum>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblpictagui">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>10</y>
-     <width>34</width>
-     <height>34</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="Resources/images.qrc">:/Logos/picta-dl-gui_logo.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Bnt_exit">
+       <property name="text">
+        <string>Salir</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources>
   <include location="Resources/images.qrc"/>
