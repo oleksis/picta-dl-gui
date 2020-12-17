@@ -1,3 +1,9 @@
+v0.12.2
+
+* Change Dark Theme on Windows 10
+  Add Resources/Styles/winApp.qss
+
+
 v0.12.1
 
 * Add Dark Theme on Windows 10

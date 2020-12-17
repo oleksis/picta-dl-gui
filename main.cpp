@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         a.setStyle(QStyleFactory::create("Fusion"));
 
         QPalette darkPalette;
-        QColor darkColor = QColor(45, 45, 45);
+        QColor darkColor = QColor(10, 10, 10);
         QColor disabledColor = QColor(127, 127, 127);
 
         darkPalette.setColor(QPalette::Window, darkColor);
@@ -41,7 +41,12 @@ int main(int argc, char *argv[])
         darkPalette.setColor(QPalette::Disabled, QPalette::HighlightedText, disabledColor);
 
         a.setPalette(darkPalette);
-        a.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
+        QFile fileSheet(":/Styles/winApp.qss");
+        fileSheet.open(QFile::ReadOnly);
+        QString styleSheet = QString::fromUtf8(fileSheet.readAll());
+        styleSheet=styleSheet.replace("#001133", darkColor.name());
+        a.setStyleSheet(styleSheet);
+        fileSheet.close();
     }
 #endif
 

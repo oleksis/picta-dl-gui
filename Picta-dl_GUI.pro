@@ -58,6 +58,7 @@ macx: ICON = Resources/Logos/icon.icns
 # End
 
 DISTFILES += \
-    Resources/Logos/icon.icns
+    Resources/Logos/icon.icns \
+    Resources/Styles/winApp.qss
 
 
