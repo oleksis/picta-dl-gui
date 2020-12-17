@@ -72,8 +72,6 @@ QCommandLinkButton {
     border-style: solid;
     padding: 5px;
     color: #ffffff;
-    min-width: 30ex;
-    min-width: 30ex;
 }
 
 QCommandLinkButton:hover, QCommandLinkButton:pressed, QCommandLinkButton:selected {
