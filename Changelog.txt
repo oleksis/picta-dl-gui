@@ -1,3 +1,12 @@
+v0.12.0
+
+* Ajustes al gráfico(GUI),
+  Adionado Info.plist y icon.icns para informaion en MacOS.
+  Ajustes a los elementos gráficos para mejor visualizacion en temas oscuros.
+  
+* Add new contributor
+
+
 v0.11.0
 
 * Optimizada la función de delayProcess(QProcess &process) para evitar que la GUI
