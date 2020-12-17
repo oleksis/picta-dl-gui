@@ -435,7 +435,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
              <item>
               <widget class="QLabel" name="lbl_quality">
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Calidad de Vídeo :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Calidad de Vídeo:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -936,7 +936,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
      <x>0</x>
      <y>0</y>
      <width>734</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAyuda">
@@ -961,7 +961,10 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
   </action>
   <action name="actionSettings">
    <property name="text">
-    <string>Configuracion</string>
+    <string>Configuración</string>
+   </property>
+   <property name="toolTip">
+    <string>Configuración</string>
    </property>
   </action>
  </widget>

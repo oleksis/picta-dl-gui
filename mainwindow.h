@@ -22,6 +22,9 @@
 #include <QCloseEvent>
 #include <QTime>
 #include <QPointer>
+#include <QStyleFactory>
+#include <QPalette>
+#include <QColor>
 #include "configuration.h"
 #include "simplecrypt.h"
 #include "information.h"
