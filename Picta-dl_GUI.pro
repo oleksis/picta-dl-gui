@@ -43,7 +43,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Resources/images.qrc \
-    Resources/mainprocess.qrc
+    Resources/mainprocess.qrc \
+    Resources/styles.qrc
 
 # Code added by me
 RC_ICONS = Resources/Logos/picta_dl_gui_icon.ico

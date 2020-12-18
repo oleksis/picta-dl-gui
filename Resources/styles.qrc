@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Styles">
+        <file>Styles/winApp.qss</file>
+    </qresource>
+</RCC>
