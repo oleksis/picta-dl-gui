@@ -3,36 +3,17 @@
    color: #ffffff;/*font*/
 }
 
-QTabWidget::tab-bar {
-    left: 5px; /* move to the right by 5px */
-}
-
 QComboBox, QLineEdit[echoMode="2"] {
-    min-width: 30ex;
-    min-height: 10ex;
     lineedit-password-character: 9679;
     border-width: 6px;
 }
-QTabWidget::pane { /* The tab widget frame */
-     border-top: 0px solid #001133;
-     position: absolute;
-     top: -0.5em;
- }
 
 QToolButton, QPushButton, QTabBar::tab {
     background-color: #55eeeeee;
     border-width: 0px;
     border-color: #55eeeeee;
     border-style: solid;
-    padding: 5px;
-    min-width: 30ex;
-    min-height: 10ex;
     color: #ffffff;
-}
-
-QTabBar::tab {
-    min-width: 10ex;
-    min-height: 5ex;
 }
 
 QToolButton:hover, QPushButton:hover, QTabBar::tab:hover {
@@ -52,17 +33,16 @@ QToolButton:selected, QPushButton:selected, QTabBar::tab:selected {
 }
 
 QToolButton {
+    padding: 3px;
     min-width: 10ex;
+}
+
+QPushButton, QTabBar::tab {
+    padding: 5px;
 }
 
 QLabel, QAbstractButton {
     color: #ffffff;/*font*/
-}
-
-QToolTip {
-    color: #ffffff;
-    background-color: #2a82da;
-    border: 1px solid white;
 }
 
 QCommandLinkButton {
@@ -70,14 +50,12 @@ QCommandLinkButton {
     border-width: 0px;
     border-color: #000000;
     border-style: solid;
-    padding: 5px;
     color: #ffffff;
 }
 
 QCommandLinkButton:hover, QCommandLinkButton:pressed, QCommandLinkButton:selected {
    background-color: #001133;
    border-width: 1px;
-   min-height: #ffffff;
 }
 
 /* Mark mandatory fields with a brownish color. */

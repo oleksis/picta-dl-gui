@@ -1,3 +1,12 @@
+v0.12.5
+
+* Cambio de los iconos para el tema oscuro o claro según lo tenga configurado en su sistema.
+
++ Agregado el parametro --newline para mejorar la obtención del progreso de descarga.
+
++  ¡Feliz Navidad y Año Nuevo! 
+
+
 v0.12.4
 
 * Add Resources/styles.qrc to Picta-dl_GUI.pro
@@ -25,7 +34,7 @@ v0.12.0
   Adionado Info.plist y icon.icns para informaion en MacOS.
   Ajustes a los elementos gráficos para mejor visualizacion en temas oscuros.
   
-* Add new contributor
++ Add new contributor
 
 
 v0.11.0

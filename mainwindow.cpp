@@ -2,11 +2,12 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent) : 
+MainWindow::MainWindow(QWidget *parent, bool isDarkTheme) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    isDark = isDarkTheme;
     pictaGuiConfigFile = QString("picta-dl-gui.conf");
     pictaConfigFile = QString("picta-dl.conf");
     configure();
@@ -356,10 +357,12 @@ void MainWindow::get_filename()
         process_count = 0;
         FixedArgs.clear();
         //Animated Process list
-        progressAni.setFileName(":/Logos/refresh_rotate.gif");
+        progressAni.setFileName(isDark ? ":/Logos/refresh_rotate_dark.gif" : ":/Logos/refresh_rotate_light.gif");
         progressAni.start();
         ui->lbl_process->setText("<html><head/><body><p><span style=\" font-weight:600;\">Procesando URL...</span></p></body></html>");
+
         connect(&progressAni, SIGNAL(frameChanged(int)), this, SLOT(setRefreshIcon()));
+
         //Prepare process for url list
         pictadl.setProcessChannelMode(QProcess::MergedChannels);
         QStringList args;
@@ -635,7 +638,9 @@ void MainWindow::on_cmmd_process_clicked()
 
 void MainWindow::setRefreshIcon()
 {
-    ui->cmmd_process->setIcon(QIcon(progressAni.currentPixmap()));
+
+ ui->cmmd_process->setIcon(QIcon(progressAni.currentPixmap()));
+
 }
 
 void MainWindow::Downloadfiles()
@@ -645,7 +650,7 @@ void MainWindow::Downloadfiles()
     download_count = 0;
     ui->cmmd_process->setEnabled(false);
     //Animated Process list
-    downloadsAni.setFileName(":/Logos/download_animated.gif");
+    downloadsAni.setFileName(isDark ? ":/Logos/download_button_dark.gif" : ":/Logos/download_button_light.gif");
     downloadsAni.start();
     ui->lbl_download->setText("<html><head/><body><p><span style=\" font-weight:600;\">Descargando...</span></p></body></html>");
     connect(&downloadsAni, SIGNAL(frameChanged(int)), this, SLOT(setDownloadIcon()));
@@ -677,7 +682,8 @@ void MainWindow::Downloadfiles()
          << "--socket-timeout"
          << "10"
          << "--retries"
-         << "6";
+         << "6"
+         << "--newline";
 
     args << FixedArgs;
 

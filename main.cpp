@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     a.setApplicationName("Picta-dl_GUI");
+    bool isDark = false;
 
 #ifdef Q_OS_WIN
     QSettings themeSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
@@ -47,12 +48,14 @@ int main(int argc, char *argv[])
         styleSheet=styleSheet.replace("#001133", darkColor.name());
         a.setStyleSheet(styleSheet);
         fileSheet.close();
+
+        isDark = true;
     }
 #endif
 
     // Register QSettings
     QSettings::setDefaultFormat(QSettings::IniFormat);
-    MainWindow w;
+    MainWindow w(0, isDark);
     w.show();
 
     return a.exec();

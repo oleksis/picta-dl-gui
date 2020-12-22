@@ -42,7 +42,7 @@ class MainWindow : public QMainWindow
     QList<QPointer<QCheckBox>> ItemSelected;
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0, bool isDarkTheme = false);
     ~MainWindow();
 
     inline QString withExtension(const QString &fileName)
@@ -65,7 +65,7 @@ protected:
      * Overridden to change the behavior of the application,
      * That it is minimized to tray when we want
      */
-    //void closeEvent(QCloseEvent * event);
+
     void changeEvent ( QEvent *event );
 
 private slots:
@@ -162,6 +162,7 @@ private:
     QString GetSelectedItems();
     QStringList FixedArgs;
     QString playlistitems;
+    bool isDark = false;
 
     void createActions();
     void createTrayIcon();

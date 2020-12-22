@@ -276,6 +276,9 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600; color:#e80707;&quot;&gt;PEGAR URL&lt;/span&gt;&lt;br/&gt;Click aquí para pegar la URL de picta y procesar la lista de reproducción&lt;span style=&quot;color:#000000;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;;&quot;&gt;NOTA&lt;/span&gt;&lt;span style=&quot;&quot;&gt;: Cada vez copie al portapapeles una URL de Picta con este botón puede pegarla&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
+          <property name="styleSheet">
+           <string notr="true">padding: 5px;</string>
+          </property>
           <property name="text">
            <string>Pegar URL</string>
           </property>
@@ -361,6 +364,10 @@ p, li { white-space: pre-wrap; }
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#e80707;&quot;&gt;Carpeta por defecto para la descarga&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;
 Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mantendrá guardada hasta que la cambie por otra</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">padding:3px;
+min-width: 10ex;</string>
              </property>
              <property name="text">
               <string>...</string>
@@ -854,7 +861,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
             </property>
             <property name="maximumSize">
              <size>
-              <width>45</width>
+              <width>63</width>
               <height>68</height>
              </size>
             </property>
@@ -882,7 +889,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
          <widget class="QLabel" name="lbl_stop_2">
           <property name="maximumSize">
            <size>
-            <width>45</width>
+            <width>65</width>
             <height>13</height>
            </size>
           </property>
@@ -890,7 +897,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Limpiar&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
