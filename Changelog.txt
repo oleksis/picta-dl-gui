@@ -1,3 +1,9 @@
+v0.12.6
+
+* Change Resources/Styles/winApp.qss background-color: #0a0a0a
+* Change mainwindow.ui ToolTips
+
+
 v0.12.5
 
 * Cambio de los iconos para el tema oscuro o claro según lo tenga configurado en su sistema.

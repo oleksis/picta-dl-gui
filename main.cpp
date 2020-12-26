@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
         QFile fileSheet(":/Styles/winApp.qss");
         fileSheet.open(QFile::ReadOnly);
         QString styleSheet = QString::fromUtf8(fileSheet.readAll());
-        styleSheet=styleSheet.replace("#001133", darkColor.name());
         a.setStyleSheet(styleSheet);
         fileSheet.close();
 

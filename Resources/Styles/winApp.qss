@@ -1,5 +1,5 @@
 .QWidget, QGroupBox, QMenu {
-   background-color: #001133;/*back*/
+   background-color: #0a0a0a;/*back*/
    color: #ffffff;/*font*/
 }
 
@@ -34,7 +34,6 @@ QToolButton:selected, QPushButton:selected, QTabBar::tab:selected {
 
 QToolButton {
     padding: 3px;
-    min-width: 10ex;
 }
 
 QPushButton, QTabBar::tab {
@@ -45,8 +44,8 @@ QLabel, QAbstractButton {
     color: #ffffff;/*font*/
 }
 
-QCommandLinkButton {
-    background-color: #001133;
+QCommandLinkButton, QCommandLinkButton:disabled{
+    background-color: #0a0a0a;
     border-width: 0px;
     border-color: #000000;
     border-style: solid;
@@ -54,7 +53,7 @@ QCommandLinkButton {
 }
 
 QCommandLinkButton:hover, QCommandLinkButton:pressed, QCommandLinkButton:selected {
-   background-color: #001133;
+   background-color: #0a0a0a;
    border-width: 1px;
 }
 
