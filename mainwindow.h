@@ -50,9 +50,7 @@ public:
         int dotIndex = fileName.lastIndexOf(".");
 
         if (dotIndex == -1)
-        {
             return QString("");
-        }
 
         return fileName.right(fileName.length() - dotIndex);
     }

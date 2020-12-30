@@ -10,7 +10,7 @@ class RunGuard
 {
 
 public:
-    RunGuard(const QString& key);
+    RunGuard(const QString &key);
     ~RunGuard();
 
     bool isAnotherRunning();

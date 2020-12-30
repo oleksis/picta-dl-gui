@@ -40,7 +40,6 @@ void MainWindow::configure()
     pictadlDLLpath = roaming.absolutePath().append("\\picta-dl.exe");
     ffmpegDLLpath = roaming.absolutePath().append("\\ffmpeg.exe");
     defaultDownloadpath = defaultpath;
-
     ui->lineEdit_Location->setText(defaultpath.replace("/", backslash));
     crypto_pass.setKey(crytokey);
 
@@ -48,7 +47,6 @@ void MainWindow::configure()
         createConfigFile(roaming);
 
     checkExistenceOfMainProcess();
-
     //SystrayIcon
     createActions();
     createTrayIcon();
@@ -56,7 +54,6 @@ void MainWindow::configure()
     trayIcon->show();
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
-
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
     ui->tableWidget->verticalHeader()->setDefaultAlignment(Qt::AlignVCenter);
 }
@@ -73,11 +70,8 @@ bool MainWindow::loadConfigFile(QDir &roaming)
             return false;
 
         configFile.close();
-
         QString filePath, cproxy, cport, cproxy_user, cproxy_pass, cpicta_user, cpicta_pass;
-
         settings.beginGroup("General");
-
         filePath = settings.value("savedPath").toString();
         cproxy = settings.value("proxy").toString();
         cport = settings.value("port").toString();
@@ -89,14 +83,10 @@ bool MainWindow::loadConfigFile(QDir &roaming)
         notification = settings.value("notification").toBool();
         envpictadl = settings.value("envpictadl").toBool();
         envffmpeg = settings.value("envffmpeg").toBool();
-
         settings.endGroup();
-
         defaultDownloadpath = filePath;
-
         QChar backslash(92);
         ui->lineEdit_Location->setText(filePath.replace("/", backslash));
-
         crypto_pass.setKey(crytokey);
         proxy = cproxy;
         port = cport;
@@ -104,7 +94,6 @@ bool MainWindow::loadConfigFile(QDir &roaming)
         proxy_pass = crypto_pass.decryptToString(cproxy_pass);
         picta_user = cpicta_user;
         picta_pass = crypto_pass.decryptToString(cpicta_pass);
-
         return true;
     }
 
@@ -121,11 +110,9 @@ void MainWindow::createConfigFile(QDir &roaming)
         return;
 
     QString savedpath, cproxy, cport, cproxy_user,
-        cproxy_pass, cpicta_user, cpicta_pass;
+            cproxy_pass, cpicta_user, cpicta_pass;
     savedpath = defaultDownloadpath;
-
     settings.beginGroup("General");
-
     settings.setValue("savedPath", savedpath);
     settings.setValue("proxy", cproxy);
     settings.setValue("port", cport);
@@ -137,18 +124,14 @@ void MainWindow::createConfigFile(QDir &roaming)
     settings.setValue("notification", false);
     settings.setValue("envpictadl", false);
     settings.setValue("envffmpeg", false);
-
     settings.endGroup();
-
     //Creating default picta.conf
-
     QFile configPictaFile(roaming.absolutePath().append("/") + pictaConfigFile);
 
     if (!configPictaFile.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
     QTextStream out_picta_conf(&configPictaFile);
-
     QString PictaFormat = ("-o \"%(title)s.%(ext)s\"");
     QString ffmpeg_conf = (ffmpegDLLpath);
     // If Win32
@@ -156,14 +139,12 @@ void MainWindow::createConfigFile(QDir &roaming)
     ffmpeg_conf = ffmpeg_conf.replace("/", backslash);
     ffmpeg_conf.prepend("\"");
     ffmpeg_conf.append("\"");
-
     QString FFmpegPath = ("--ffmpeg-location " + ffmpeg_conf);
     out_picta_conf << "# Lines starting with # are comments\n\n"
                    << "# Format video output <video>.<extension>\n"
                    << PictaFormat.append("\n\n")
                    << "# FFmpeg PATH\n"
                    << FFmpegPath;
-
     configPictaFile.close();
 }
 
@@ -171,7 +152,6 @@ void MainWindow::checkExistenceOfMainProcess()
 {
     QFile upxFile(pictadlDLLpath);
     QFile upxFile2(ffmpegDLLpath);
-
     QString qmbTitle("Error fatal");
     QString infoText("Aplicación terminada.\n\n"
                      "Vuelva a ejecutar el programa. Si vuelve a recibir el mismo "
@@ -183,6 +163,7 @@ void MainWindow::checkExistenceOfMainProcess()
         QFile rcFileUPX(":/picta-dl.dll");
         rcFileUPX.copy(upxFile.fileName());
         rcFileUPX.rename(upxFile.fileName(), upxFile.fileName().replace("dll", "exe"));
+
         if (!upxFile.exists())
         {
             QMessageBox::critical(this, qmbTitle, QString("No se puede crear el proceso runtime picta-dl.dll\n") + infoText);
@@ -195,6 +176,7 @@ void MainWindow::checkExistenceOfMainProcess()
         QFile rcFileUPX2("://ffmpeg.dll");
         rcFileUPX2.copy(upxFile2.fileName());
         rcFileUPX2.rename(upxFile2.fileName(), upxFile2.fileName().replace("dll", "exe"));
+
         if (!upxFile2.exists())
         {
             QMessageBox::critical(this, qmbTitle, QString("No se puede crear el proceso runtime ffmpeg.dll\n") + infoText);
@@ -215,21 +197,15 @@ void MainWindow::saveConfigFile()
     QString savedpath;
     savedpath = defaultDownloadpath;
     crypto_pass.setKey(crytokey);
-
     QString crytopass_picta = crypto_pass.encryptToString(picta_pass), crytopass_proxy;
 
     if (!proxy_pass.isEmpty())
-    {
         crytopass_proxy = crypto_pass.encryptToString(proxy_pass);
-    }
 
     if (!picta_pass.isEmpty())
-    {
         crytopass_picta = crypto_pass.encryptToString(picta_pass);
-    }
 
     settings.beginGroup("General");
-
     settings.setValue("savedPath", savedpath);
     settings.setValue("proxy", proxy);
     settings.setValue("port", port);
@@ -241,16 +217,16 @@ void MainWindow::saveConfigFile()
     settings.setValue("notification", notification);
     settings.setValue("envpictadl", envpictadl);
     settings.setValue("envffmpeg", envffmpeg);
-
     settings.endGroup();
 }
 
 void MainWindow::on_toolButton_clicked()
 {
     QString downloadFolder(QFileDialog::getExistingDirectory(this,
-                                                             "Ubicación de Descarga",
-                                                             defaultDownloadpath,
-                                                             QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks));
+                           "Ubicación de Descarga",
+                           defaultDownloadpath,
+                           QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks));
+
     if (downloadFolder.isEmpty())
         return;
 
@@ -267,7 +243,6 @@ bool MainWindow::PasteFromClipboard()
     const QClipboard *clipboard = QApplication::clipboard();
     const QMimeData *mimeData = clipboard->mimeData();
     QString CopyTextClip = clipboard->text();
-
     QString qmbTitle("Error al Pegar");
     QString infoText("Sólo puede pegar Urls que sean del sitio de Picta ejemplo:\n\n"
                      "https://www.picta.cu/...");
@@ -295,9 +270,7 @@ bool MainWindow::PasteFromClipboard()
         return true;
     }
     else
-    {
         return false;
-    }
 }
 
 void MainWindow::on_bnt_clipboard_clicked()
@@ -309,13 +282,13 @@ void MainWindow::on_bnt_clipboard_clicked()
     if (PasteFromClipboard())
     {
         QRegularExpression regex("((?:https?|http)://\\S+)");
+
         if (regex.match(pasteUrl).hasMatch())
         {
             QString pictaurl("picta.cu/medias");
+
             if (find_line(pasteUrl, pictaurl))
-            {
                 ui->lineEdit_url->setText(pasteUrl);
-            }
             else
             {
                 QMessageBox::information(this, qmbTitle, QString("No es una URL válida de Picta\n\n") + infoText);
@@ -335,9 +308,7 @@ bool MainWindow::find_line(QString stringline, QString stringsearch)
     int search = stringline.indexOf(stringsearch, 0, Qt::CaseSensitive);
 
     if (search != -1)
-    {
         return true;
-    }
 
     return false;
 }
@@ -360,21 +331,15 @@ void MainWindow::get_filename()
         progressAni.setFileName(isDark ? ":/Logos/refresh_rotate_dark.gif" : ":/Logos/refresh_rotate_light.gif");
         progressAni.start();
         ui->lbl_process->setText("<html><head/><body><p><span style=\" font-weight:600;\">Procesando URL...</span></p></body></html>");
-
         connect(&progressAni, SIGNAL(frameChanged(int)), this, SLOT(setRefreshIcon()));
-
         //Prepare process for url list
         pictadl.setProcessChannelMode(QProcess::MergedChannels);
         QStringList args;
 
         if (envpictadl)
-        {
             pictadl.setProgram("picta-dl.exe");
-        }
         else
-        {
             pictadl.setProgram(pictadlDLLpath);
-        }
 
         if (envffmpeg)
         {
@@ -383,9 +348,7 @@ void MainWindow::get_filename()
                  << "%(title)s.%(ext)s";
         }
         else
-        {
             args << "--config-location" << picta_conf;
-        }
 
         args << "--abort-on-error"
              << "--socket-timeout"
@@ -393,9 +356,7 @@ void MainWindow::get_filename()
              << "--retries"
              << "6"
              << "--get-filename";
-
         FixedArgs = GetArguments();
-
         args << FixedArgs;
 
         if (!proxy.isEmpty())
@@ -413,7 +374,6 @@ void MainWindow::get_filename()
         }
 
         args << "-u" << picta_user << "-p" << picta_pass << pasteUrl;
-
         pictadl.setArguments(args);
         pictadl.setStandardOutputFile(playlist, QIODevice::Truncate);
         pictadl.start();
@@ -422,7 +382,6 @@ void MainWindow::get_filename()
         ui->cmmd_download->setEnabled(false);
         ui->cmmd_stop->setEnabled(true);
         ui->cmmd_dlte->setEnabled(false);
-
         connect(&pictadl, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onFinishGetfilenames()));
     }
     else
@@ -439,7 +398,6 @@ void MainWindow::onFinishGetfilenames()
     pictadl.close();
     process_count++;
     playlistitems.clear();
-
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableWidget->verticalHeader()->setDefaultAlignment(Qt::AlignVCenter);
 
@@ -453,47 +411,39 @@ void MainWindow::onFinishGetfilenames()
         QString ListItem, ShortName;
         int LastRow;
         ItemSelected.clear();
+
         do
         {
             ListItem = listfile.readLine();
+
             if (!ListItem.contains("ERROR:", Qt::CaseSensitive) && !ListItem.isEmpty())
             {
                 ShortName = CutName(ListItem, 23);
                 ui->tableWidget->insertRow(ui->tableWidget->rowCount());
                 LastRow = ui->tableWidget->rowCount() - 1;
-
                 QPointer<QCheckBox> Id = new QCheckBox(this);                   // Create a QCheckbox pointer
-
                 QWidget *checkBoxWidget = new QWidget();                        // Create a QWiget container
                 QHBoxLayout *layoutCheckBox = new QHBoxLayout(checkBoxWidget);  // Create a Horizontal layout
                 layoutCheckBox->addWidget(Id);                                  // Add Widget to layout
                 layoutCheckBox->setAlignment(Qt::AlignCenter);                  // Center the checkbox
-                layoutCheckBox->setContentsMargins(0,0,0,0);                    // Set the zero padding
-
+                layoutCheckBox->setContentsMargins(0, 0, 0, 0);                 // Set the zero padding
                 ui->tableWidget->setCellWidget(LastRow, ColId, checkBoxWidget); // Add a CheckBox with Layout to the Table
                 ItemSelected.append(Id);                                        // Add to list Pointer of QCheckbox
-
                 ui->tableWidget->setItem(LastRow, ColFile, new QTableWidgetItem(ShortName));
                 ui->tableWidget->item(LastRow, ColFile)->setToolTip(ListItem);
                 ui->tableWidget->item(LastRow, ColFile)->setTextAlignment(Qt::AlignLeft);
                 ui->tableWidget->item(LastRow, ColFile)->setTextAlignment(Qt::AlignVCenter);
-
                 ui->tableWidget->setItem(LastRow, ColVideo, new QTableWidgetItem("➖"));
                 ui->tableWidget->item(LastRow, ColVideo)->setTextAlignment(Qt::AlignCenter);
-
                 ui->tableWidget->setItem(LastRow, ColAudio, new QTableWidgetItem("➖"));
                 ui->tableWidget->item(LastRow, ColAudio)->setTextAlignment(Qt::AlignCenter);
-
                 ui->tableWidget->setItem(LastRow, Colsubtitle, new QTableWidgetItem("➖"));
                 ui->tableWidget->item(LastRow, Colsubtitle)->setTextAlignment(Qt::AlignCenter);
-
                 ui->tableWidget->setItem(LastRow, ColVelocidad, new QTableWidgetItem("➖"));
                 ui->tableWidget->item(LastRow, ColVelocidad)->setTextAlignment(Qt::AlignCenter);
-
                 ui->tableWidget->setItem(LastRow, ColProcess, new QTableWidgetItem("➖"));
                 ui->tableWidget->item(LastRow, ColProcess)->setTextAlignment(Qt::AlignCenter);
             }
-
         } while (!listfile.atEnd());
 
         playlistfile.close();
@@ -506,16 +456,16 @@ void MainWindow::onFinishGetfilenames()
             if (!stopped)
             {
                 QString qmlmessage = "Se ha terminado de procesar la lista de descarga";
+
                 if (notification)
-                {
                     showNotifiedMessage(qmlmessage);
-                }
                 else
                 {
                     this->showNormal();
                     QApplication::alert(this);
                     QMessageBox::information(this, "Procesado terminado", qmlmessage);
                 }
+
                 ui->cmmd_stop->setEnabled(false);
                 ui->cmmd_download->setEnabled(true);
                 ui->cmmd_dlte->setEnabled(true);
@@ -523,9 +473,7 @@ void MainWindow::onFinishGetfilenames()
             }
         }
         else
-        {
             URL_Process_Error(ListItem);
-        }
     }
 }
 
@@ -538,63 +486,54 @@ void MainWindow::URL_Process_Error(QString error)
     {
         qmbError = "Las listas de reproducción es sólo para usuarios registrados\n"
                    "Revise su usuario y contraseña.";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else if (error.contains("ERROR: Playlist no exists!", Qt::CaseSensitive))
     {
         qmbError = "No existe la lista de reproducción que intenta procesar\n"
                    "Revise la lista de reproducción en el sitio";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else if (error.contains("ERROR: no suitable InfoExtractor for URL", Qt::CaseSensitive))
     {
         qmbError = "Es incorrecta la URL que intenta procesar\n"
                    "Revise que este correcta en el sitio de Picta";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else if (error.contains("ERROR: Unable to download JSON metadata: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED]", Qt::CaseSensitive))
     {
         qmbError = "Ha habido un error de certificado SSL de su sistema\n"
                    "es posible que tenga que actualizar su Sistema";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else if (error.contains("ERROR: Unable to download JSON metadata: <urlopen error Tunnel connection failed: 407 Proxy Authentication Required", Qt::CaseSensitive))
     {
         qmbError = "Ha habido un error de autenticación con el servidor Proxy\n"
                    "Revise usuario y contraseña del Proxy";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else if (error.contains("ERROR: Unable to download JSON metadata:", Qt::CaseSensitive))
     {
         qmbError = "Ha habido un error de conexión con el servidor\n"
                    "Revise su conexión a la RED y a Picta";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else if (error.contains("ERROR: Failed to download MPD manifest:", Qt::CaseSensitive))
     {
         qmbError = "Ha habido un error de conexión con el servidor\n"
                    "Revise su conexión a la RED y a Picta";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else if (error.contains("ERROR: Cannot find video!", Qt::CaseSensitive) || error.isEmpty())
     {
         qmbError = "¡No se ha encontrado el vídeo en el sitio!\n"
                    "Revise que este correcta la URL en el sitio";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else
     {
         qmbError = "¡Ha ocurrido un error inesperado!\n"
                    "Vuelva a intentarlo dentro de un rato";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
 
@@ -606,41 +545,35 @@ void MainWindow::URL_Process_Error(QString error)
 void MainWindow::on_cmmd_process_clicked()
 {
     QString qmbTitle("Error al Procesar la URL");
-
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
     loadConfigFile(roaming);
 
     if (!IsNetworkConnected())
     {
         QMessageBox::critical(this, qmbTitle, "¡No está conectado a la Red!\n\n"
-                                              "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
+                              "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
         QApplication::alert(this);
     }
     else if (picta_pass.isEmpty() || picta_user.isEmpty())
     {
-
         QMessageBox::warning(this, qmbTitle, "¡Debe configurar su usuario y contraseña de Picta!\n\n"
-                                             "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
+                             "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
         QApplication::alert(this);
     }
     else if (envpictadl && !ExistsProgram("picta-dl"))
     {
         QMessageBox::warning(this, qmbTitle, "¡No se ha encontrado picta-dl en su Sistema!\n\n"
-                                             "¡Revise que este bien configurado en las variables de entorno\n"
-                                             "y picta-dl esté disponible en su ubicación!");
+                             "¡Revise que este bien configurado en las variables de entorno\n"
+                             "y picta-dl esté disponible en su ubicación!");
         QApplication::alert(this);
     }
     else
-    {
         get_filename();
-    }
 }
 
 void MainWindow::setRefreshIcon()
 {
-
- ui->cmmd_process->setIcon(QIcon(progressAni.currentPixmap()));
-
+    ui->cmmd_process->setIcon(QIcon(progressAni.currentPixmap()));
 }
 
 void MainWindow::Downloadfiles()
@@ -654,18 +587,13 @@ void MainWindow::Downloadfiles()
     downloadsAni.start();
     ui->lbl_download->setText("<html><head/><body><p><span style=\" font-weight:600;\">Descargando...</span></p></body></html>");
     connect(&downloadsAni, SIGNAL(frameChanged(int)), this, SLOT(setDownloadIcon()));
-
     //Prepare arguments
     QStringList args;
 
     if (envpictadl)
-    {
         pictadlfiles.setProgram("picta-dl.exe");
-    }
     else
-    {
         pictadlfiles.setProgram(pictadlDLLpath);
-    }
 
     if (envffmpeg)
     {
@@ -674,9 +602,7 @@ void MainWindow::Downloadfiles()
              << "%(title)s.%(ext)s";
     }
     else
-    {
         args << "--config-location" << picta_conf;
-    }
 
     args << "--abort-on-error"
          << "--socket-timeout"
@@ -684,23 +610,16 @@ void MainWindow::Downloadfiles()
          << "--retries"
          << "6"
          << "--newline";
-
     args << FixedArgs;
 
     if (!stopped)
-    {
         playlistitems = GetSelectedItems();
-    }
 
     if (!playlistitems.isEmpty())
-    {
         args << "--playlist-items" << playlistitems;
-    }
 
     if (ui->chckBox_Subt->isChecked())
-    {
         args << "--write-sub";
-    }
 
     if (!args.contains("--audio-quality"))
     {
@@ -736,15 +655,12 @@ void MainWindow::Downloadfiles()
     }
 
     args << "-u" << picta_user << "-p" << picta_pass << pasteUrl;
-
     QString filePath = ui->lineEdit_Location->text();
     QChar backslash(92);
     args << "-o" << filePath.append(backslash) + "%(title)s.%(ext)s";
-
     IsVideo = false;
     IsAudio = false;
     errString = "";
-
     //Prepare Process for download
     pictadlfiles.setArguments(args);
     pictadlfiles.setProcessChannelMode(QProcess::MergedChannels);
@@ -752,8 +668,8 @@ void MainWindow::Downloadfiles()
     ui->cmmd_download->setEnabled(false);
     ui->cmmd_stop->setEnabled(true);
     ui->cmmd_dlte->setEnabled(false);
-
-    connect(&pictadlfiles, &QProcess::readyReadStandardOutput, this, [&]() {
+    connect(&pictadlfiles, &QProcess::readyReadStandardOutput, this, [&]()
+    {
         stdoutString = pictadlfiles.readAllStandardOutput();
 
         if (stdoutString.contains("Writing video subtitles", Qt::CaseSensitive))
@@ -784,7 +700,6 @@ void MainWindow::Downloadfiles()
             ui->tableWidget->item(itemlist, ColProcess)->setTextAlignment(Qt::AlignCenter);
             itemlist++;
         }
-
         //if the video has already been downloaded jump to corresponding audio column
         else if (stdoutString.contains("has already been downloaded", Qt::CaseSensitive) && (stdoutString.contains(".mp4") || stdoutString.contains("f4.webm")))
         {
@@ -806,9 +721,7 @@ void MainWindow::Downloadfiles()
         }
 
         if (stdoutString.contains("[download] 100%", Qt::CaseSensitive) && IsVideo && !IsAudio)
-        {
             IsVideo = false;
-        }
 
         if (stdoutString.contains("[download] 100%", Qt::CaseSensitive) && IsAudio && !IsVideo)
         {
@@ -820,7 +733,6 @@ void MainWindow::Downloadfiles()
         {
             ItemOut.clear();
             ItemOut = stdoutString.split(QRegExp("\\s+"), QString::SkipEmptyParts);
-
             ui->tableWidget->item(itemlist, ColVelocidad)->setText(ItemOut.at(5));
             ui->tableWidget->item(itemlist, ColVelocidad)->setTextAlignment(Qt::AlignCenter);
 
@@ -829,6 +741,7 @@ void MainWindow::Downloadfiles()
                 ui->tableWidget->item(itemlist, ColVideo)->setText(ItemOut.at(1) + " de (" + ItemOut.at(3) + ")");
                 ui->tableWidget->item(itemlist, ColVideo)->setTextAlignment(Qt::AlignCenter);
             }
+
             if (IsAudio)
             {
                 ui->tableWidget->item(itemlist, ColAudio)->setText(ItemOut.at(1) + " de (" + ItemOut.at(3) + ")");
@@ -847,6 +760,7 @@ void MainWindow::Downloadfiles()
                 ui->tableWidget->item(itemlist, ColVideo)->setText(ItemOut.at(1) + " de (" + ItemOut.at(3) + ")");
                 ui->tableWidget->item(itemlist, ColVideo)->setTextAlignment(Qt::AlignCenter);
             }
+
             if (IsAudio)
             {
                 ui->tableWidget->item(itemlist, ColAudio)->setText(ItemOut.at(1) + " de (" + ItemOut.at(3) + ")");
@@ -878,11 +792,8 @@ void MainWindow::Downloadfiles()
         }
 
         if (stdoutString.contains("ERROR:", Qt::CaseSensitive))
-        {
             errString = stdoutString;
-        }
     });
-
     connect(&pictadlfiles, SIGNAL(finished(int)), this, SLOT(onFinishDowloadfiles()));
 }
 
@@ -894,34 +805,30 @@ void MainWindow::setDownloadIcon()
 void MainWindow::on_cmmd_download_clicked()
 {
     QString qmbTitle("Error al Descargar archivos");
-
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
     loadConfigFile(roaming);
 
     if (!IsNetworkConnected())
     {
         QMessageBox::critical(this, qmbTitle, "¡No está conectado a la Red!\n\n"
-                                              "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
+                              "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
         QApplication::alert(this);
     }
     else if (picta_pass.isEmpty() || picta_user.isEmpty())
     {
-
         QMessageBox::warning(this, qmbTitle, "¡Debe configurar su usuario y contraseña de Picta!\n\n"
-                                             "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
+                             "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
         QApplication::alert(this);
     }
     else if (envffmpeg && !ExistsProgram("ffmpeg"))
     {
         QMessageBox::warning(this, qmbTitle, "¡No se ha encontrado ffmpeg en su Sistema!\n\n"
-                                             "¡Revise que este bien configurado en las variables de entorno\n"
-                                             "y ffmpeg esté disponible en su ubicación!");
+                             "¡Revise que este bien configurado en las variables de entorno\n"
+                             "y ffmpeg esté disponible en su ubicación!");
         QApplication::alert(this);
     }
     else
-    {
         Downloadfiles();
-    }
 }
 
 void MainWindow::onFinishDowloadfiles()
@@ -932,6 +839,7 @@ void MainWindow::onFinishDowloadfiles()
     download_count++;
     itemlist = 0;
     stdoutString.clear();
+
     if (download_count < 2)
     {
         downloadsAni.stop();
@@ -945,16 +853,16 @@ void MainWindow::onFinishDowloadfiles()
             if (!stopped)
             {
                 QString qmlmessage = "Se ha terminado de descargar los archivos";
+
                 if (notification)
-                {
                     showNotifiedMessage(qmlmessage);
-                }
                 else
                 {
                     this->showNormal();
                     QApplication::alert(this);
                     QMessageBox::information(this, "Descarga terminada", qmlmessage);
                 }
+
                 ui->cmmd_stop->setEnabled(false);
                 ui->cmmd_process->setEnabled(true);
                 ui->cmmd_download->setEnabled(false);
@@ -962,9 +870,7 @@ void MainWindow::onFinishDowloadfiles()
             }
         }
         else
-        {
             Download_Process_Error(errString);
-        }
     }
 }
 
@@ -977,30 +883,24 @@ void MainWindow::Download_Process_Error(QString error)
     {
         qmbError = "¡No tiene instalado FFmpeg!\n"
                    "Posible que no esté bien configurado";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
-
     else if (error.contains("ERROR: unable to download video data:", Qt::CaseSensitive))
     {
         qmbError = "Ha habido un error de conexión con el servidor\n"
                    "Revise su conexión a la RED y al sitio de Picta";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else if (error.contains("ERROR: requested format not available", Qt::CaseSensitive))
     {
         qmbError = "No existe la calidad de vídeo selecciona para la descarga\n"
                    "Por favor seleccione otra y pruebe de nuevo";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
-
     else
     {
         qmbError = "¡Ha ocurrido un error inesperado!\n"
                    "Vuelva a intentarlo dentro de un rato";
-
         ShowErrorMessage(qmbTitle, qmbError);
     }
 
@@ -1013,9 +913,7 @@ void MainWindow::Download_Process_Error(QString error)
 QString MainWindow::CutName(QString name, int chars)
 {
     if (name.length() > chars)
-    {
         return name.midRef(0, chars) + "..." + withExtension(name);
-    }
 
     return name;
 }
@@ -1023,8 +921,8 @@ QString MainWindow::CutName(QString name, int chars)
 bool MainWindow::IsNetworkConnected()
 {
     bool bReturn = false;
-
     QList<QNetworkInterface> ifaces = QNetworkInterface::allInterfaces();
+
     if (!ifaces.isEmpty())
     {
         for (int i = 0; i < ifaces.size(); i++)
@@ -1038,6 +936,7 @@ bool MainWindow::IsNetworkConnected()
             // If this interface isn't running, we don't care about it
             if (!isRunning)
                 continue;
+
             // We only want valid interfaces that aren't loopback/virtual and not point to point
             if (!ifaces[i].isValid() || isLoopback || isP2P || !isUp)
                 continue;
@@ -1052,6 +951,7 @@ bool MainWindow::IsNetworkConnected()
 void MainWindow::on_cmmd_stop_clicked()
 {
     stopped = true;
+
     if (pictadlfiles.state() == 2)
     {
         pictadlfiles.kill();
@@ -1062,8 +962,8 @@ void MainWindow::on_cmmd_stop_clicked()
         ui->cmmd_stop->setEnabled(false);
         ui->cmmd_dlte->setEnabled(true);
         QMessageBox::warning(this, "Error al Descargar archivos", "La descarga ha sido detenida por el usuario\n\n"
-                                                                  "Puede dar clic en el botón \"Descargar\" para resumir la descarga\n\n"
-                                                                  "ó dar clic en el botón \"Procesar URL\" para volver a procesar.");
+                             "Puede dar clic en el botón \"Descargar\" para resumir la descarga\n\n"
+                             "ó dar clic en el botón \"Procesar URL\" para volver a procesar.");
         QApplication::alert(this);
     }
 
@@ -1077,7 +977,7 @@ void MainWindow::on_cmmd_stop_clicked()
         ui->cmmd_stop->setEnabled(false);
         ui->cmmd_dlte->setEnabled(true);
         QMessageBox::critical(this, "Error al Procesar la URL", "Procesar URL ha sido detenido por el usuario\n\n"
-                                                                "Vuelva a procesar la URL para mostrar la lista a descargar.");
+                              "Vuelva a procesar la URL para mostrar la lista a descargar.");
         QApplication::alert(this);
     }
 }
@@ -1094,7 +994,7 @@ void MainWindow::on_cmmd_dlte_clicked()
         ui->lineEdit_url->setText("");
         ui->tableWidget->setRowCount(0);
         QMessageBox::information(this, "Limpiar Lista", "Se ha limpiado la lista de descarga\n\n"
-                                                        "Vuelva a procesar la URL para mostrar la lista a descargar.");
+                                 "Vuelva a procesar la URL para mostrar la lista a descargar.");
         QApplication::alert(this);
         ui->cmmd_dlte->setEnabled(false);
         ui->cmmd_download->setEnabled(false);
@@ -1114,20 +1014,15 @@ void MainWindow::createActions()
 {
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
     loadConfigFile(roaming);
-
     minimizeAction = new QAction(tr("Minimizar"), this);
+
     if (systray)
-    {
         connect(minimizeAction, SIGNAL(triggered()), this, SLOT(hide()));
-    }
     else
-    {
         connect(minimizeAction, SIGNAL(triggered()), this, SLOT(MinimizeWindows()));
-    }
 
     restoreAction = new QAction(tr("Restaurar"), this);
     connect(restoreAction, SIGNAL(triggered()), this, SLOT(showNormal()));
-
     quitAction = new QAction(tr("Salir"), this);
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
 }
@@ -1144,7 +1039,6 @@ void MainWindow::createTrayIcon()
     trayIconMenu->addAction(restoreAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
-
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->setToolTip(tr("Picta Downloader GUI"));
@@ -1159,9 +1053,7 @@ void MainWindow::showMessage()
 void MainWindow::showNotifiedMessage(QString message)
 {
     QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon();
-
     QString qmbTitle("Picta Downloader GUI");
-
     trayIcon->showMessage(qmbTitle, message, icon, 2000);
     connect(trayIcon, &QSystemTrayIcon::messageClicked, this, &MainWindow::messageClicked);
 }
@@ -1172,24 +1064,24 @@ void MainWindow::messageClicked()
     this->raise();
     this->activateWindow();
 }
+
 void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (systray)
     {
         switch (reason)
         {
-        case QSystemTrayIcon::Trigger:
-            if (this->isVisible())
-            {
-                this->hide();
-            }
-            else
-            {
-                this->showNormal();
-                this->activateWindow();
-            }
+            case QSystemTrayIcon::Trigger:
+                if (this->isVisible())
+                    this->hide();
+                else
+                {
+                    this->showNormal();
+                    this->activateWindow();
+                }
 
-        default:;
+            default:
+                ;
         }
     }
 }
@@ -1204,10 +1096,10 @@ void MainWindow::changeEvent(QEvent *event)
         if (isMinimized() && systray)
         {
             hide();
+
             if (notification)
             {
                 QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon(QSystemTrayIcon::Information);
-
                 trayIcon->showMessage(tr("Picta Downloader GUI"),
                                       tr("Minimizada a la bandeja del sistema"), icon, 100);
             }
@@ -1218,9 +1110,7 @@ void MainWindow::changeEvent(QEvent *event)
 void MainWindow::ShowErrorMessage(QString Title, QString Error)
 {
     if (notification)
-    {
         showNotifiedMessage(Title + Error);
-    }
     else
     {
         QMessageBox::warning(this, Title, Error);
@@ -1234,23 +1124,18 @@ bool MainWindow::ExistsProgram(QString program)
     QString prog_stdout;
     QStringList args;
     bool exitcode = false;
-
     args << "/c" << program << "-h";
-
     prog.setProcessChannelMode(QProcess::MergedChannels);
     prog.setProgram("cmd.exe");
     prog.setArguments(args);
     prog.start();
-
     delayProcess(prog);
     prog.kill();
     prog_stdout = prog.readAllStandardOutput();
 
-    if (prog_stdout.contains("Usage: picta-dl [OPTIONS]", Qt::CaseSensitive) ||
-        prog_stdout.contains("usage: ffmpeg [options]", Qt::CaseSensitive))
-    {
+    if (prog_stdout.contains("Usage: picta-dl [OPTIONS]", Qt::CaseSensitive)
+        || prog_stdout.contains("usage: ffmpeg [options]", Qt::CaseSensitive))
         exitcode = true;
-    }
 
     return exitcode;
 }
@@ -1258,9 +1143,7 @@ bool MainWindow::ExistsProgram(QString program)
 void MainWindow::delayProcess(QProcess &process)
 {
     while (process.state() == QProcess::Running)
-    {
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-    }
 }
 
 QStringList MainWindow::GetArguments()
@@ -1268,13 +1151,9 @@ QStringList MainWindow::GetArguments()
     QStringList args;
 
     if (!ui->chckBox_Playlist->isChecked())
-    {
         args << "--no-playlist";
-    }
     else
-    {
         args << "--yes-playlist";
-    }
 
     if (ui->chckBox_Onlyaudio->isChecked())
     {

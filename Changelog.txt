@@ -1,3 +1,10 @@
+v0.12.7
+
++ Add .astylerc Artistic Style project file
++ Add docs/MSYS2-MINGW-Qt5-AStyle.md
+* Reformat sources (*.cpp,*.h) using Artistic Style 3.1
+
+
 v0.12.6
 
 * Change Resources/Styles/winApp.qss background-color: #0a0a0a

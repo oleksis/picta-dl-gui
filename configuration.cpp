@@ -2,13 +2,12 @@
 #include "ui_configuration.h"
 #include <QDebug>
 
-configuration::configuration(QWidget *parent, const QString &filename) : 
+configuration::configuration(QWidget *parent, const QString &filename) :
     QDialog(parent),
     ui(new Ui::configuration),
     pictaGuiConfigFile(filename)
 {
     ui->setupUi(this);
-
     loadConfigFile();
 }
 
@@ -28,7 +27,6 @@ void configuration::loadConfigFile()
     QFile configFile(roaming.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
-
     QString qmbTitle("Error fatal");
     QString infoText("No se puede leer el archivo de configuración picta-dl-gui.conf\n"
                      "Aplicación terminada.\n\n"
@@ -45,11 +43,8 @@ void configuration::loadConfigFile()
         }
 
         configFile.close();
-
         QString filePath, cproxy, cport, cproxy_user, cproxy_pass, cpicta_user, cpicta_pass;
-
         settings.beginGroup("General");
-
         filePath = settings.value("savedPath").toString();
         cproxy = settings.value("proxy").toString();
         cport = settings.value("port").toString();
@@ -61,9 +56,7 @@ void configuration::loadConfigFile()
         notification = settings.value("notification").toBool();
         envpictadl = settings.value("envpictadl").toBool();
         envffmpeg = settings.value("envffmpeg").toBool();
-
         settings.endGroup();
-
         defaultDownloadpath = filePath;
         crypto_pass.setKey(crytokey);
         proxy = cproxy;
@@ -72,7 +65,6 @@ void configuration::loadConfigFile()
         proxy_pass = crypto_pass.decryptToString(cproxy_pass);
         picta_user = cpicta_user;
         picta_pass = crypto_pass.decryptToString(cpicta_pass);
-
         ui->lnEdit_user_picta->setText(picta_user);
         ui->lnEdit_pass_picta->setText(picta_pass);
         ui->lnEdit_ip_proxy->setText(proxy);
@@ -81,22 +73,16 @@ void configuration::loadConfigFile()
         ui->lnEdit_pass_proxy->setText(proxy_pass);
 
         if (systray)
-        {
             ui->checkSystray->setChecked(true);
-        }
+
         if (notification)
-        {
             ui->checkNotified->setChecked(true);
-        }
 
         if (envpictadl)
-        {
             ui->checkEnvPictadl->setChecked(true);
-        }
+
         if (envffmpeg)
-        {
             ui->checkEnvFFmpeg->setChecked(true);
-        }
     }
     else
     {
@@ -115,8 +101,7 @@ void configuration::saveConfigFile()
         return;
 
     QString savedpath, cproxy, cport, cproxy_user,
-        cproxy_pass, cpicta_user, cpicta_pass;
-
+            cproxy_pass, cpicta_user, cpicta_pass;
     savedpath = defaultDownloadpath;
     crypto_pass.setKey(crytokey);
     cpicta_user = ui->lnEdit_user_picta->text();
@@ -132,17 +117,12 @@ void configuration::saveConfigFile()
     QString crytopass_picta = crypto_pass.encryptToString(cpicta_pass), crytopass_proxy;
 
     if (!cproxy_pass.isEmpty())
-    {
         crytopass_proxy = crypto_pass.encryptToString(cproxy_pass);
-    }
 
     if (!cpicta_pass.isEmpty())
-    {
         crytopass_picta = crypto_pass.encryptToString(cpicta_pass);
-    }
 
     settings.beginGroup("General");
-
     settings.setValue("savedPath", savedpath);
     settings.setValue("proxy", cproxy);
     settings.setValue("port", cport);
@@ -154,7 +134,6 @@ void configuration::saveConfigFile()
     settings.setValue("notification", notification);
     settings.setValue("envpictadl", envpictadl);
     settings.setValue("envffmpeg", envffmpeg);
-
     settings.endGroup();
 }
 
