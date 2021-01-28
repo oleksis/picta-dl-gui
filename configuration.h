@@ -21,7 +21,7 @@ class configuration : public QDialog
     Q_OBJECT
 
 public:
-    explicit configuration(QWidget *parent = 0, const QString &filename = QString("picta-dl-gui.conf"));
+    explicit configuration(QWidget *parent = nullptr, const QString &filename = QString("picta-dl-gui.conf"));
     ~configuration();
 
 private slots:

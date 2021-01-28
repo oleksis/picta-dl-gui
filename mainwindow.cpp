@@ -29,7 +29,6 @@ void MainWindow::configure()
 {
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
     QString defaultpath(QStandardPaths::standardLocations(QStandardPaths::DownloadLocation)[0]);
-    QChar backslash(92);
 
     if (!roaming.exists())
     {
@@ -37,10 +36,17 @@ void MainWindow::configure()
         ui->cmmd_help->click();
     }
 
+#ifdef Q_OS_WIN
     pictadlDLLpath = roaming.absolutePath().append("\\picta-dl.exe");
     ffmpegDLLpath = roaming.absolutePath().append("\\ffmpeg.exe");
+#endif
     defaultDownloadpath = defaultpath;
+#ifdef Q_OS_WIN
+    QChar backslash(92);
     ui->lineEdit_Location->setText(defaultpath.replace("/", backslash));
+#else
+    ui->lineEdit_Location->setText(defaultpath);
+#endif
     crypto_pass.setKey(crytokey);
 
     if (!loadConfigFile(roaming))
@@ -85,8 +91,12 @@ bool MainWindow::loadConfigFile(QDir &roaming)
         envffmpeg = settings.value("envffmpeg").toBool();
         settings.endGroup();
         defaultDownloadpath = filePath;
+#ifdef Q_OS_WIN
         QChar backslash(92);
         ui->lineEdit_Location->setText(filePath.replace("/", backslash));
+#else
+        ui->lineEdit_Location->setText(filePath);
+#endif
         crypto_pass.setKey(crytokey);
         proxy = cproxy;
         port = cport;
@@ -133,6 +143,7 @@ void MainWindow::createConfigFile(QDir &roaming)
 
     QTextStream out_picta_conf(&configPictaFile);
     QString PictaFormat = ("-o \"%(title)s.%(ext)s\"");
+#ifdef Q_OS_WIN
     QString ffmpeg_conf = (ffmpegDLLpath);
     // If Win32
     QChar backslash(92);
@@ -145,11 +156,17 @@ void MainWindow::createConfigFile(QDir &roaming)
                    << PictaFormat.append("\n\n")
                    << "# FFmpeg PATH\n"
                    << FFmpegPath;
+#else
+    out_picta_conf << "# Lines starting with # are comments\n\n"
+                   << "# Format video output <video>.<extension>\n"
+                   << PictaFormat.append("\n\n");
+#endif
     configPictaFile.close();
 }
 
 void MainWindow::checkExistenceOfMainProcess()
 {
+#ifdef Q_OS_WIN
     QFile upxFile(pictadlDLLpath);
     QFile upxFile2(ffmpegDLLpath);
     QString qmbTitle("Error fatal");
@@ -183,6 +200,8 @@ void MainWindow::checkExistenceOfMainProcess()
             exit(-1);
         }
     }
+
+#endif
 }
 
 void MainWindow::saveConfigFile()
@@ -230,11 +249,15 @@ void MainWindow::on_toolButton_clicked()
     if (downloadFolder.isEmpty())
         return;
 
-    QChar backslash(92);
     QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
     loadConfigFile(roaming);
     defaultDownloadpath = downloadFolder;
+#ifdef Q_OS_WIN
+    QChar backslash(92);
     ui->lineEdit_Location->setText(downloadFolder.replace("/", backslash));
+#else
+    ui->lineEdit_Location->setText(downloadFolder);
+#endif
     saveConfigFile();
 }
 
@@ -335,6 +358,7 @@ void MainWindow::get_filename()
         //Prepare process for url list
         pictadl.setProcessChannelMode(QProcess::MergedChannels);
         QStringList args;
+#ifdef Q_OS_WIN
 
         if (envpictadl)
             pictadl.setProgram("picta-dl.exe");
@@ -350,6 +374,10 @@ void MainWindow::get_filename()
         else
             args << "--config-location" << picta_conf;
 
+#else
+        pictadl.setProgram("picta-dl");
+        args << "--config-location" << picta_conf;
+#endif
         args << "--abort-on-error"
              << "--socket-timeout"
              << "10"
@@ -589,6 +617,7 @@ void MainWindow::Downloadfiles()
     connect(&downloadsAni, SIGNAL(frameChanged(int)), this, SLOT(setDownloadIcon()));
     //Prepare arguments
     QStringList args;
+#ifdef Q_OS_WIN
 
     if (envpictadl)
         pictadlfiles.setProgram("picta-dl.exe");
@@ -604,13 +633,17 @@ void MainWindow::Downloadfiles()
     else
         args << "--config-location" << picta_conf;
 
+#else
+    pictadlfiles.setProgram("picta-dl");
+    args << "--config-location" << picta_conf;
+#endif
     args << "--abort-on-error"
          << "--socket-timeout"
          << "10"
          << "--retries"
          << "6"
-         << "--newline";
-    args << FixedArgs;
+         << "--newline"
+         << FixedArgs;
 
     if (!stopped)
         playlistitems = GetSelectedItems();
@@ -656,8 +689,13 @@ void MainWindow::Downloadfiles()
 
     args << "-u" << picta_user << "-p" << picta_pass << pasteUrl;
     QString filePath = ui->lineEdit_Location->text();
+#ifdef Q_OS_WIN
     QChar backslash(92);
-    args << "-o" << filePath.append(backslash) + "%(title)s.%(ext)s";
+    filePath.append(backslash);
+#else
+    filePath.append("/");
+#endif
+    args << "-o" << filePath + "%(title)s.%(ext)s";
     IsVideo = false;
     IsAudio = false;
     errString = "";
@@ -928,10 +966,10 @@ bool MainWindow::IsNetworkConnected()
         for (int i = 0; i < ifaces.size(); i++)
         {
             unsigned int flags = ifaces[i].flags();
-            bool isLoopback = (bool)(flags & QNetworkInterface::IsLoopBack);
-            bool isP2P = (bool)(flags & QNetworkInterface::IsPointToPoint);
-            bool isRunning = (bool)(flags & QNetworkInterface::IsRunning);
-            bool isUp = (bool)(flags & QNetworkInterface::IsUp);
+            bool isLoopback = bool (flags & QNetworkInterface::IsLoopBack);
+            bool isP2P =  bool (flags & QNetworkInterface::IsPointToPoint);
+            bool isRunning =  bool (flags & QNetworkInterface::IsRunning);
+            bool isUp =  bool (flags & QNetworkInterface::IsUp);
 
             // If this interface isn't running, we don't care about it
             if (!isRunning)
@@ -1080,6 +1118,8 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
                     this->activateWindow();
                 }
 
+                break;
+
             default:
                 ;
         }
@@ -1120,11 +1160,13 @@ void MainWindow::ShowErrorMessage(QString Title, QString Error)
 
 bool MainWindow::ExistsProgram(QString program)
 {
+    bool exitcode = false;
+    QString checkprogram = program;
+#ifdef Q_OS_WIN
     QProcess prog;
     QString prog_stdout;
     QStringList args;
-    bool exitcode = false;
-    args << "/c" << program << "-h";
+    args << "/c" << checkprogram << "-h";
     prog.setProcessChannelMode(QProcess::MergedChannels);
     prog.setProgram("cmd.exe");
     prog.setArguments(args);
@@ -1137,6 +1179,10 @@ bool MainWindow::ExistsProgram(QString program)
         || prog_stdout.contains("usage: ffmpeg [options]", Qt::CaseSensitive))
         exitcode = true;
 
+#else
+    // TODO: Check picta-dl and ffmpeg exist ?!
+    exitcode = true;
+#endif
     return exitcode;
 }
 

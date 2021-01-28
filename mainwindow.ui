@@ -561,11 +561,11 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
         <attribute name="horizontalHeaderCascadingSectionResizes">
          <bool>true</bool>
         </attribute>
-        <attribute name="horizontalHeaderMinimumSectionSize">
-         <number>25</number>
-        </attribute>
         <attribute name="horizontalHeaderDefaultSectionSize">
          <number>95</number>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>25</number>
         </attribute>
         <attribute name="horizontalHeaderStretchLastSection">
          <bool>true</bool>
@@ -573,11 +573,11 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
         <attribute name="verticalHeaderVisible">
          <bool>true</bool>
         </attribute>
-        <attribute name="verticalHeaderMinimumSectionSize">
-         <number>24</number>
-        </attribute>
         <attribute name="verticalHeaderDefaultSectionSize">
          <number>28</number>
+        </attribute>
+        <attribute name="verticalHeaderMinimumSectionSize">
+         <number>24</number>
         </attribute>
         <column>
          <property name="text">
@@ -659,6 +659,12 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="rightMargin">
+         <number>42</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
@@ -697,7 +703,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
           <property name="maximumSize">
            <size>
             <width>100</width>
-            <height>13</height>
+            <height>19</height>
            </size>
           </property>
           <property name="text">
@@ -722,6 +728,12 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="rightMargin">
+         <number>20</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
@@ -760,7 +772,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>13</height>
+            <height>19</height>
            </size>
           </property>
           <property name="text">
@@ -788,6 +800,9 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_10">
           <item>
@@ -826,7 +841,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>13</height>
+            <height>19</height>
            </size>
           </property>
           <property name="text">
@@ -854,6 +869,9 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_11">
           <item>
@@ -892,7 +910,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
           <property name="maximumSize">
            <size>
             <width>65</width>
-            <height>13</height>
+            <height>19</height>
            </size>
           </property>
           <property name="text">
@@ -945,7 +963,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
      <x>0</x>
      <y>0</y>
      <width>734</width>
-     <height>21</height>
+     <height>34</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAyuda">

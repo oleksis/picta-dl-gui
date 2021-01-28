@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 #endif
     // Register QSettings
     QSettings::setDefaultFormat(QSettings::IniFormat);
-    MainWindow w(0, isDark);
+    MainWindow w(nullptr, isDark);
     w.show();
     return a.exec();
 }

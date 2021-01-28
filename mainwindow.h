@@ -42,7 +42,7 @@ class MainWindow : public QMainWindow
     QList<QPointer<QCheckBox>> ItemSelected;
 
 public:
-    explicit MainWindow(QWidget *parent = 0, bool isDarkTheme = false);
+    explicit MainWindow(QWidget *parent = nullptr, bool isDarkTheme = false);
     ~MainWindow();
 
     inline QString withExtension(const QString &fileName)
