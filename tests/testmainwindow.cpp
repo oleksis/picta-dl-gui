@@ -54,6 +54,10 @@ void TestMainWindow::CutName()
     QCOMPARE(w.CutName(name, chars), QString("Among Us Momentos Diver....mp4"));
     name = QString("Buena Fe - Vales.mp4");
     QCOMPARE(w.CutName(name, chars), QString("Buena Fe - Vales.mp4"));
+    name = QString("The Queen's Gambit 1x06.mp4");
+    QCOMPARE(w.CutName(name, chars), QString("The Queen's Gambit 1x06.mp4"));
+    name = QString("Video without Extension");
+    QCOMPARE(w.CutName(name, chars), QString("Video without Extension"));
 }
 
 void TestMainWindow::find_line()

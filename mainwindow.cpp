@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent, bool isDarkTheme) :
     pictaGuiConfigFile = QString("picta-dl-gui.conf");
     pictaConfigFile = QString("picta-dl.conf");
     configure();
+    CenterWidgets(this);
 }
 
 MainWindow::~MainWindow()
@@ -695,6 +696,7 @@ void MainWindow::Downloadfiles()
 #else
     filePath.append("/");
 #endif
+    qDebug() << "File Path:" << filePath;
     args << "-o" << filePath + "%(title)s.%(ext)s";
     IsVideo = false;
     IsAudio = false;
@@ -950,7 +952,14 @@ void MainWindow::Download_Process_Error(QString error)
 
 QString MainWindow::CutName(QString name, int chars)
 {
-    if (name.length() > chars)
+    int dotIndex = name.lastIndexOf(".");
+
+    if (dotIndex == -1)
+        return name;
+
+    QString fileName = name.mid(0, dotIndex);
+
+    if (fileName.length() > chars)
         return name.midRef(0, chars) + "..." + withExtension(name);
 
     return name;

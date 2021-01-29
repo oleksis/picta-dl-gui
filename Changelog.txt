@@ -1,3 +1,10 @@
+v0.12.8
+
++ Add support for GNU/Linux using directives
++ Add function inline CenterWidgets to mainwindow.h
+* Update Tests (TestPicta-dl_GUI.pro, tests/testmainwindow.cpp)
+
+
 v0.12.7
 
 + Add .astylerc Artistic Style project file

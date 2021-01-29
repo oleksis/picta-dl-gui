@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>734</width>
-    <height>560</height>
+    <width>792</width>
+    <height>639</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>650</width>
-    <height>560</height>
+    <width>790</width>
+    <height>550</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -396,6 +396,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
              </property>
              <item>
               <widget class="QCheckBox" name="chckBox_Playlist">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>Lista de Reproducción</string>
                </property>
@@ -406,6 +413,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
              </item>
              <item>
               <widget class="QCheckBox" name="chckBox_Subt">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>Subtítulos</string>
                </property>
@@ -416,6 +430,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
              </item>
              <item>
               <widget class="QCheckBox" name="chckBox_Onlyaudio">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>Sólo Audio</string>
                </property>
@@ -443,6 +464,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
              </property>
              <item>
               <widget class="QLabel" name="lbl_quality">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Calidad de Vídeo:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -450,6 +478,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
              </item>
              <item>
               <widget class="QRadioButton" name="radBnt_Alta">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>Alta</string>
                </property>
@@ -463,6 +498,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
                <property name="enabled">
                 <bool>true</bool>
                </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>Media</string>
                </property>
@@ -472,6 +514,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
               <widget class="QRadioButton" name="radBnt_Baja">
                <property name="enabled">
                 <bool>true</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
                </property>
                <property name="text">
                 <string>Baja</string>
@@ -504,6 +553,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
       </item>
       <item>
        <widget class="QTableWidget" name="tableWidget">
+        <property name="font">
+         <font>
+          <pointsize>9</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="cursor" stdset="0">
          <cursorShape>ArrowCursor</cursorShape>
         </property>
@@ -565,7 +621,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
          <number>95</number>
         </attribute>
         <attribute name="horizontalHeaderMinimumSectionSize">
-         <number>25</number>
+         <number>45</number>
         </attribute>
         <attribute name="horizontalHeaderStretchLastSection">
          <bool>true</bool>
@@ -660,7 +716,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="rightMargin">
-         <number>42</number>
+         <number>0</number>
         </property>
         <property name="bottomMargin">
          <number>0</number>
@@ -702,9 +758,16 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
          <widget class="QLabel" name="lbl_process">
           <property name="maximumSize">
            <size>
-            <width>100</width>
+            <width>114</width>
             <height>19</height>
            </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Procesar URL&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -729,7 +792,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <property name="rightMargin">
-         <number>20</number>
+         <number>0</number>
         </property>
         <property name="bottomMargin">
          <number>0</number>
@@ -771,9 +834,16 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
          <widget class="QLabel" name="lbl_download">
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>114</width>
             <height>19</height>
            </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Descargar&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -844,6 +914,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
             <height>19</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Detener&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -913,6 +990,13 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
             <height>19</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Limpiar&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -962,7 +1046,7 @@ Seleccione la carpeta de descarga de los archivos por defecto, esta ruta se mant
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>734</width>
+     <width>792</width>
      <height>34</height>
     </rect>
    </property>
