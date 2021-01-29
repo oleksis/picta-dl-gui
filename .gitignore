@@ -24,8 +24,9 @@ tags
 .directory
 *.debug
 debug.log
-debug
-release
+debug/
+release/
+deployment/
 Makefile*
 *.prl
 *.app

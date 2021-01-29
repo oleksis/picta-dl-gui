@@ -43,24 +43,25 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Resources/images.qrc \
-    Resources/mainprocess.qrc \
     Resources/styles.qrc
+
+win32 {
+    RESOURCES += Resources/mainprocess.qrc
+}
 
 # Code added by me
 RC_ICONS = Resources/Logos/picta_dl_gui_icon.ico
 VERSION = 1.0.0.0
 RC_FILE = Resources/resManifest.rc
 
-
 #MacOS app icon and info
-macx: QMAKE_INFO_PLIST = Resources/Logos/Info.plist
-macx: ICON = Resources/Logos/icon.icns
-
+macx {
+    QMAKE_INFO_PLIST = Resources/Logos/Info.plist
+    ICON = Resources/Logos/icon.icns
+}
 # End
 
 DISTFILES += \
     .astylerc \
     Resources/Logos/icon.icns \
     Resources/Styles/winApp.qss
-
-
