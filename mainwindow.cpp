@@ -696,7 +696,7 @@ void MainWindow::Downloadfiles()
 #else
     filePath.append("/");
 #endif
-    qDebug() << "File Path:" << filePath;
+    IsVideo = false;
     args << "-o" << filePath + "%(title)s.%(ext)s";
     IsVideo = false;
     IsAudio = false;
@@ -741,7 +741,7 @@ void MainWindow::Downloadfiles()
             itemlist++;
         }
         //if the video has already been downloaded jump to corresponding audio column
-        else if (stdoutString.contains("has already been downloaded", Qt::CaseSensitive) && (stdoutString.contains(".mp4") || stdoutString.contains("f4.webm")))
+        else if (stdoutString.contains("has already been downloaded", Qt::CaseSensitive) && (stdoutString.contains(".mp4") || stdoutString.contains("f4.webm") || stdoutString.contains(".webm")))
         {
             IsVideo = false;
             ui->tableWidget->item(itemlist, ColVideo)->setText("100%");
@@ -754,7 +754,7 @@ void MainWindow::Downloadfiles()
             IsVideo = true;
             IsAudio = false;
         }
-        else if (stdoutString.contains("[download] Destination:", Qt::CaseSensitive) && (stdoutString.contains(".m4a") || stdoutString.contains("f5.webm")))
+        else if (stdoutString.contains("[download] Destination:", Qt::CaseSensitive) && (stdoutString.contains(".m4a") || stdoutString.contains("f5.webm") || stdoutString.contains(".webm")))
         {
             IsVideo = false;
             IsAudio = true;
@@ -815,7 +815,7 @@ void MainWindow::Downloadfiles()
             ui->tableWidget->item(itemlist, ColProcess)->setTextAlignment(Qt::AlignCenter);
         }
 
-        if (stdoutString.contains("Deleting original file", Qt::CaseSensitive) && (stdoutString.contains("m4a", Qt::CaseSensitive) || stdoutString.contains("f5.webm")))
+        if (stdoutString.contains("Deleting original file", Qt::CaseSensitive) && (stdoutString.contains("m4a", Qt::CaseSensitive) || stdoutString.contains("f5.webm") || stdoutString.contains(".webm")))
         {
             ui->tableWidget->item(itemlist, ColProcess)->setText("✔");
             ui->tableWidget->item(itemlist, ColProcess)->setTextColor(QColor(0, 170, 0));
@@ -933,8 +933,8 @@ void MainWindow::Download_Process_Error(QString error)
     }
     else if (error.contains("ERROR: requested format not available", Qt::CaseSensitive))
     {
-        qmbError = "No existe la calidad de vídeo selecciona para la descarga\n"
-                   "Por favor seleccione otra y pruebe de nuevo";
+        qmbError = "No existe el formato de vídeo seleccionado\n"
+                   "Seleccione otra calidad o sólo audio";
         ShowErrorMessage(qmbTitle, qmbError);
     }
     else
