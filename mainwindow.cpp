@@ -960,7 +960,7 @@ QString MainWindow::CutName(QString name, int chars)
     QString fileName = name.mid(0, dotIndex);
 
     if (fileName.length() > chars)
-        return name.midRef(0, chars) + "..." + withExtension(name);
+        return name.mid(0, chars) + "..." + withExtension(name);
 
     return name;
 }
