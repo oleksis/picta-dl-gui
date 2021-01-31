@@ -26,7 +26,6 @@ tags
 debug.log
 debug/
 release/
-deployment/
 Makefile*
 *.prl
 *.app
@@ -78,4 +77,5 @@ target_wrapper.sh
 # --------
 *.dll
 *.exe
+*.deb
 

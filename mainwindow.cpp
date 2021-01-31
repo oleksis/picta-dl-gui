@@ -696,7 +696,6 @@ void MainWindow::Downloadfiles()
 #else
     filePath.append("/");
 #endif
-    IsVideo = false;
     args << "-o" << filePath + "%(title)s.%(ext)s";
     IsVideo = false;
     IsAudio = false;

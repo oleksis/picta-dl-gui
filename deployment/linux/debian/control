@@ -1,0 +1,19 @@
+Source: _NAME_
+Section: unknown
+Priority: optional
+Maintainer: _MAINTAINER_ <_EMAIL_>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.8
+Homepage: _HOMEPAGE_
+Vcs-Git: _VCS_
+Vcs-Browser: _VCS_
+
+Package: _NAME_
+Architecture: amd64
+Depends: _DEPS_ ,${shlibs:Depends}, ${misc:Depends}
+Recommends: _RECOM_
+Description: Picta Downloader GUI
+ Es una aplicación que le permite descargar contenidos audiovisuales desde
+ [Picta](https://www.picta.cu), la misma es una GUI (interfaz gráfica de 
+ usuario) o del inglés(graphical user interface) de la app de descargar por 
+ consola [picta-dl](https://github.com/oleksis/picta-dl).
