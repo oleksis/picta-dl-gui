@@ -121,7 +121,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ needs.build_windows_exe.outputs.upload_url }}
         asset_path: ./SHA2-256SUMS
         asset_name: SHA2-256SUMS
         asset_content_type: text/plain
