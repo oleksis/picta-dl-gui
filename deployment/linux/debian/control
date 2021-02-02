@@ -10,7 +10,7 @@ Vcs-Browser: _VCS_
 
 Package: _NAME_
 Architecture: amd64
-Depends: _DEPS_ ,${shlibs:Depends}, ${misc:Depends}
+Depends: _DEPS_ , ${shlibs:Depends}, ${misc:Depends}
 Recommends: _RECOM_
 Description: Picta Downloader GUI
  Es una aplicación que le permite descargar contenidos audiovisuales desde

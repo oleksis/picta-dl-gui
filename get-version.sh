@@ -4,4 +4,3 @@
 
 cd "`dirname $0`"
 sed -n 's/#define VERSION_STRING "\(\([[:digit:]]\{2\}\.\?\)\{3\}\)"/\1/p' version.h
-

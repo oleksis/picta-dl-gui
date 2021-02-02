@@ -68,11 +68,47 @@ jobs:
       env:
         SHA2: ${{ hashFiles('release/Picta-dl_GUI.exe') }}
       run: echo "::set-output name=sha2_windows::${SHA2}"
+  build_ubuntu_deb:
+    needs: build_windows_exe
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Depends
+      run: sudo apt-get -y install build-essential g++ qt5-default qt5-qmake qtbase5-dev qtbase5-dev-tools dh-make devscripts fakeroot pbuilder
+    - name: Build Debian Package
+      run: |
+        chmod +x ./makedeb.sh
+        ./makedeb.sh
+    - name: Dump Package Version
+      id: dump_version
+      run: |
+        VERSION=`./get-version.sh`
+        echo "::set-output name=version::$VERSION"
+    - name: Upload Package Binary Distribution to Release
+      id: upload-release-binary
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.build_windows_exe.outputs.upload_url }}
+        asset_path: ./picta-dl-gui_${{ steps.dump_version.version }}-1_amd64.deb
+        asset_name: picta-dl-gui_${{ steps.dump_version.version }}-1_amd64.deb
+        asset_content_type: application/octet-stream
+    - name: Get SHA2-256SUMS for .deb
+      id: sha2_deb
+      env:
+        DEB_VERSION: ${{ steps.dump_version.version }}
+      run: |
+        DEB_FILE="picta-dl-gui_$DEB_VERSION-1_amd64.deb"
+        SHA2=`sha256sum $DEB_FILE`
+        echo "::set-output name=sha2_linux::$SHA2"
     - name: Make SHA2-256SUMS file
       env:
-        SHA2_WINDOWS: ${{ steps.sha2_file_exe.outputs.sha2_windows }}
+        SHA2_WINDOWS: ${{ needs.build_windows_exe.outputs.sha2_windows }}
+        SHA2_DEB: ${{ steps.sha2_deb.outputs.sha2_linux }}
       run: |
         echo "${SHA2_WINDOWS} Picta-dl_GUI.exe" > SHA2-256SUMS
+        echo "$SHA2_DEB" >> SHA2-256SUMS
     - name: Upload SHA2-256SUMS to Release
       id: upload-release-sha2 
       uses: actions/upload-release-asset@v1
