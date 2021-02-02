@@ -77,6 +77,7 @@ jobs:
       run: sudo apt-get -y install build-essential g++ qt5-default qt5-qmake qtbase5-dev qtbase5-dev-tools dh-make devscripts fakeroot pbuilder
     - name: Build Debian Package
       run: |
+        chmod +x ./get-version.sh
         chmod +x ./makedeb.sh
         ./makedeb.sh
     - name: Dump Package Version

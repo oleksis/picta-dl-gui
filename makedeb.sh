@@ -8,6 +8,8 @@
 # No Errors
 set -e
 
+chmod +x "./get-version.sh"
+
 # Basic vars
 TMPDIR=`mktemp -d`
 VERSION=`./get-version.sh`
