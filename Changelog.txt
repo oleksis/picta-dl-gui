@@ -1,6 +1,7 @@
 <unreleased>
 
 * Updates Depends for Debian control
+* Update README.md
 
 
 v0.12.13
