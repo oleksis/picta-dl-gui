@@ -1,3 +1,10 @@
+v0.12.13
+
+* Update Debianized folder
+* Update .pro
+* Update Release workflow
+
+
 v0.12.12
 
 * Add logs to makedeb.sh

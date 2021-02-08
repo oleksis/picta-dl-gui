@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Picta Downloader GUI
+GenericName=Picta Downloader GUI
+Comment=Descargar contenidos audiovisuales desde Picta
+Exec=Picta-dl_GUI
+Icon=picta-dl-gui_logo
+MimeType=
+Terminal=False
+Type=Appication
+Categories=Qt;AudioVideo;
+Keywords=Multimedia;Video;Audio;

@@ -36,11 +36,6 @@ FORMS += mainwindow.ui \
     configuration.ui \
     information.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
 RESOURCES += \
     Resources/images.qrc \
     Resources/styles.qrc
@@ -49,7 +44,6 @@ win32 {
     RESOURCES += Resources/mainprocess.qrc
 }
 
-# Code added by me
 RC_ICONS = Resources/Logos/picta_dl_gui_icon.ico
 VERSION = 1.0.0.0
 RC_FILE = Resources/resManifest.rc
@@ -59,7 +53,19 @@ macx {
     QMAKE_INFO_PLIST = Resources/Logos/Info.plist
     ICON = Resources/Logos/icon.icns
 }
-# End
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android {
+    target.path = /usr/bin/
+    icon.path = /usr/share/pixmaps/
+    icon.files += Resources/Logos/picta-dl-gui_logo.png
+    desktop.path = /usr/share/applications/
+    desktop.files += picta-dl-gui.desktop
+    
+    INSTALLS += icon desktop
+}
+!isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
     .astylerc \

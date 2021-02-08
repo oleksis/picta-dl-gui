@@ -38,6 +38,8 @@ Thumbs.db
 /.qmake.cache
 /.qmake.stash
 target_wrapper.sh
+*-Debug/
+*-Release/
 
 # qtcreator generated files
 *.pro.user*
@@ -79,3 +81,6 @@ target_wrapper.sh
 *.exe
 *.deb
 
+#CMake files
+CMakeLists.txt.*
+build/

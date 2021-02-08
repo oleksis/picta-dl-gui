@@ -1,0 +1,3 @@
+?package(picta-dl-gui):needs="X11" section="Video"\
+ title="Picta-dl_GUI" command="/usr/bin/Picta-dl_GUI"
+ 
