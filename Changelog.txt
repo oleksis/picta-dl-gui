@@ -1,3 +1,8 @@
+<unreleased>
+
+* Updates Depends for Debian control
+
+
 v0.12.13
 
 * Update Debianized folder

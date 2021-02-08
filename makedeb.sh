@@ -25,7 +25,7 @@ EMAIL="oleksis.fraga@gmail.com"
 LIC="mit"
 HOMEPAGE="https://github.com/oleksis/picta-dl-gui"
 VCS="https://github.com/oleksis/picta-dl-gui.git"
-DEPS="libc6, libnotify-bin, qt5-default (>=5.7.1)"
+DEPS="libc6, qt5-default (>=5.7.1)"
 RECOM="ffmpeg (>=3.0.0)"
 DATE=`date +"%a, %d %b 20%y %H:%M:%S %z"`
 
