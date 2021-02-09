@@ -82,6 +82,9 @@ picta-dl-gui.qmodel
 *.exe
 *.deb
 
-#CMake files
+# CMake files
 CMakeLists.txt.*
 build/
+
+# Bouml files
+uml/

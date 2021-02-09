@@ -4,6 +4,7 @@
 * Update README.md
 + Add picta-dl-gui.svg
 * Update .pro
++ Add Bouml .prj and .png to docs
 
 
 v0.12.13
