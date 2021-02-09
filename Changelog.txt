@@ -2,6 +2,8 @@
 
 * Updates Depends for Debian control
 * Update README.md
++ Add picta-dl-gui.svg
+* Update .pro
 
 
 v0.12.13

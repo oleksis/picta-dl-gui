@@ -58,12 +58,12 @@ macx {
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android {
     target.path = /usr/bin/
-    icon.path = /usr/share/pixmaps/
-    icon.files += Resources/Logos/picta-dl-gui_logo.png
+    iconsvg.path = /usr/share/icons/hicolor/scalable/apps/
+    iconsvg.files += Resources/Logos/picta-dl-gui.svg
     desktop.path = /usr/share/applications/
     desktop.files += picta-dl-gui.desktop
     
-    INSTALLS += icon desktop
+    INSTALLS += iconsvg desktop
 }
 !isEmpty(target.path): INSTALLS += target
 
