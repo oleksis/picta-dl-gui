@@ -163,6 +163,7 @@ private:
     bool notification;
     bool envpictadl;
     bool envffmpeg;
+    bool IsYoutubeUrl;
 
     void configure();
     void checkExistenceOfMainProcess();

@@ -1,5 +1,10 @@
 <unreleased>
 
+* Enable support to Youtube URLs
+
+
+v0.12.14
+
 * Updates Depends for Debian control
 * Update README.md
 + Add picta-dl-gui.svg

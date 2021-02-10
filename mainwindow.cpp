@@ -268,7 +268,7 @@ bool MainWindow::PasteFromClipboard()
     const QMimeData *mimeData = clipboard->mimeData();
     QString CopyTextClip = clipboard->text();
     QString qmbTitle("Error al Pegar");
-    QString infoText("Sólo puede pegar Urls que sean del sitio de Picta ejemplo:\n\n"
+    QString infoText("Sólo puede pegar Urls que sean del sitio de Picta o Youtube ejemplo:\n\n"
                      "https://www.picta.cu/...");
 
     if (mimeData->hasImage())
@@ -300,22 +300,25 @@ bool MainWindow::PasteFromClipboard()
 void MainWindow::on_bnt_clipboard_clicked()
 {
     QString qmbTitle("Error al Pegar");
-    QString infoText("Sólo puede pegar Urls que sean del sitio de Picta ejemplo:\n\n"
-                     "https://www.picta.cu/...");
+    QString infoText("Sólo puede pegar Urls que sean del sitio de Picta o Youtube ejemplo:\n\n"
+                     "https://www.picta.cu/medias/... https://www.youtube.com/...");
 
     if (PasteFromClipboard())
     {
-        QRegularExpression regex("((?:https?|http)://\\S+)");
+        QRegularExpression regex("(\b(?:https?|http)://)?[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]");
 
         if (regex.match(pasteUrl).hasMatch())
         {
-            QString pictaurl("picta.cu/medias");
+            // Picta puede descargar desde /medias/ | /movie/
+            QString pictaurl("https://www.picta.cu/m");
+            QString youtubeurl("https://www.youtube.com/");
+            IsYoutubeUrl = find_line(pasteUrl, youtubeurl);
 
-            if (find_line(pasteUrl, pictaurl))
+            if (find_line(pasteUrl, pictaurl) || IsYoutubeUrl)
                 ui->lineEdit_url->setText(pasteUrl);
             else
             {
-                QMessageBox::information(this, qmbTitle, QString("No es una URL válida de Picta\n\n") + infoText);
+                QMessageBox::information(this, qmbTitle, QString("No es una URL válida de Picta o Youtube\n\n") + infoText);
                 QApplication::alert(this);
             }
         }
@@ -340,8 +343,8 @@ bool MainWindow::find_line(QString stringline, QString stringsearch)
 void MainWindow::get_filename()
 {
     QString qmbTitle("Error al Pegar");
-    QString infoText("Sólo puede pegar Urls que sean del sitio de Picta ejemplo:\n\n"
-                     "https://www.picta.cu/...");
+    QString infoText("Sólo puede pegar Urls que sean del sitio de Picta o Youtube ejemplo:\n\n"
+                     "https://www.picta.cu/medias/... https://www.youtube.com/...");
 
     if (!ui->lineEdit_url->text().isEmpty())
     {
@@ -402,7 +405,10 @@ void MainWindow::get_filename()
             }
         }
 
-        args << "-u" << picta_user << "-p" << picta_pass << pasteUrl;
+        if (!IsYoutubeUrl)
+            args << "-u" << picta_user << "-p" << picta_pass;
+
+        args << pasteUrl;
         pictadl.setArguments(args);
         pictadl.setStandardOutputFile(playlist, QIODevice::Truncate);
         pictadl.start();
@@ -688,7 +694,10 @@ void MainWindow::Downloadfiles()
         }
     }
 
-    args << "-u" << picta_user << "-p" << picta_pass << pasteUrl;
+    if (!IsYoutubeUrl)
+        args << "-u" << picta_user << "-p" << picta_pass;
+
+    args << pasteUrl;
     QString filePath = ui->lineEdit_Location->text();
 #ifdef Q_OS_WIN
     QChar backslash(92);
