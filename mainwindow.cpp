@@ -302,6 +302,7 @@ void MainWindow::on_bnt_clipboard_clicked()
     QString qmbTitle("Error al Pegar");
     QString infoText("Sólo puede pegar Urls que sean del sitio de Picta o Youtube ejemplo:\n\n"
                      "https://www.picta.cu/medias/... https://www.youtube.com/...");
+    IsYoutubeUrl = false;
 
     if (PasteFromClipboard())
     {
@@ -665,18 +666,30 @@ void MainWindow::Downloadfiles()
     {
         if (ui->radBnt_Alta->isChecked())
         {
-            args << "-f"
-                 << "bestvideo+bestaudio";
+            args << "-f";
+
+            if (!IsYoutubeUrl)
+                args << "bestvideo+bestaudio";
+            else
+                args << "mp4/webm/bestvideo+m4a/webm/bestaudio";
         }
         else if (ui->radBnt_Media->isChecked())
         {
-            args << "-f"
-                 << "2+5/1+bestaudio/best";
+            args << "-f";
+
+            if (!IsYoutubeUrl)
+                args << "2+5/1+bestaudio/best";
+            else
+                args << "[height <? 720]+m4a/webm/bestaudio";
         }
         else
         {
-            args << "-f"
-                 << "4+5/2+bestaudio/best";
+            args << "-f";
+
+            if (!IsYoutubeUrl)
+                args << "4+5/2+bestaudio/best";
+            else
+                args << "[height <? 480]+m4a/webm/bestaudio";
         }
     }
 
@@ -727,7 +740,7 @@ void MainWindow::Downloadfiles()
             ui->tableWidget->item(itemlist, Colsubtitle)->setTextAlignment(Qt::AlignCenter);
         }
 
-        if (stdoutString.contains("WARNING: video doesn't have subtitles", Qt::CaseSensitive))
+        if (stdoutString.contains("WARNING: video doesn't have subtitles", Qt::CaseSensitive) || stdoutString.contains("WARNING: unable to download video subtitles", Qt::CaseSensitive))
         {
             ui->tableWidget->item(itemlist, Colsubtitle)->setText("❌");
             ui->tableWidget->item(itemlist, Colsubtitle)->setTextColor(QColor(170, 0, 0));
@@ -814,6 +827,9 @@ void MainWindow::Downloadfiles()
                 ui->tableWidget->item(itemlist, ColAudio)->setText(ItemOut.at(1) + " de (" + ItemOut.at(3) + ")");
                 ui->tableWidget->item(itemlist, ColAudio)->setTextAlignment(Qt::AlignCenter);
             }
+
+            if (IsYoutubeUrl)
+                itemlist++;
         }
 
         if (stdoutString.contains("[ffmpeg] Merging formats", Qt::CaseSensitive))
@@ -1223,7 +1239,12 @@ QStringList MainWindow::GetArguments()
         args << "-x"
              << "--audio-quality"
              << "0";
+
+        if (IsYoutubeUrl)
+            args << "-f" << "m4a/webm/bestaudio";
     }
+    else if (IsYoutubeUrl)
+        args << "-f" << "mp4/webm/bestvideo+m4a/webm/bestaudio";
 
     return args;
 }
