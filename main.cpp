@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "RunGuard.h"
 #include <QApplication>
+#include <QProcessEnvironment>
 
 int main(int argc, char *argv[])
 {
@@ -14,10 +15,21 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     a.setApplicationName("Picta-dl_GUI");
     bool isDark = false;
-#ifdef Q_OS_WIN
-    QSettings themeSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
+    QString PDLG_DARK = QProcessEnvironment::systemEnvironment().value(QString("PDLG_DARK"), QString("0"));
+    isDark = (PDLG_DARK == "0" ? false : true);
 
-    if (themeSettings.value("AppsUseLightTheme") == 0)
+    if (!isDark)
+    {
+#ifdef Q_OS_WIN
+        QSettings themeSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
+        isDark = themeSettings.value("AppsUseLightTheme") == 0;
+#else
+        QPalette aPalette = a.palette();
+        isDark = aPalette.color(QPalette::Active, QPalette::WindowText).lightness() > 128;
+#endif
+    }
+
+    if (isDark)
     {
         a.setStyle(QStyleFactory::create("Fusion"));
         QPalette darkPalette;
@@ -28,7 +40,7 @@ int main(int argc, char *argv[])
         darkPalette.setColor(QPalette::Base, QColor(18, 18, 18));
         darkPalette.setColor(QPalette::AlternateBase, darkColor);
         darkPalette.setColor(QPalette::ToolTipBase, Qt::white);
-        darkPalette.setColor(QPalette::ToolTipText, Qt::white);
+        darkPalette.setColor(QPalette::ToolTipText, darkColor);
         darkPalette.setColor(QPalette::Text, Qt::white);
         darkPalette.setColor(QPalette::Disabled, QPalette::Text, disabledColor);
         darkPalette.setColor(QPalette::Button, darkColor);
@@ -46,10 +58,8 @@ int main(int argc, char *argv[])
         styleSheet = styleSheet.replace("#001133", darkColor.name());
         a.setStyleSheet(styleSheet);
         fileSheet.close();
-        isDark = true;
     }
 
-#endif
     // Register QSettings
     QSettings::setDefaultFormat(QSettings::IniFormat);
     MainWindow w(nullptr, isDark);

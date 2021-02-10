@@ -5,6 +5,8 @@
 + Add picta-dl-gui.svg
 * Update .pro
 + Add Bouml .prj and .png to docs
+* Fix QPalette::ToolTipText in Dark styles
++ Add PDLG_DARK environment variable to set Dark styles
 
 
 v0.12.13
