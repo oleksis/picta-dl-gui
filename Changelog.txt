@@ -1,3 +1,8 @@
+v0.12.16
+
+* Update picta-dl.dll to x86
+
+
 v0.12.15
 
 * Enable support to Youtube URLs
