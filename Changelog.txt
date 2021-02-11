@@ -1,7 +1,8 @@
-<unreleased>
+v0.12.15
 
 * Enable support to Youtube URLs
 * Marge Format Selection between Picta and Youtube
+* Fix the Video Quality for Youtube
 
 
 v0.12.14

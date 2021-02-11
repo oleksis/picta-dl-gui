@@ -664,6 +664,8 @@ void MainWindow::Downloadfiles()
 
     if (!args.contains("--audio-quality"))
     {
+        VideoQuality.clear();
+
         if (ui->radBnt_Alta->isChecked())
         {
             args << "-f";
@@ -672,6 +674,8 @@ void MainWindow::Downloadfiles()
                 args << "bestvideo+bestaudio";
             else
                 args << "mp4/webm/bestvideo+m4a/webm/bestaudio";
+
+            VideoQuality = "Alta";
         }
         else if (ui->radBnt_Media->isChecked())
         {
@@ -681,6 +685,8 @@ void MainWindow::Downloadfiles()
                 args << "2+5/1+bestaudio/best";
             else
                 args << "[height <? 720]+m4a/webm/bestaudio";
+
+            VideoQuality = "Media";
         }
         else
         {
@@ -690,6 +696,8 @@ void MainWindow::Downloadfiles()
                 args << "4+5/2+bestaudio/best";
             else
                 args << "[height <? 480]+m4a/webm/bestaudio";
+
+            VideoQuality = "Baja";
         }
     }
 
@@ -828,7 +836,7 @@ void MainWindow::Downloadfiles()
                 ui->tableWidget->item(itemlist, ColAudio)->setTextAlignment(Qt::AlignCenter);
             }
 
-            if (IsYoutubeUrl)
+            if (IsYoutubeUrl && VideoQuality == "Alta")
                 itemlist++;
         }
 

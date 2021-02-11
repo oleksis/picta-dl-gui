@@ -184,6 +184,7 @@ private:
     QStringList FixedArgs;
     QString playlistitems;
     bool isDark = false;
+    QString VideoQuality;
 
     void createActions();
     void createTrayIcon();
