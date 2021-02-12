@@ -1,3 +1,9 @@
+<unreleased>
+
+* Add other Youtube URLs
++ Dont ask for user and password for Youtube URLs
+
+
 v0.12.16
 
 * Update picta-dl.dll to x86

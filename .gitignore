@@ -30,6 +30,7 @@ Makefile*
 *.prl
 *.app
 moc_*.cpp
+moc_*.h
 ui_*.h
 qrc_*.cpp
 Thumbs.db
@@ -40,6 +41,7 @@ Thumbs.db
 target_wrapper.sh
 *-Debug/
 *-Release/
+Picta-dl_GUI
 
 # qtcreator generated files
 *.pro.user*

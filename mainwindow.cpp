@@ -312,8 +312,12 @@ void MainWindow::on_bnt_clipboard_clicked()
         {
             // Picta puede descargar desde /medias/ | /movie/
             QString pictaurl("https://www.picta.cu/m");
-            QString youtubeurl("https://www.youtube.com/");
-            IsYoutubeUrl = find_line(pasteUrl, youtubeurl);
+            QString youtube_url("https://www.youtube.com/");
+            QString youtu_be_url("https://youtu.be/");
+            QString m_youtube_url("https://m.youtube.com/");
+
+            if (find_line(pasteUrl, youtube_url) || find_line(pasteUrl, youtu_be_url) || find_line(pasteUrl, m_youtube_url))
+                IsYoutubeUrl = true;
 
             if (find_line(pasteUrl, pictaurl) || IsYoutubeUrl)
                 ui->lineEdit_url->setText(pasteUrl);
@@ -590,7 +594,7 @@ void MainWindow::on_cmmd_process_clicked()
                               "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
         QApplication::alert(this);
     }
-    else if (picta_pass.isEmpty() || picta_user.isEmpty())
+    else if ((picta_pass.isEmpty() || picta_user.isEmpty()) && !IsYoutubeUrl)
     {
         QMessageBox::warning(this, qmbTitle, "¡Debe configurar su usuario y contraseña de Picta!\n\n"
                              "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
@@ -886,7 +890,7 @@ void MainWindow::on_cmmd_download_clicked()
                               "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
         QApplication::alert(this);
     }
-    else if (picta_pass.isEmpty() || picta_user.isEmpty())
+    else if ((picta_pass.isEmpty() || picta_user.isEmpty()) && !IsYoutubeUrl)
     {
         QMessageBox::warning(this, qmbTitle, "¡Debe configurar su usuario y contraseña de Picta!\n\n"
                              "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
