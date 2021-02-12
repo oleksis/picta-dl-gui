@@ -39,7 +39,7 @@ $ sudo zypper addrepo https://repos.uclv.edu.cu/opensuse/15.2/repo/oss/ uclv_oss
 $ sudo zypper addrepo https://repos.uclv.edu.cu/opensuse/15.2/repo/non-oss/ uclv_non-oss
 ```
 
-# Update Repository
+## Update Repository
 ```bash
 $ sudo zypper ref
 ```
@@ -61,15 +61,13 @@ Using Qt version 5.12.6 in /usr/lib64
 ## Compile Project
 ```bash
 $ qmake-qt5 -config release Picta-dl_GUI.pro -spec linux-g++-64
-$ qmake-qt5 Picta-dl_GUI.pro -spec linux-g++-64
 $ make clean
 $ make -j2
 ```
 
 ## Add DISPLAY environment variable for VcXsrv
 ```bash
-$ echo "" >> .bashrc && echo 'export DISPLAY="`grep nameserver /etc/resolv.conf | sed
- 's/nameserver //'`:0"' >> .bashrc
+$ echo "" >> .bashrc && echo 'export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"' >> .bashrc
 $ echo 'export XDG_RUNTIME_DIR=~/' >> .bashrc
 $ echo 'export RUNLEVEL=3'  >> .bashrc
 ```
@@ -105,3 +103,6 @@ $ sudo zypper install --type pattern kde
 ```bash
 astyle --project --recursive *.cpp,*.h
 ```
+
+## Links:
+* https://gist.github.com/oleksis/459ec563b7d11a2a1856cec6c35d286e
