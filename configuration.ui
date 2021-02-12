@@ -72,7 +72,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Usuario de Picta(Obligatorio)</string>
+      <string>Usuario de Picta (Obligatorio para Listas de reproducción)</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="2">

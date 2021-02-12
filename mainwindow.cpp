@@ -594,12 +594,6 @@ void MainWindow::on_cmmd_process_clicked()
                               "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
         QApplication::alert(this);
     }
-    else if ((picta_pass.isEmpty() || picta_user.isEmpty()) && !IsYoutubeUrl)
-    {
-        QMessageBox::warning(this, qmbTitle, "¡Debe configurar su usuario y contraseña de Picta!\n\n"
-                             "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
-        QApplication::alert(this);
-    }
     else if (envpictadl && !ExistsProgram("picta-dl"))
     {
         QMessageBox::warning(this, qmbTitle, "¡No se ha encontrado picta-dl en su Sistema!\n\n"
@@ -888,12 +882,6 @@ void MainWindow::on_cmmd_download_clicked()
     {
         QMessageBox::critical(this, qmbTitle, "¡No está conectado a la Red!\n\n"
                               "Revise su conexión de RED/HUB/Router/WIFI o Datos!");
-        QApplication::alert(this);
-    }
-    else if ((picta_pass.isEmpty() || picta_user.isEmpty()) && !IsYoutubeUrl)
-    {
-        QMessageBox::warning(this, qmbTitle, "¡Debe configurar su usuario y contraseña de Picta!\n\n"
-                             "Revise que tenga configurado el usuario y contraseña del sitio de Picta.");
         QApplication::alert(this);
     }
     else if (envffmpeg && !ExistsProgram("ffmpeg"))

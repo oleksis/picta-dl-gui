@@ -1,7 +1,9 @@
 <unreleased>
 
-* Add other Youtube URLs
-+ Dont ask for user and password for Youtube URLs
++ Added support for YouTube download (youtube.com, youtu.be, m.youtube.com).
+* It is only necessary to configure Picta username and password for Playlist downloads, whether from the site or personal.
+* Updated Frequently Asked Questions and Answers (F.A.Q)
+  Explains how to use the GUI in 32-bit versions of Windows
 
 
 v0.12.16
