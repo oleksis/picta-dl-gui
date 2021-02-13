@@ -83,6 +83,7 @@ picta-dl-gui.qmodel
 *.dll
 *.exe
 *.deb
+*.rpm
 
 # CMake files
 CMakeLists.txt.*

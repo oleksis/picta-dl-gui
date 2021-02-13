@@ -25,11 +25,11 @@ Imagen de muestra con las opciones:
 ![picta-dl-gui config window](Resources/Ayuda/picta-dl-config.png)
 
 ## Downloads
-* [SHA2-256SUMS](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.16/SHA2-256SUMS)
-* [picta-dl-gui_21.02.10-1_amd64.deb](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.16/picta-dl-gui_21.02.10-1_amd64.deb)
-* [Picta-dl_GUI.exe](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.16/Picta-dl_GUI.exe)
-* [Source (.zip)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.16.zip)
-* [Source (.tar.gz)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.16.tar.gz)
+* [SHA2-256SUMS](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.17/SHA2-256SUMS)
+* [picta-dl-gui_21.02.13-1_amd64.deb](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.17/picta-dl-gui_21.02.13-1_amd64.deb)
+* [Picta-dl_GUI.exe](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.17/Picta-dl_GUI.exe)
+* [Source (.zip)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.17.zip)
+* [Source (.tar.gz)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.17.tar.gz)
 
 ## Preguntas y respuestas frecuentes (F.A.Q)
 [FAQ](docs/faq.md)
