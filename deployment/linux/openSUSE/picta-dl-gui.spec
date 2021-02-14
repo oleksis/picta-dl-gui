@@ -22,17 +22,18 @@
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-%define VERSION_SRC 0.12.17
+%define VERSION_SRC __VERSION_TAG__
 
-Name:           picta-dl-gui
-Version:        2021.02.13
-Release:        1
+Name:           __NAME__
+Version:        __VERSION__
+Release:        __RELEASE__
 Summary:        Picta Downloader GUI permite descargar contenidos audiovisuales desde Picta.
-License:        MIT
+License:        __LIC__
 Group:          Productivity/Networking/Utilities
-Source:         https://github.com/oleksis/picta-dl-gui/archive/v%{VERSION_SRC}.tar.gz
-URL:            https://github.com/oleksis/picta-dl-gui
-Packager:       Oleksis Fraga <oleksis.fraga@gmail.com>
+Source:         https://github.com/oleksis/picta-dl-gui/archive/%{VERSION_SRC}.tar.gz
+BuildArch:      x86_64
+URL:            __HOMEPAGE__
+Packager:       __MAINTAINER__ <__EMAIL__>
 
 BuildRequires: gcc
 BuildRequires: gcc-c++
@@ -46,7 +47,7 @@ Recommends:    ffmpeg
 Picta Downloader GUI es una aplicación que le permite descargar contenidos audiovisuales desde Picta.
 
 %prep
-%setup -c v%{VERSION_SRC}
+%setup -c %{VERSION_SRC}
 
 %build
 qmake-qt5 -config release Picta-dl_GUI.pro -spec linux-g++-64
@@ -69,5 +70,5 @@ rm -rf %{buildroot}
 %defattr(0644,root,root)
 
 %changelog
-* Fri Feb 12 2021 Oleksis Fraga <oleksis.fraga@gmail.com> - 0.12.17
+* __DATE__ __MAINTAINER__ <__EMAIL__> - __VERSION_TAG__
 - Initial release
