@@ -8,23 +8,25 @@
 # No Errors
 set -e
 
-chmod +x "./get-version.sh"
+VERSION_FILE="./get-version.sh"
+
+chmod +x "$VERSION_FILE"
 
 # Basic vars
-TMPDIR=`mktemp -d`
-VERSION=`./get-version.sh`
-PWD=`pwd`
-NAME="picta-dl-gui"
+TMPDIR=$(mktemp -d)
+VERSION=$($VERSION_FILE)
+PWD=$(pwd)
 CWD="$PWD"
+NAME="picta-dl-gui"
 SRCDIR="$TMPDIR/$NAME-$VERSION"
 
 # dhmake and pkg vars
-MAINTAINER="Oleksis Fraga Menéndez"
+MAINTAINER="Oleksis Fraga"
 MAINT=$MAINTAINER
 EMAIL="oleksis.fraga@gmail.com"
 LIC="mit"
-HOMEPAGE="https://github.com/oleksis/picta-dl-gui"
-VCS="https://github.com/oleksis/picta-dl-gui.git"
+HOMEPAGE="https:\/\/github.com\/oleksis\/picta-dl-gui"
+VCS="https:\/\/github.com\/oleksis\/picta-dl-gui.git"
 DEPS="qtbase5-dev"
 RECOM="ffmpeg (>=3.0.0)"
 DATE=`date +"%a, %d %b 20%y %H:%M:%S %z"`
@@ -59,18 +61,21 @@ echo "Running dh_make ..."
 dh_make  -c $LIC -e $EMAIL -s -p $NAME -y --createorig
 
 # provision the debian folder
-for v in `echo $VARS | xargs` ; do
-    # get the var content
+for v in $(echo $VARS | xargs) ; do
+    # Get the var content
     CONTp=${!v}
+    CONT=${CONTp}
     
-    #escape possible / in the files
-    CONT=`echo ${CONTp//\//\\\\/}`
+    # Escape possible / in the files
+    if [ "$v" != "HOMEPAGE" -a "$v" != "VCS" ]; then
+      CONT=$(echo ${CONT//\//\\\\/})
+    fi
 
-    # note
-    echo "replace $v by \"$CONT\""
+    # Note
+    echo "Replace $v by \"$CONT\""
 
     find "debian/" -type f -exec \
-        sed -i s/"\_$v\_"/"${CONT}"/g {} \;
+        sed -i "s/\_\_$v\_\_/${CONT}/g" {} \;
 done
 
 # No Errors
@@ -82,16 +87,13 @@ dpkg-buildpackage -us -uc
 #debuild -us -uc -b
 
 cd ..
-echo "Change to:"
-pwd
+echo "Change to: $(pwd)"
 ls -la *.deb
 echo "Copying Debian package ..."
 cp picta-dl-gui*.deb $CWD 
 echo "Deleting $TMPDIR"
 rm -rdf "$TMPDIR"
-echo "Change to:"
+echo "Change to: $CWD"
 cd $CWD 
-pwd
 ls -la *.deb
 echo "Finished build the Debian package!"
-

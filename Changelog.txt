@@ -1,6 +1,7 @@
 <unreleased>
 
 + Added makerpm.sh
+* Update deployment scripts for GNU/Linux
 
 
 v0.12.16

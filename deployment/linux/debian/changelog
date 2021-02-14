@@ -1,5 +1,5 @@
-_NAME_ (_VERSION_-1) unstable; urgency=medium
+__NAME__ (__VERSION__-1) stable; urgency=medium
 
   * Maintenance release (Automated release from github release)
 
- -- _MAINTAINER_ <_EMAIL_>  _DATE_
+ -- __MAINTAINER__ <__EMAIL__>  __DATE__

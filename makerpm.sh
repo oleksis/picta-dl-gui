@@ -36,7 +36,7 @@ MAINTAINER="Oleksis Fraga"
 MAINT=$MAINTAINER
 EMAIL="oleksis.fraga@gmail.com"
 LIC="MIT"
-HOMEPAGE="https://github.com/oleksis/picta-dl-gui"
+HOMEPAGE="https:\/\/github.com\/oleksis\/picta-dl-gui"
 DATE=$(date +"%a %b %d 20%y")
 
 # VARS listing for dynamic substitution
@@ -61,15 +61,18 @@ cd "$WORKSPACE"
 for v in $(echo $VARS | xargs) ; do
     # Get the var content
     CONTp=${!v}
+    CONT=${CONTp}
     
     # Escape possible / in the files
-    CONT=$(echo ${CONTp//\//\\\\/})
+    if [ "$v" != "HOMEPAGE"]; then
+      CONT=$(echo ${CONT//\//\\\\/})
+    fi
 
     # Note
     echo "Replace $v by \"$CONT\""
 
     find "SPECS/" -type f -exec \
-        sed -i s/"\_\_$v\_\_"/"${CONT}"/g {} \;
+        sed -i "s/\_\_$v\_\_/${CONT}/g" {} \;
 done
 
 # Make the openSUSE archive

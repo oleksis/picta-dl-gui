@@ -1,17 +1,17 @@
-Source: _NAME_
+Source: __NAME__
 Section: net
 Priority: optional
-Maintainer: _MAINTAINER_ <_EMAIL_>
+Maintainer: __MAINTAINER__ <__EMAIL__>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.8
-Homepage: _HOMEPAGE_
-Vcs-Git: _VCS_
-Vcs-Browser: _VCS_
+Homepage: __HOMEPAGE__
+Vcs-Git: __VCS__
+Vcs-Browser: __VCS__
 
-Package: _NAME_
+Package: __NAME__
 Architecture: amd64
-Depends: _DEPS_, ${shlibs:Depends}, ${misc:Depends}
-Recommends: _RECOM_
+Depends: __DEPS__, ${shlibs:Depends}, ${misc:Depends}
+Recommends: __RECOM__
 Description: Picta Downloader GUI
  Es una aplicación que le permite descargar contenidos audiovisuales desde
  [Picta](https://www.picta.cu), la misma es una GUI (interfaz gráfica de 
