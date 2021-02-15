@@ -64,7 +64,7 @@ for v in $(echo $VARS | xargs) ; do
     CONT=${CONTp}
     
     # Escape possible / in the files
-    if [ "$v" != "HOMEPAGE"]; then
+    if [ ["$v" != "HOMEPAGE"] ]; then
       CONT=$(echo ${CONT//\//\\\\/})
     fi
 
