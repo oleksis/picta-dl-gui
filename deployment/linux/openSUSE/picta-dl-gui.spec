@@ -62,6 +62,7 @@ rm -rf %{buildroot}
 %files
 %defattr(0755,root,root)
 %{_bindir}/Picta-dl_GUI
+%{_bindir}/picta-dlg
 %defattr(0755,root,root)
 
 %defattr(0644,root,root)

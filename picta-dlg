@@ -1,0 +1,28 @@
+#!/bin/bash
+export PDLG_DARK=0
+appname="Picta-dl_GUI"
+
+dirname=$(dirname $0)
+tmp="${dirname#?}"
+
+if [ "${dirname%$tmp}" != "/" ]; then
+    dirname=$PWD
+fi
+## Distributing Qt libraries ##
+# LD_LIBRARY_PATH=$dirname
+# export LD_LIBRARY_PATH
+
+while getopts ":d" options; do
+    case "$options" in
+        d)
+            export PDLG_DARK=1
+            ;;
+        *)
+            echo "Usage: $0 [-d]" 1>&2
+            exit 1
+            ;;
+    esac
+done
+
+$dirname/$appname "$@"
+

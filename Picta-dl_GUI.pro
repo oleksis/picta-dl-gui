@@ -58,12 +58,14 @@ macx {
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android {
     target.path = /usr/bin/
+    script.path = /usr/bin/
+    script.files += picta-dlg
     iconsvg.path = /usr/share/icons/hicolor/scalable/apps/
     iconsvg.files += Resources/Logos/picta-dl-gui.svg
     desktop.path = /usr/share/applications/
     desktop.files += picta-dl-gui.desktop
     
-    INSTALLS += iconsvg desktop
+    INSTALLS += script iconsvg desktop
 }
 !isEmpty(target.path): INSTALLS += target
 
