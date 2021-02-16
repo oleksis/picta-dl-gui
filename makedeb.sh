@@ -25,11 +25,11 @@ MAINTAINER="Oleksis Fraga"
 MAINT=$MAINTAINER
 EMAIL="oleksis.fraga@gmail.com"
 LIC="mit"
-HOMEPAGE="https:\/\/github.com\/oleksis\/picta-dl-gui"
-VCS="https:\/\/github.com\/oleksis\/picta-dl-gui.git"
+HOMEPAGE="https://github.com/oleksis/picta-dl-gui"
+VCS="https://github.com/oleksis/picta-dl-gui.git"
 DEPS="qtbase5-dev"
 RECOM="ffmpeg (>=3.0.0)"
-DATE=`date +"%a, %d %b 20%y %H:%M:%S %z"`
+DATE=$(date +"%a, %d %b 20%y %H:%M:%S %z")
 
 # var listing for dynamic substitution
 VARS="VERSION NAME MAINTAINER EMAIL HOMEPAGE VCS DEPS RECOM DATE"
@@ -62,20 +62,13 @@ dh_make  -c $LIC -e $EMAIL -s -p $NAME -y --createorig
 
 # provision the debian folder
 for v in $(echo $VARS | xargs) ; do
-    # Get the var content
-    CONTp=${!v}
-    CONT=${CONTp}
-    
-    # Escape possible / in the files
-    if [ "$v" != "HOMEPAGE" -a "$v" != "VCS" ]; then
-      CONT=$(echo ${CONT//\//\\\\/})
-    fi
-
+    # Get the var content: Indirect Expansion
+    CONT=${!v}
     # Note
     echo "Replace $v by \"$CONT\""
 
     find "debian/" -type f -exec \
-        sed -i "s/\_\_$v\_\_/${CONT}/g" {} \;
+        sed -i "s|\_\_$v\_\_|${CONT}|g" {} \;
 done
 
 # No Errors

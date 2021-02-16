@@ -4,7 +4,7 @@
 # Install Dependencias
 #   sudo zypper in rpm-build
 #   sudo zypper in git
-#   
+#
 
 
 # No Errors
@@ -36,7 +36,7 @@ MAINTAINER="Oleksis Fraga"
 MAINT=$MAINTAINER
 EMAIL="oleksis.fraga@gmail.com"
 LIC="MIT"
-HOMEPAGE="https:\/\/github.com\/oleksis\/picta-dl-gui"
+HOMEPAGE="https://github.com/oleksis/picta-dl-gui"
 DATE=$(date +"%a %b %d 20%y")
 
 # VARS listing for dynamic substitution
@@ -59,20 +59,13 @@ cd "$WORKSPACE"
 
 # Provision SPEC
 for v in $(echo $VARS | xargs) ; do
-    # Get the var content
-    CONTp=${!v}
-    CONT=${CONTp}
-    
-    # Escape possible / in the files
-    if [ ["$v" != "HOMEPAGE"] ]; then
-      CONT=$(echo ${CONT//\//\\\\/})
-    fi
-
+    # Get the var content: Indirect Expansion
+    CONT=${!v}
     # Note
     echo "Replace $v by \"$CONT\""
 
     find "SPECS/" -type f -exec \
-        sed -i "s/\_\_$v\_\_/${CONT}/g" {} \;
+        sed -i "s|\_\_$v\_\_|${CONT}|g" {} \;
 done
 
 # Make the openSUSE archive
@@ -89,4 +82,3 @@ echo "Change to $CWD"
 cd $CWD 
 ls -la *.rpm
 echo "Finished build the RPM package!"
-

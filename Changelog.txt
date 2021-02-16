@@ -3,6 +3,7 @@
 + Added makerpm.sh
 * Update deployment scripts for GNU/Linux
   * Add picta-dlg launcher bash script
+* Updated makedeb.sh and makerpm.sh
 
 
 v0.12.17
