@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "MinGW64",
+            "includePath": [
+                "D:/msys64/mingw64/include/**",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "D:/msys64/mingw64/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++11"
+        }
+    ],
+    "version": 4
+}

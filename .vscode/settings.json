@@ -1,0 +1,20 @@
+{
+    "C_Cpp.default.cppStandard": "gnu++14",
+    "C_Cpp.default.cStandard": "gnu11",
+    "C_Cpp.default.compilerPath": "D:/msys64/mingw64/bin/g++.exe",
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "D:/msys64/mingw64/include/**"
+    ],
+    "C_Cpp.default.intelliSenseMode": "gcc-x64",
+    "files.associations": {
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "qapplication": "cpp"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools,
+    "terminal.integrated.env.windows": {
+        "PATH": "D:/msys64/mingw64/bin;${env:PATH}",
+        "QTDIR": "D:/msys64/mingw64/share/qt5"
+    }
+}

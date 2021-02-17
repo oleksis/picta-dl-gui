@@ -1,0 +1,63 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    // Tasks and Config see: https://www.kdab.com/using-visual-studio-code-for-qt-apps-pt-2/amp/
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create build dir",
+            "type": "shell",
+            "command": "mkdir -Force ${workspaceFolder}/build-picta-dl-gui-Qt_MinGW_w64_64bit_MSYS2/"
+        },
+        {
+            "label": "Run qmake",
+            "type": "shell",
+            "command": "D:/msys64/mingw64/bin/qmake.exe",
+            "args": [
+                "Picta-dl_GUI.pro",
+                "-spec",
+                "win32-g++",
+                "CONFIG+=release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run make",
+            "type": "shell",
+            "command": "D:/msys64/mingw64/bin/mingw32-make.exe -j2",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Clear build folder",
+            "type": "shell",
+            "command": "D:/msys64/mingw64/bin/mingw32-make.exe clean",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Build",
+            "dependsOn": [
+                "Run qmake",
+                "Run make"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Clean build",
+            "dependsOn": [
+                "Clear build folder",
+                "Run qmake",
+                "Run make"
+            ],
+            "dependsOrder": "sequence"
+        }
+    ]
+}

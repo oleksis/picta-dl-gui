@@ -68,9 +68,6 @@ picta-dl-gui.qmodel
 *.vcxproj
 *vcxproj.*
 
-# Visual Studio Code generated files
-.vscode
-
 # MinGW generated files
 *.Debug
 *.Release
@@ -87,6 +84,7 @@ picta-dl-gui.qmodel
 
 # CMake files
 CMakeLists.txt.*
+CMakeLists.txt
 build/
 
 # Bouml files
