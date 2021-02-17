@@ -27,6 +27,7 @@ Imagen de muestra con las opciones:
 ## Downloads
 * [SHA2-256SUMS](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.17/SHA2-256SUMS)
 * [picta-dl-gui_21.02.13-1_amd64.deb](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.17/picta-dl-gui_21.02.13-1_amd64.deb)
+* [picta-dl-gui-2021.02.13-1.x86_64.rpm](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.17/picta-dl-gui-2021.02.13-1.x86_64.rpm)
 * [Picta-dl_GUI.exe](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.17/Picta-dl_GUI.exe)
 * [Source (.zip)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.17.zip)
 * [Source (.tar.gz)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.17.tar.gz)

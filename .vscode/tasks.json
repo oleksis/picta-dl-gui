@@ -48,7 +48,11 @@
             "dependsOrder": "sequence",
             "problemMatcher": [
                 "$gcc"
-            ]
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "Clean build",
@@ -57,7 +61,18 @@
                 "Run qmake",
                 "Run make"
             ],
-            "dependsOrder": "sequence"
+            "dependsOrder": "sequence",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Format Artistic Style",
+            "type": "shell",
+            "command":"astyle --project --recursive *.cpp,*.h",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
         }
     ]
 }

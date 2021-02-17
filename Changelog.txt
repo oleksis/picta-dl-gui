@@ -4,6 +4,7 @@
 * Update deployment scripts for GNU/Linux
   * Add picta-dlg launcher bash script
 * Updated makedeb.sh and makerpm.sh
+* Add Visual Studio Code folder
 
 
 v0.12.17
