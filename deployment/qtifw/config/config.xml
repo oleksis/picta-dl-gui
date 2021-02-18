@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Picta Downloader GUI</Name>
+    <Version>0.12.17</Version>
+    <Title>Picta Downloader GUI Installer</Title>
+    <Publisher>Picta Downloader GUI Team</Publisher>
+    <StartMenuDir>Picta Downloader</StartMenuDir>
+    <TargetDir>@ApplicationsDir@/Picta-Downloader-GUI</TargetDir>
+</Installer>

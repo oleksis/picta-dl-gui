@@ -5,7 +5,17 @@
 $ pacman -Sy base-devel git mingw-w64-x86_64-toolchain mingw-w64-x86_64-qt5-static mingw-w64-x86_64-clang
 ```
 
-### Install PyQt5 (MINGW64)
+## Install Qt Installer Framework
+```bash
+pacman -S mingw-w64-x86_64-qt-installer-framework
+```
+
+### Create Installer
+```pwsh
+binarycreator.exe -f -v -c config/config.xml -p packages PictaDownloaderGUI-Installer.exe
+```
+
+## Install PyQt5 (MINGW64)
 ```bash
 $ pacman -Sy mingw-w64-x86_64-python-pyqt5
 ```
