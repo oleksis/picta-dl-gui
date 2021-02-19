@@ -1,4 +1,8 @@
 <unreleased>
++ Add make_installer.sh for Installer Binary Offline on Windows
+
+
+v0.12.19
 
 * Change QStandardPaths::AppDataLocation for QCoreApplication::applicationDirPath
 - Delete MainWindow::checkExistenceOfMainProcess
