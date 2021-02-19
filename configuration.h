@@ -9,6 +9,7 @@
 #include <QStandardPaths>
 #include <QMessageBox>
 #include <QTextStream>
+#include <QCoreApplication>
 #include "simplecrypt.h"
 
 namespace Ui

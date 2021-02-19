@@ -28,6 +28,7 @@
 #include <QScreen>
 #include <QWidget>
 #include <QGuiApplication>
+#include <QCoreApplication>
 #include "configuration.h"
 #include "simplecrypt.h"
 #include "information.h"
@@ -166,7 +167,6 @@ private:
     bool IsYoutubeUrl;
 
     void configure();
-    void checkExistenceOfMainProcess();
     void createConfigFile(QDir &roaming);
     bool loadConfigFile(QDir &roaming);
     void saveConfigFile();

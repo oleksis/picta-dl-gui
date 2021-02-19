@@ -40,10 +40,6 @@ RESOURCES += \
     Resources/images.qrc \
     Resources/styles.qrc
 
-win32 {
-    RESOURCES += Resources/mainprocess.qrc
-}
-
 RC_ICONS = Resources/Logos/picta_dl_gui_icon.ico
 VERSION = 1.0.0.0
 RC_FILE = Resources/resManifest.rc

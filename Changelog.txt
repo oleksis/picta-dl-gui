@@ -1,10 +1,20 @@
 <unreleased>
 
+* Change QStandardPaths::AppDataLocation for QCoreApplication::applicationDirPath
+- Delete MainWindow::checkExistenceOfMainProcess
++ Add Components to cu.pictadl.gui Package
+  * Add cu.pictadl.cli component
+  * Add cu.pictadl.ffmpeg component
+
+
+v0.12.18
+
 + Added makerpm.sh
 * Update deployment scripts for GNU/Linux
   * Add picta-dlg launcher bash script
 * Updated makedeb.sh and makerpm.sh
 * Add Visual Studio Code folder
+* Add Qt Installer Framework folder in deployment
 
 
 v0.12.17

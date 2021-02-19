@@ -28,18 +28,16 @@ void MainWindow::on_cmmd_config_clicked()
 
 void MainWindow::configure()
 {
-    QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
+    QDir appDirPath(QCoreApplication::applicationDirPath());
     QString defaultpath(QStandardPaths::standardLocations(QStandardPaths::DownloadLocation)[0]);
-
-    if (!roaming.exists())
-    {
-        roaming.mkpath(roaming.absolutePath());
-        ui->cmmd_help->click();
-    }
-
 #ifdef Q_OS_WIN
-    pictadlDLLpath = roaming.absolutePath().append("\\picta-dl.exe");
-    ffmpegDLLpath = roaming.absolutePath().append("\\ffmpeg.exe");
+    pictadlDLLpath = appDirPath.absolutePath().append("\\picta-dl.exe");
+    ffmpegDLLpath = appDirPath.absolutePath().append("\\ffmpeg.exe");
+    QFile pictadlExe(pictadlDLLpath);
+
+    if (!pictadlExe.exists())
+        ui->cmmd_help->click();
+
 #endif
     defaultDownloadpath = defaultpath;
 #ifdef Q_OS_WIN
@@ -50,10 +48,9 @@ void MainWindow::configure()
 #endif
     crypto_pass.setKey(crytokey);
 
-    if (!loadConfigFile(roaming))
-        createConfigFile(roaming);
+    if (!loadConfigFile(appDirPath))
+        createConfigFile(appDirPath);
 
-    checkExistenceOfMainProcess();
     //SystrayIcon
     createActions();
     createTrayIcon();
@@ -65,9 +62,9 @@ void MainWindow::configure()
     ui->tableWidget->verticalHeader()->setDefaultAlignment(Qt::AlignVCenter);
 }
 
-bool MainWindow::loadConfigFile(QDir &roaming)
+bool MainWindow::loadConfigFile(QDir &appDirPath)
 {
-    QFile configFile(roaming.absolutePath().append("/") + pictaGuiConfigFile);
+    QFile configFile(appDirPath.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
@@ -111,9 +108,9 @@ bool MainWindow::loadConfigFile(QDir &roaming)
     return false;
 }
 
-void MainWindow::createConfigFile(QDir &roaming)
+void MainWindow::createConfigFile(QDir &appDirPath)
 {
-    QFile configFile(roaming.absolutePath().append("/") + pictaGuiConfigFile);
+    QFile configFile(appDirPath.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
@@ -137,7 +134,7 @@ void MainWindow::createConfigFile(QDir &roaming)
     settings.setValue("envffmpeg", false);
     settings.endGroup();
     //Creating default picta.conf
-    QFile configPictaFile(roaming.absolutePath().append("/") + pictaConfigFile);
+    QFile configPictaFile(appDirPath.absolutePath().append("/") + pictaConfigFile);
 
     if (!configPictaFile.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
@@ -165,49 +162,10 @@ void MainWindow::createConfigFile(QDir &roaming)
     configPictaFile.close();
 }
 
-void MainWindow::checkExistenceOfMainProcess()
-{
-#ifdef Q_OS_WIN
-    QFile upxFile(pictadlDLLpath);
-    QFile upxFile2(ffmpegDLLpath);
-    QString qmbTitle("Error fatal");
-    QString infoText("Aplicación terminada.\n\n"
-                     "Vuelva a ejecutar el programa. Si vuelve a recibir el mismo "
-                     "error, ejecútelo como administrador una vez. Es muy probable que "
-                     "eso resuelva el problema.");
-
-    if (!upxFile.exists())
-    {
-        QFile rcFileUPX(":/picta-dl.dll");
-        rcFileUPX.copy(upxFile.fileName());
-        rcFileUPX.rename(upxFile.fileName(), upxFile.fileName().replace("dll", "exe"));
-
-        if (!upxFile.exists())
-        {
-            QMessageBox::critical(this, qmbTitle, QString("No se puede crear el proceso runtime picta-dl.dll\n") + infoText);
-            exit(-1);
-        }
-    }
-
-    if (!upxFile2.exists())
-    {
-        QFile rcFileUPX2("://ffmpeg.dll");
-        rcFileUPX2.copy(upxFile2.fileName());
-        rcFileUPX2.rename(upxFile2.fileName(), upxFile2.fileName().replace("dll", "exe"));
-
-        if (!upxFile2.exists())
-        {
-            QMessageBox::critical(this, qmbTitle, QString("No se puede crear el proceso runtime ffmpeg.dll\n") + infoText);
-            exit(-1);
-        }
-    }
-
-#endif
-}
-
 void MainWindow::saveConfigFile()
 {
-    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("/") + pictaGuiConfigFile);
+    QDir appDirPath(QCoreApplication::applicationDirPath());
+    QFile configFile(appDirPath.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 
@@ -250,8 +208,8 @@ void MainWindow::on_toolButton_clicked()
     if (downloadFolder.isEmpty())
         return;
 
-    QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-    loadConfigFile(roaming);
+    QDir appDirPath(QCoreApplication::applicationDirPath());
+    loadConfigFile(appDirPath);
     defaultDownloadpath = downloadFolder;
 #ifdef Q_OS_WIN
     QChar backslash(92);
@@ -353,9 +311,9 @@ void MainWindow::get_filename()
 
     if (!ui->lineEdit_url->text().isEmpty())
     {
-        QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-        QString picta_conf = roaming.absolutePath().append("/picta-dl.conf");
-        QString playlist = roaming.absolutePath().append("/playlist.txt");
+        QDir appDirPath(QCoreApplication::applicationDirPath());
+        QString picta_conf = appDirPath.absolutePath().append("/picta-dl.conf");
+        QString playlist = appDirPath.absolutePath().append("/playlist.txt");
         ui->tableWidget->setRowCount(0);
         process_count = 0;
         FixedArgs.clear();
@@ -444,8 +402,8 @@ void MainWindow::onFinishGetfilenames()
     if (process_count < 2)
     {
         //Read processed list
-        QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-        QFile playlistfile(roaming.absolutePath().append("/playlist.txt"));
+        QDir appDirPath(QCoreApplication::applicationDirPath());
+        QFile playlistfile(appDirPath.absolutePath().append("/playlist.txt"));
         playlistfile.open(QIODevice::ReadWrite | QIODevice::Text);
         QTextStream listfile(&playlistfile);
         QString ListItem, ShortName;
@@ -585,8 +543,8 @@ void MainWindow::URL_Process_Error(QString error)
 void MainWindow::on_cmmd_process_clicked()
 {
     QString qmbTitle("Error al Procesar la URL");
-    QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-    loadConfigFile(roaming);
+    QDir appDirPath(QCoreApplication::applicationDirPath());
+    loadConfigFile(appDirPath);
 
     if (!IsNetworkConnected())
     {
@@ -612,8 +570,8 @@ void MainWindow::setRefreshIcon()
 
 void MainWindow::Downloadfiles()
 {
-    QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-    QString picta_conf = roaming.absolutePath().append("/picta-dl.conf");
+    QDir appDirPath(QCoreApplication::applicationDirPath());
+    QString picta_conf = appDirPath.absolutePath().append("/picta-dl.conf");
     download_count = 0;
     ui->cmmd_process->setEnabled(false);
     //Animated Process list
@@ -875,8 +833,8 @@ void MainWindow::setDownloadIcon()
 void MainWindow::on_cmmd_download_clicked()
 {
     QString qmbTitle("Error al Descargar archivos");
-    QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-    loadConfigFile(roaming);
+    QDir appDirPath(QCoreApplication::applicationDirPath());
+    loadConfigFile(appDirPath);
 
     if (!IsNetworkConnected())
     {
@@ -1083,8 +1041,8 @@ void MainWindow::on_cmmd_help_clicked()
 //SysTrayIcon
 void MainWindow::createActions()
 {
-    QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-    loadConfigFile(roaming);
+    QDir appDirPath(QCoreApplication::applicationDirPath());
+    loadConfigFile(appDirPath);
     minimizeAction = new QAction(tr("Minimizar"), this);
 
     if (systray)
@@ -1163,8 +1121,8 @@ void MainWindow::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::WindowStateChange)
     {
-        QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-        loadConfigFile(roaming);
+        QDir appDirPath(QCoreApplication::applicationDirPath());
+        loadConfigFile(appDirPath);
 
         if (isMinimized() && systray)
         {

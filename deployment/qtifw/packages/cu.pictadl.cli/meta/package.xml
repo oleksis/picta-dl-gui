@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Picta DL CLI</DisplayName>
+    <Description>Picta Downloader Command-Line Interface {external-link}='https://github.com/oleksis/picta-dl'</Description>
+    <Version>2021.2.10</Version>
+    <ReleaseDate>2021-02-10</ReleaseDate>
+    <Name>cu.pictadl.cli</Name>
+    <Default>true</Default>
+    <Dependencies>cu.pictadl.gui</Dependencies>
+    <Default>true</Default>
+    <SortingPriority>20</SortingPriority>
+</Package>

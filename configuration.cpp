@@ -23,8 +23,8 @@ void configuration::on_BntCancel_clicked()
 
 void configuration::loadConfigFile()
 {
-    QDir roaming(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
-    QFile configFile(roaming.absolutePath().append("/") + pictaGuiConfigFile);
+    QDir appDirPath(QCoreApplication::applicationDirPath());
+    QFile configFile(appDirPath.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
     QString qmbTitle("Error fatal");
@@ -93,7 +93,8 @@ void configuration::loadConfigFile()
 
 void configuration::saveConfigFile()
 {
-    QFile configFile(QString(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]).append("/") + pictaGuiConfigFile);
+    QDir appDirPath(QCoreApplication::applicationDirPath());
+    QFile configFile(appDirPath.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
 

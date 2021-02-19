@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>FFmpeg</DisplayName>
+    <Description>Framework multimedia para grabar, convertir (transcodificar) y hacer streaming de audio y video {external-link}='http://ffmpeg.org/'</Description>
+    <Version>3.3.2</Version>
+    <ReleaseDate>2020-07-03</ReleaseDate>
+    <Name>cu.pictadl.ffmpeg</Name>
+    <Default>true</Default>
+    <Dependencies>cu.pictadl.gui</Dependencies>
+    <Default>true</Default>
+    <SortingPriority>10</SortingPriority>
+</Package>
