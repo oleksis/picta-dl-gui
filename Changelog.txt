@@ -1,6 +1,7 @@
 <unreleased>
 + Add make_installer.sh for Installer Binary Offline on Windows
 + Add dependencies to installer Offline
++ Add Shortcut and RunProgram to installer Offline 
 
 
 v0.12.19

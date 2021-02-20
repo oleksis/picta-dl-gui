@@ -9,5 +9,6 @@
         <License name="License Agreement" file="LICENSE" />
     </Licenses>
     <Default>true</Default>
+    <Script>installscript.qs</Script>
     <SortingPriority>30</SortingPriority>
 </Package>
