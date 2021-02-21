@@ -160,10 +160,10 @@ private:
     QAction *maximizeAction;
     QAction *restoreAction;
     QAction *quitAction;
-    bool systray;
-    bool notification;
-    bool envpictadl;
-    bool envffmpeg;
+    bool systray = false;
+    bool notification = false;
+    bool envpictadl = false;
+    bool envffmpeg = false;
     bool IsYoutubeUrl;
 
     void configure();

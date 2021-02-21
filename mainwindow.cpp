@@ -30,12 +30,16 @@ void MainWindow::configure()
 {
     QDir appDirPath(QCoreApplication::applicationDirPath());
     QString defaultpath(QStandardPaths::standardLocations(QStandardPaths::DownloadLocation)[0]);
+
+    if (!loadConfigFile(appDirPath))
+        createConfigFile(appDirPath);
+
 #ifdef Q_OS_WIN
     pictadlDLLpath = appDirPath.absolutePath().append("\\picta-dl.exe");
     ffmpegDLLpath = appDirPath.absolutePath().append("\\ffmpeg.exe");
     QFile pictadlExe(pictadlDLLpath);
 
-    if (!pictadlExe.exists())
+    if (!envpictadl && !pictadlExe.exists())
         ui->cmmd_help->click();
 
 #endif
@@ -47,10 +51,6 @@ void MainWindow::configure()
     ui->lineEdit_Location->setText(defaultpath);
 #endif
     crypto_pass.setKey(crytokey);
-
-    if (!loadConfigFile(appDirPath))
-        createConfigFile(appDirPath);
-
     //SystrayIcon
     createActions();
     createTrayIcon();

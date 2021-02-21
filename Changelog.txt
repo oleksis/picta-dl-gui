@@ -2,6 +2,7 @@
 + Add make_installer.sh for Installer Binary Offline on Windows
 + Add dependencies to installer Offline
 + Add Shortcut and RunProgram to installer Offline 
+* Dont show Help if picta-dl is set true as environment variable
 
 
 v0.12.19
