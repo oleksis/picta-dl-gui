@@ -11,8 +11,8 @@ libpcre-1.dll libdouble-conversion.dll libicuin67.dll libicuuc67.dll \
 libpcre2-16-0.dll libzstd.dll libicudt67.dll libbrotlicommon.dll libiconv-2.dll"
 
 echo "Cleaning ..."
-rm -rf ./release/*
-rm -rf ${DEST_DIR}/*
+#rm -rf ./release/*
+[[ -d ${DEST_DIR} ]] && rm -rf ${DEST_DIR}/*
 
 echo "Building Picta-dl_GUI ..."
 qmake Picta-dl_GUI.pro -spec win32-g++
@@ -39,4 +39,29 @@ windeployqt --dir=${DEST_DIR} ./release/Picta-dl_GUI.exe
 echo "Creating Offline/Online Installer Binary ..."
 binarycreator -v -c ${PACKAGE_DIR}/config/config.xml -p ${PACKAGE_DIR}/packages PictaDownloaderGUI-Installer.exe
 
-echo "Offline/Online Installer created!"
+echo "Offline/Online Installer created!\n"
+
+echo "Change to GH-Pages branch"
+git checkout gh-pages
+git merge master
+
+echo "Cleaning for create Repository..."
+[[ -d ${DEST_DIR} ]] && rm -rf ${DEST_DIR}/*
+rm -rfd deployment/repository/
+
+echo "Copying Picta-dl_GUI ..."
+cp -f "./release/Picta-dl_GUI.exe" ${DEST_DIR}
+
+echo "Creating Repository ..."
+repogen -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
+
+echo "Restoring file"
+git restore deployment/repository/.gitkeep
+
+echo "Updating GH-Pages ..."
+git config --global user.name "oleksis"
+git config --global user.email "oleksis.fraga@gmail.com"
+git add -A
+git commit -am "Deploy repository to gh-pages"
+#git push -f origin HEAD:gh-pages
+
