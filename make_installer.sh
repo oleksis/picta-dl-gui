@@ -36,7 +36,7 @@ cp -f "./Resources/ffmpeg.exe" ${DEST_DIR}
 echo "Deploying executable ..."
 windeployqt --dir=${DEST_DIR} ./release/Picta-dl_GUI.exe
 
-echo "Creating Offline Installer Binary ..."
-binarycreator -f -v -c ${PACKAGE_DIR}/config/config.xml -p ${PACKAGE_DIR}/packages PictaDownloaderGUI-Installer-Offline.exe
+echo "Creating Offline/Online Installer Binary ..."
+binarycreator -v -c ${PACKAGE_DIR}/config/config.xml -p ${PACKAGE_DIR}/packages PictaDownloaderGUI-Installer.exe
 
-echo "Offline Installer created!"
+echo "Offline/Online Installer created!"

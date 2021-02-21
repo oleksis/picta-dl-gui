@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
     <Name>Picta Downloader GUI</Name>
-    <Version>0.12.17</Version>
+    <Version>0.12.20</Version>
     <Title>Picta Downloader GUI Installer</Title>
     <Publisher>Picta Downloader GUI Team</Publisher>
     <RunProgram>@TargetDir@/Picta-dl_GUI.exe</RunProgram>
     <StartMenuDir>Picta Downloader GUI</StartMenuDir>
     <TargetDir>@ApplicationsDir@/Picta Downloader GUI</TargetDir>
+    <RemoteRepositories>
+        <Repository>
+            <Url>https://raw.githubusercontent.com/oleksis/picta-dl-gui/gh-pages/deployment/repository</Url>
+        </Repository>
+    </RemoteRepositories>
 </Installer>

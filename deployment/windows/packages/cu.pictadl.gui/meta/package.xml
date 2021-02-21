@@ -2,8 +2,8 @@
 <Package>
     <DisplayName>Picta DL GUI</DisplayName>
     <Description>Picta Downloader GUI</Description>
-    <Version>0.12.17</Version>
-    <ReleaseDate>2021-02-15</ReleaseDate>
+    <Version>0.12.20</Version>
+    <ReleaseDate>2021-02-21</ReleaseDate>
     <Name>cu.pictadl.gui</Name>
     <Licenses>
         <License name="License Agreement" file="LICENSE" />
