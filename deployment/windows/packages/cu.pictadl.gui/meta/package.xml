@@ -2,7 +2,7 @@
 <Package>
     <DisplayName>Picta DL GUI</DisplayName>
     <Description>Picta Downloader GUI</Description>
-    <Version>0.12.22</Version>
+    <Version>0.12.23</Version>
     <ReleaseDate>2021-02-21</ReleaseDate>
     <Name>cu.pictadl.gui</Name>
     <Licenses>

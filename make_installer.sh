@@ -21,44 +21,41 @@ make -j2
 # echo "Create output directory if it does not exist"
 # mkdir -p "${DEST_DIR}/tools"
 
-echo "\nCopy the final executables and dependencies to: ${DEST_DIR}"
+echo -e "\nCopy the final executables and dependencies to: ${DEST_DIR}"
 echo "Copying dependencies ..."
 cp -f $MINGW_PREFIX/bin/libgcc_*-1.dll ${DEST_DIR}
 for v in $DEPS ; do
     cp -f "$MINGW_PREFIX/bin/$v" ${DEST_DIR}; 
 done
 
-echo "Copying executables ...\n"
+echo -e "Copying executables ...\n"
 cp -f "./release/Picta-dl_GUI.exe" ${DEST_DIR}
-cp -f "./Resources/picta-dl.exe.orig" "${DEST_DIR}/picta-dl.exe"
-cp -f "./Resources/ffmpeg.exe.orig" "${DEST_DIR}/ffmpeg.exe"
+cp -f "./Resources/picta-dl.exe.orig" "${PACKAGE_DIR}/packages/cu.pictadl.cli/data/picta-dl.exe"
+cp -f "./Resources/ffmpeg.exe.orig" "$${PACKAGE_DIR}/packages/cu.pictadl.ffmpeg/data/ffmpeg.exe"
 
-echo "Deploying executable ...\n"
+echo -e "Deploying executable ...\n"
 windeployqt --dir=${DEST_DIR} ./release/Picta-dl_GUI.exe
 
-echo "Creating Offline/Online Installer Binary ...\n"
+echo -e "Creating Offline/Online Installer Binary ...\n"
 binarycreator -v -c ${PACKAGE_DIR}/config/config.xml -p ${PACKAGE_DIR}/packages PictaDownloaderGUI-Installer.exe
 
-echo "Offline/Online Installer created!\n"
+echo -e "Offline/Online Installer created!\n"
 
+export GIT_MERGE_AUTOEDIT=no
 echo "Change to GH-Pages branch"
 git checkout gh-pages
 git merge master
 
 echo "Cleaning for create Repository..."
-[[ -d ${DEST_DIR} ]] && rm -rf ${DEST_DIR}/*
 rm -rfd deployment/repository/
 
-echo "Copying Picta-dl_GUI ...\n"
-cp -f "./release/Picta-dl_GUI.exe" ${DEST_DIR}
+echo -e "Creating Repository for GUI ...\n"
+-repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
 
-echo "Creating Repository ...\n"
-repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
-
-echo "Restore file\n"
+echo -e "Restore file\n"
 git restore deployment/repository/.gitkeep
 
-echo "Updating GH-Pages ...\n"
+echo -e "Updating GH-Pages ...\n"
 git config --global user.name "oleksis"
 git config --global user.email "oleksis.fraga@gmail.com"
 git add -A

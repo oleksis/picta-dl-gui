@@ -1,9 +1,21 @@
+v0.12.23
+
++ Add libraries dependencies to Partial Updates
+
+
+v0.12.22
+
++ Add Partial Updates
+
+
 v0.12.21
+
 * Update make_installer.sh for Installer Binary Online on Windows
 + Add Repository Online to GH-Pages
 
 
 v0.12.20
+
 + Add make_installer.sh for Installer Binary Offline on Windows
 + Add dependencies to installer Offline
 + Add Shortcut and RunProgram to installer Offline 
