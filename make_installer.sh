@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 # Crear un Instalador Offline con Qt Installer Framework using MinGW64 [Windows]
 #
 export DEST_DIR=./deployment/windows/packages/cu.pictadl.gui/data
