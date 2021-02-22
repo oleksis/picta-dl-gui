@@ -31,7 +31,7 @@ done
 echo -e "Copying executables ...\n"
 cp -f "./release/Picta-dl_GUI.exe" ${DEST_DIR}
 cp -f "./Resources/picta-dl.exe.orig" "${PACKAGE_DIR}/packages/cu.pictadl.cli/data/picta-dl.exe"
-cp -f "./Resources/ffmpeg.exe.orig" "$${PACKAGE_DIR}/packages/cu.pictadl.ffmpeg/data/ffmpeg.exe"
+cp -f "./Resources/ffmpeg.exe.orig" "${PACKAGE_DIR}/packages/cu.pictadl.ffmpeg/data/ffmpeg.exe"
 
 echo -e "Deploying executable ...\n"
 windeployqt --dir=${DEST_DIR} ./release/Picta-dl_GUI.exe
