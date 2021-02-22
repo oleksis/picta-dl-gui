@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # Crear un Instalador Offline con Qt Installer Framework using MinGW64 [Windows]
 #
 export DEST_DIR=./deployment/windows/packages/cu.pictadl.gui/data
@@ -11,7 +11,7 @@ libpcre-1.dll libdouble-conversion.dll libicuin67.dll libicuuc67.dll \
 libpcre2-16-0.dll libzstd.dll libicudt67.dll libbrotlicommon.dll libiconv-2.dll"
 
 echo "Cleaning ..."
-#rm -rf ./release/*
+rm -rf ./release/*
 [[ -d ${DEST_DIR} ]] && rm -rf ${DEST_DIR}/*
 
 echo "Building Picta-dl_GUI ..."
@@ -21,22 +21,22 @@ make -j2
 # echo "Create output directory if it does not exist"
 # mkdir -p "${DEST_DIR}/tools"
 
-echo "Copy the final executables and dependencies to: ${DEST_DIR}"
+echo "\nCopy the final executables and dependencies to: ${DEST_DIR}"
 echo "Copying dependencies ..."
 cp -f $MINGW_PREFIX/bin/libgcc_*-1.dll ${DEST_DIR}
 for v in $DEPS ; do
     cp -f "$MINGW_PREFIX/bin/$v" ${DEST_DIR}; 
 done
 
-echo "Copying executables ..."
+echo "Copying executables ...\n"
 cp -f "./release/Picta-dl_GUI.exe" ${DEST_DIR}
-cp -f "./Resources/picta-dl.exe" ${DEST_DIR}
-cp -f "./Resources/ffmpeg.exe" ${DEST_DIR}
+cp -f "./Resources/picta-dl.exe.orig" "${DEST_DIR}/picta-dl.exe"
+cp -f "./Resources/ffmpeg.exe.orig" "${DEST_DIR}/ffmpeg.exe"
 
-echo "Deploying executable ..."
+echo "Deploying executable ...\n"
 windeployqt --dir=${DEST_DIR} ./release/Picta-dl_GUI.exe
 
-echo "Creating Offline/Online Installer Binary ..."
+echo "Creating Offline/Online Installer Binary ...\n"
 binarycreator -v -c ${PACKAGE_DIR}/config/config.xml -p ${PACKAGE_DIR}/packages PictaDownloaderGUI-Installer.exe
 
 echo "Offline/Online Installer created!\n"
@@ -49,19 +49,20 @@ echo "Cleaning for create Repository..."
 [[ -d ${DEST_DIR} ]] && rm -rf ${DEST_DIR}/*
 rm -rfd deployment/repository/
 
-echo "Copying Picta-dl_GUI ..."
+echo "Copying Picta-dl_GUI ...\n"
 cp -f "./release/Picta-dl_GUI.exe" ${DEST_DIR}
 
-echo "Creating Repository ..."
+echo "Creating Repository ...\n"
 repogen -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
 
-echo "Restoring file"
+echo "Restore file\n"
 git restore deployment/repository/.gitkeep
 
-echo "Updating GH-Pages ..."
+echo "Updating GH-Pages ...\n"
 git config --global user.name "oleksis"
 git config --global user.email "oleksis.fraga@gmail.com"
 git add -A
 git commit -am "Deploy repository to gh-pages"
-#git push -f origin HEAD:gh-pages
+git push -f origin HEAD:gh-pages
 
+echo "Picta-dl_GUI deployed!"
