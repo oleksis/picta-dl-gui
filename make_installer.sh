@@ -46,13 +46,13 @@ echo "Change to GH-Pages branch"
 git checkout gh-pages
 git merge master
 
-echo "Cleaning for create Repository..."
+echo "\nCleaning for create Repository..."
 rm -rfd deployment/repository/
 
-echo -e "Creating Repository for GUI ...\n"
+echo -e "Creating Repository for GUI ..."
 repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
 
-echo -e "Restore file\n"
+echo -e "\nRestore file\n"
 git restore deployment/repository/.gitkeep
 
 echo -e "Updating GH-Pages ...\n"
@@ -62,4 +62,4 @@ git add -A
 git commit -am "Deploy repository to gh-pages"
 git push -f origin HEAD:gh-pages
 
-echo "Picta-dl_GUI deployed!"
+echo -e "\nPicta-dl_GUI deployed!"
