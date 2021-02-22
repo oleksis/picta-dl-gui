@@ -53,7 +53,7 @@ echo "Copying Picta-dl_GUI ...\n"
 cp -f "./release/Picta-dl_GUI.exe" ${DEST_DIR}
 
 echo "Creating Repository ...\n"
-repogen -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
+repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
 
 echo "Restore file\n"
 git restore deployment/repository/.gitkeep
