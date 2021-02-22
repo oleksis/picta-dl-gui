@@ -50,7 +50,7 @@ echo "Cleaning for create Repository..."
 rm -rfd deployment/repository/
 
 echo -e "Creating Repository for GUI ...\n"
--repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
+repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
 
 echo -e "Restore file\n"
 git restore deployment/repository/.gitkeep
