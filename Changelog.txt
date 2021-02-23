@@ -1,3 +1,12 @@
+<unreleased>
+* Update make_installer.sh
+
+
+v0.12.24
+
+* Update make_installer.sh Update new components
+
+
 v0.12.23
 
 + Add libraries dependencies to Partial Updates

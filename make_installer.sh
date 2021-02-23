@@ -46,9 +46,6 @@ echo "Change to GH-Pages branch"
 git checkout gh-pages
 git merge master
 
-echo "\nCleaning for create Repository..."
-rm -rfd deployment/repository/
-
 echo -e "Creating Repository for GUI ..."
 repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
 
