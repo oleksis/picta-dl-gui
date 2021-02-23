@@ -36,7 +36,7 @@ cp -f "./Resources/ffmpeg.exe.orig" "${PACKAGE_DIR}/packages/cu.pictadl.ffmpeg/d
 echo -e "Deploying executable ...\n"
 windeployqt --dir=${DEST_DIR} ./release/Picta-dl_GUI.exe
 
-echo -e "Creating Offline/Online Installer Binary ...\n"
+echo -e "\nCreating Offline/Online Installer Binary ...\n"
 binarycreator -v -c ${PACKAGE_DIR}/config/config.xml -p ${PACKAGE_DIR}/packages PictaDownloaderGUI-Installer.exe
 
 echo -e "Offline/Online Installer created!\n"
@@ -48,9 +48,6 @@ git merge master
 
 echo -e "Creating Repository for GUI ..."
 repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
-
-echo -e "\nRestore file\n"
-git restore deployment/repository/.gitkeep
 
 echo -e "Updating GH-Pages ...\n"
 git config --global user.name "oleksis"
