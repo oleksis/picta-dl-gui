@@ -1,4 +1,4 @@
-<unreleased>
+v0.12.25
 * Update make_installer.sh
 * Use QStandardPaths::AppDataLocation like appDirPath
 * Update release workflow

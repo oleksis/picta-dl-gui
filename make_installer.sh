@@ -27,7 +27,7 @@ echo -e "\nCopy the final executables and dependencies to: ${DEST_DIR}"
 echo "Copying dependencies ..."
 cp -f $MINGW_PREFIX/bin/libgcc_*-1.dll ${DEST_DIR}
 for v in $DEPS ; do
-    cp -f "$MINGW_PREFIX/bin/$v" ${DEST_DIR}; 
+    [[ -f "$MINGW_PREFIX/bin/$v" ]] && cp -f "$MINGW_PREFIX/bin/$v" ${DEST_DIR}; 
 done
 
 echo -e "Copying executables ...\n"
@@ -43,11 +43,6 @@ binarycreator -v -c ${PACKAGE_DIR}/config/config.xml -p ${PACKAGE_DIR}/packages 
 
 echo -e "Offline/Online Installer created!\n"
 
-export GIT_MERGE_AUTOEDIT=no
-echo "Change to GH-Pages branch"
-git checkout gh-pages
-git merge master
-
 echo -e "Creating Repository for GUI ..."
 repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
 
@@ -58,6 +53,4 @@ git add -A
 git commit -am "Deploy repository to gh-pages"
 git push -f origin HEAD:gh-pages
 
-echo -e "\nChange to Master branch\n"
-git checkout master
 echo -e "\nPicta-dl_GUI deployed!"

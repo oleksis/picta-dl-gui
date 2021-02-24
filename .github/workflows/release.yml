@@ -133,7 +133,7 @@ jobs:
     - name: Make SHA2-256SUMS file
       env:
         SHA2_WINDOWS: ${{ needs.build_windows_exe.outputs.sha2_windows }}
-        SHA2_WINDOWS_INSTALLER: ${{ needs.build_windows_exe.outputs.sha2_file_installer }}
+        SHA2_WINDOWS_INSTALLER: ${{ needs.build_windows_exe.outputs.sha2_windows_installer }}
         SHA2_DEB: ${{ steps.sha2_deb.outputs.sha2_linux }}
       run: |
         echo "${SHA2_WINDOWS}  Picta-dl_GUI.exe" > SHA2-256SUMS
