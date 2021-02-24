@@ -8,6 +8,11 @@ configuration::configuration(QWidget *parent, const QString &filename) :
     pictaGuiConfigFile(filename)
 {
     ui->setupUi(this);
+#ifdef Q_OS_WIN
+    appDirPath = QDir(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[2]);
+#else
+    appDirPath = QDir(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
+#endif
     loadConfigFile();
 }
 
@@ -23,7 +28,6 @@ void configuration::on_BntCancel_clicked()
 
 void configuration::loadConfigFile()
 {
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     QFile configFile(appDirPath.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
@@ -93,7 +97,6 @@ void configuration::loadConfigFile()
 
 void configuration::saveConfigFile()
 {
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     QFile configFile(appDirPath.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);

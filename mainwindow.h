@@ -28,7 +28,6 @@
 #include <QScreen>
 #include <QWidget>
 #include <QGuiApplication>
-#include <QCoreApplication>
 #include "configuration.h"
 #include "simplecrypt.h"
 #include "information.h"
@@ -132,6 +131,7 @@ private:
     quint64 crytokey = 1596880491598749;
     QString pictaGuiConfigFile;
     QString pictaConfigFile;
+    QDir appDirPath;
     QString pasteUrl;
     QProcess pictadl;
     QProcess pictadlfiles;

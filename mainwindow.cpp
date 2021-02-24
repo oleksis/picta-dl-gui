@@ -10,6 +10,11 @@ MainWindow::MainWindow(QWidget *parent, bool isDarkTheme) :
     isDark = isDarkTheme;
     pictaGuiConfigFile = QString("picta-dl-gui.conf");
     pictaConfigFile = QString("picta-dl.conf");
+#ifdef Q_OS_WIN
+    appDirPath = QDir(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[2]);
+#else
+    appDirPath = QDir(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0]);
+#endif
     configure();
     CenterWidgets(this);
 }
@@ -28,7 +33,6 @@ void MainWindow::on_cmmd_config_clicked()
 
 void MainWindow::configure()
 {
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     QString defaultpath(QStandardPaths::standardLocations(QStandardPaths::DownloadLocation)[0]);
 
     if (!loadConfigFile(appDirPath))
@@ -164,7 +168,6 @@ void MainWindow::createConfigFile(QDir &appDirPath)
 
 void MainWindow::saveConfigFile()
 {
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     QFile configFile(appDirPath.absolutePath().append("/") + pictaGuiConfigFile);
     QFileInfo configInfo(configFile);
     QSettings settings(configInfo.absoluteFilePath(), QSettings::IniFormat);
@@ -208,7 +211,6 @@ void MainWindow::on_toolButton_clicked()
     if (downloadFolder.isEmpty())
         return;
 
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     loadConfigFile(appDirPath);
     defaultDownloadpath = downloadFolder;
 #ifdef Q_OS_WIN
@@ -311,7 +313,6 @@ void MainWindow::get_filename()
 
     if (!ui->lineEdit_url->text().isEmpty())
     {
-        QDir appDirPath(QCoreApplication::applicationDirPath());
         QString picta_conf = appDirPath.absolutePath().append("/picta-dl.conf");
         QString playlist = appDirPath.absolutePath().append("/playlist.txt");
         ui->tableWidget->setRowCount(0);
@@ -402,7 +403,6 @@ void MainWindow::onFinishGetfilenames()
     if (process_count < 2)
     {
         //Read processed list
-        QDir appDirPath(QCoreApplication::applicationDirPath());
         QFile playlistfile(appDirPath.absolutePath().append("/playlist.txt"));
         playlistfile.open(QIODevice::ReadWrite | QIODevice::Text);
         QTextStream listfile(&playlistfile);
@@ -543,7 +543,6 @@ void MainWindow::URL_Process_Error(QString error)
 void MainWindow::on_cmmd_process_clicked()
 {
     QString qmbTitle("Error al Procesar la URL");
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     loadConfigFile(appDirPath);
 
     if (!IsNetworkConnected())
@@ -570,7 +569,6 @@ void MainWindow::setRefreshIcon()
 
 void MainWindow::Downloadfiles()
 {
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     QString picta_conf = appDirPath.absolutePath().append("/picta-dl.conf");
     download_count = 0;
     ui->cmmd_process->setEnabled(false);
@@ -833,7 +831,6 @@ void MainWindow::setDownloadIcon()
 void MainWindow::on_cmmd_download_clicked()
 {
     QString qmbTitle("Error al Descargar archivos");
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     loadConfigFile(appDirPath);
 
     if (!IsNetworkConnected())
@@ -1041,7 +1038,6 @@ void MainWindow::on_cmmd_help_clicked()
 //SysTrayIcon
 void MainWindow::createActions()
 {
-    QDir appDirPath(QCoreApplication::applicationDirPath());
     loadConfigFile(appDirPath);
     minimizeAction = new QAction(tr("Minimizar"), this);
 
@@ -1121,7 +1117,6 @@ void MainWindow::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::WindowStateChange)
     {
-        QDir appDirPath(QCoreApplication::applicationDirPath());
         loadConfigFile(appDirPath);
 
         if (isMinimized() && systray)

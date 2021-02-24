@@ -9,7 +9,6 @@
 #include <QStandardPaths>
 #include <QMessageBox>
 #include <QTextStream>
-#include <QCoreApplication>
 #include "simplecrypt.h"
 
 namespace Ui
@@ -42,6 +41,7 @@ private:
     quint64 crytokey = 1596880491598749;
     QString defaultDownloadpath;
     QString pictaGuiConfigFile;
+    QDir appDirPath;
     bool systray;
     bool notification;
     bool envpictadl;

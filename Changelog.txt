@@ -1,6 +1,6 @@
 <unreleased>
 * Update make_installer.sh
-
+* Use QStandardPaths::AppDataLocation like appDirPath
 
 v0.12.24
 

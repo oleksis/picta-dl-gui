@@ -49,7 +49,7 @@ git merge master
 echo -e "Creating Repository for GUI ..."
 repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/repository
 
-echo -e "Updating GH-Pages ...\n"
+echo -e "\nUpdating GH-Pages ...\n"
 git config --global user.name "oleksis"
 git config --global user.email "oleksis.fraga@gmail.com"
 git add -A

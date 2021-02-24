@@ -114,5 +114,13 @@ $ sudo zypper install --type pattern kde
 astyle --project --recursive *.cpp,*.h
 ```
 
+# Debian
+
+## Clang
+```bash
+sudo apt-get install clang-7 clang-7-doc llvm-7-doc clang-format-7 clang-tidy-7 clang-tools-7
+```
+
+
 ## Links:
 * https://gist.github.com/oleksis/459ec563b7d11a2a1856cec6c35d286e
