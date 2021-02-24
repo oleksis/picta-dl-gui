@@ -13,6 +13,8 @@ libpcre2-16-0.dll libzstd.dll libicudt67.dll libbrotlicommon.dll libiconv-2.dll"
 echo "Cleaning ..."
 rm -rf ./release/*
 [[ -d ${DEST_DIR} ]] && rm -rf ${DEST_DIR}/*
+echo -e "Restore file"
+git restore deployment/windows/packages/cu.pictadl.gui/data/.gitkeep
 
 echo "Building Picta-dl_GUI ..."
 qmake Picta-dl_GUI.pro -spec win32-g++
@@ -56,4 +58,6 @@ git add -A
 git commit -am "Deploy repository to gh-pages"
 git push -f origin HEAD:gh-pages
 
+echo -e "\nChange to Master branch\n"
+git checkout master
 echo -e "\nPicta-dl_GUI deployed!"

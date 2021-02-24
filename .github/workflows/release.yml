@@ -12,6 +12,7 @@ jobs:
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
       sha2_windows: ${{ steps.sha2_file_exe.outputs.sha2_windows }}
+      sha2_windows_installer: ${{ steps.sha2_file_installer.outputs.sha2_windows_installer }}
     defaults:
       run:
         shell: msys2 {0}
@@ -34,14 +35,14 @@ jobs:
         CRYTOKEY: ${{ secrets.CRYTOKEY }}
       run: |
         sed -i -r "s/crytokey = ([0-9]+)/crytokey = ${CRYTOKEY}/" configuration.h mainwindow.h
-    - name: Build x64 release GUI
+    - name: Build x64 release GUI and Installer Binary
       id: build_x64_release
       run: |
         # Actualizar Qt install bins 
         PATH=/mingw64/qt5-static/bin/:$PATH
         export PATH
-        qmake Picta-dl_GUI.pro -spec win32-g++
-        make -j 4
+        chmod +x ./make_installer.sh
+        ./make_installer.sh
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -68,6 +69,21 @@ jobs:
       env:
         SHA2: ${{ hashFiles('release/Picta-dl_GUI.exe') }}
       run: echo "::set-output name=sha2_windows::${SHA2}"
+    - name: Upload PictaDownloaderGUI-Installer.exe Binary
+      id: upload-release-asset-installer
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./PictaDownloaderGUI-Installer.exe
+        asset_name: PictaDownloaderGUI-Installer.exe
+        asset_content_type: application/octet-stream
+    - name: Get SHA2-256SUMS for PictaDownloaderGUI-Installer.exe
+      id: sha2_file_installer
+      env:
+        SHA2: ${{ hashFiles('PictaDownloaderGUI-Installer.exe') }}
+      run: echo "::set-output name=sha2_windows_installer::${SHA2}"
   build_ubuntu_deb:
     needs: build_windows_exe
     runs-on: ubuntu-latest
@@ -89,7 +105,7 @@ jobs:
     - name: Dump Package Version
       id: dump_version
       run: |
-        VERSION=`./get-version.sh`
+        VERSION=$(./get-version.sh)
         echo "::set-output name=version::$VERSION"
     - name: Dump Package Name
       id: dump_package_name
@@ -112,14 +128,16 @@ jobs:
       env:
         DEB_NAME: ${{ steps.dump_package_name.outputs.deb_name }}
       run: |
-        SHA2=`sha256sum $DEB_NAME`
+        SHA2=$(sha256sum $DEB_NAME)
         echo "::set-output name=sha2_linux::$SHA2"
     - name: Make SHA2-256SUMS file
       env:
         SHA2_WINDOWS: ${{ needs.build_windows_exe.outputs.sha2_windows }}
+        SHA2_WINDOWS_INSTALLER: ${{ needs.build_windows_exe.outputs.sha2_file_installer }}
         SHA2_DEB: ${{ steps.sha2_deb.outputs.sha2_linux }}
       run: |
         echo "${SHA2_WINDOWS}  Picta-dl_GUI.exe" > SHA2-256SUMS
+        echo "${SHA2_WINDOWS_INSTALLER}  PictaDownloaderGUI-Installer.exe" >> SHA2-256SUMS
         echo "$SHA2_DEB" >> SHA2-256SUMS
     - name: Upload SHA2-256SUMS to Release
       id: upload-release-sha2 
