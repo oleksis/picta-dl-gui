@@ -2,7 +2,7 @@
 
 ## Install Qt5 
 ```bash
-$ pacman -Sy base-devel git mingw-w64-x86_64-toolchain mingw-w64-x86_64-qt5-static mingw-w64-x86_64-clang
+$ pacman -Sy base-devel git vim mingw-w64-x86_64-toolchain mingw-w64-x86_64-qt5-static mingw-w64-x86_64-clang
 ```
 
 ## Install Qt Installer Framework
