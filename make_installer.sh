@@ -49,6 +49,7 @@ repogen --update -v -p deployment/windows/packages -i cu.pictadl.gui deployment/
 echo -e "\nUpdating GH-Pages ...\n"
 git config --global user.name "oleksis"
 git config --global user.email "oleksis.fraga@gmail.com"
+git config --global core.autocrlf input
 git add -A
 git commit -am "Deploy repository to gh-pages"
 git push -f origin HEAD:gh-pages

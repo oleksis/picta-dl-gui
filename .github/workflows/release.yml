@@ -24,6 +24,8 @@ jobs:
         update: true
         install: base-devel git vim mingw-w64-x86_64-toolchain mingw-w64-x86_64-qt5-static mingw-w64-x86_64-qt-installer-framework
         path-type: minimal
+    - run: git config --global core.autocrlf input
+      shell: bash
     - uses: actions/checkout@v2
     - name: Get Tag version
       id: get_version
