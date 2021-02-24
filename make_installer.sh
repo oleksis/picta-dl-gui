@@ -50,6 +50,11 @@ echo -e "\nUpdating GH-Pages ...\n"
 git config --global user.name "oleksis"
 git config --global user.email "oleksis.fraga@gmail.com"
 git config --global core.autocrlf input
+
+if [[ ! -z "$GITHUB_WORKSPACE" ]]; then
+    git restore configuration.h mainwindow.h
+fi
+
 git add -A
 git commit -am "Deploy repository to gh-pages"
 git push -f origin HEAD:gh-pages
