@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
     <Name>Picta Downloader GUI</Name>
-    <Version>0.12.25</Version>
+    <Version>0.12.26</Version>
     <Title>Picta Downloader GUI Installer</Title>
     <Publisher>Picta Downloader GUI Team</Publisher>
     <RunProgram>@TargetDir@/Picta-dl_GUI.exe</RunProgram>

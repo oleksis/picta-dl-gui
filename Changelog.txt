@@ -1,7 +1,12 @@
+v0.12.26
+* Use QStandardPaths::AppDataLocation for configuration files
+
+
 v0.12.25
 * Update make_installer.sh
 * Use QStandardPaths::AppDataLocation like appDirPath
 * Update release workflow
+
 
 v0.12.24
 

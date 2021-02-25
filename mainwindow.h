@@ -131,6 +131,7 @@ private:
     quint64 crytokey = 1596880491598749;
     QString pictaGuiConfigFile;
     QString pictaConfigFile;
+    QDir roamingDirPath;
     QDir appDirPath;
     QString pasteUrl;
     QProcess pictadl;

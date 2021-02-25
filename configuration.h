@@ -41,7 +41,7 @@ private:
     quint64 crytokey = 1596880491598749;
     QString defaultDownloadpath;
     QString pictaGuiConfigFile;
-    QDir appDirPath;
+    QDir roamingDirPath;
     bool systray;
     bool notification;
     bool envpictadl;
