@@ -1,7 +1,6 @@
 #include "RunGuard.h"
 #include <QCryptographicHash>
 
-
 namespace
 {
 
@@ -14,15 +13,14 @@ namespace
         return data;
     }
 
-}
+} // namespace
 
-
-RunGuard::RunGuard(const QString &key)
-    : key(key)
-    , memLockKey(generateKeyHash(key, "_memLockKey"))
-    , sharedmemKey(generateKeyHash(key, "_sharedmemKey"))
-    , sharedMem(sharedmemKey)
-    , memLock(memLockKey, 1)
+RunGuard::RunGuard(const QString &key) :
+    key(key),
+    memLockKey(generateKeyHash(key, "_memLockKey")),
+    sharedmemKey(generateKeyHash(key, "_sharedmemKey")),
+    sharedMem(sharedmemKey),
+    memLock(memLockKey, 1)
 {
     memLock.acquire();
     {
@@ -32,12 +30,10 @@ RunGuard::RunGuard(const QString &key)
     memLock.release();
 }
 
-
 RunGuard::~RunGuard()
 {
     release();
 }
-
 
 bool RunGuard::isAnotherRunning()
 {
@@ -53,7 +49,6 @@ bool RunGuard::isAnotherRunning()
     memLock.release();
     return isRunning;
 }
-
 
 bool RunGuard::tryToRun()
 {
@@ -72,7 +67,6 @@ bool RunGuard::tryToRun()
 
     return true;
 }
-
 
 void RunGuard::release()
 {

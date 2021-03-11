@@ -1,5 +1,5 @@
-#include "mainwindow.h"
 #include "RunGuard.h"
+#include "mainwindow.h"
 #include <QApplication>
 #include <QProcessEnvironment>
 
@@ -21,7 +21,8 @@ int main(int argc, char *argv[])
     if (!isDark)
     {
 #ifdef Q_OS_WIN
-        QSettings themeSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
+        QSettings themeSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                                QSettings::NativeFormat);
         isDark = themeSettings.value("AppsUseLightTheme") == 0;
 #else
         QPalette aPalette = a.palette();

@@ -1,15 +1,15 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
+#include "simplecrypt.h"
 #include <QDialog>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QMessageBox>
 #include <QSettings>
 #include <QStandardPaths>
-#include <QMessageBox>
 #include <QTextStream>
-#include "simplecrypt.h"
 
 namespace Ui
 {

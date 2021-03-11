@@ -100,8 +100,7 @@ void configuration::saveConfigFile()
     if (!settings.isWritable())
         return;
 
-    QString savedpath, cproxy, cport, cproxy_user,
-            cproxy_pass, cpicta_user, cpicta_pass;
+    QString savedpath, cproxy, cport, cproxy_user, cproxy_pass, cpicta_user, cpicta_pass;
     savedpath = defaultDownloadpath;
     crypto_pass.setKey(crytokey);
     cpicta_user = ui->lnEdit_user_picta->text();

@@ -26,13 +26,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #include "simplecrypt.h"
 #include <QByteArray>
-#include <QtDebug>
-#include <QtGlobal>
-#include <QDateTime>
 #include <QCryptographicHash>
 #include <QDataStream>
+#include <QDateTime>
+#include <QtDebug>
+#include <QtGlobal>
 
-SimpleCrypt::SimpleCrypt():
+SimpleCrypt::SimpleCrypt() :
     m_key(0),
     m_compressionMode(CompressionAuto),
     m_protectionMode(ProtectionChecksum),
@@ -41,7 +41,7 @@ SimpleCrypt::SimpleCrypt():
     qsrand(uint(QDateTime::currentMSecsSinceEpoch() & 0xFFFF));
 }
 
-SimpleCrypt::SimpleCrypt(quint64 key):
+SimpleCrypt::SimpleCrypt(quint64 key) :
     m_key(key),
     m_compressionMode(CompressionAuto),
     m_protectionMode(ProtectionChecksum),
@@ -94,7 +94,7 @@ QByteArray SimpleCrypt::encryptToByteArray(QByteArray plaintext)
 
     if (m_compressionMode == CompressionAlways)
     {
-        ba = qCompress(ba, 9); //maximum compression
+        ba = qCompress(ba, 9); // maximum compression
         flags |= CryptoFlagCompression;
     }
     else if (m_compressionMode == CompressionAuto)
@@ -124,7 +124,7 @@ QByteArray SimpleCrypt::encryptToByteArray(QByteArray plaintext)
         integrityProtection += hash.result();
     }
 
-    //prepend a random char to the string
+    // prepend a random char to the string
     char randomChar = char(qrand() & 0xFF);
     ba = randomChar + integrityProtection + ba;
     int pos(0);
@@ -139,8 +139,8 @@ QByteArray SimpleCrypt::encryptToByteArray(QByteArray plaintext)
     }
 
     QByteArray resultArray;
-    resultArray.append(char(0x03));  //version for future updates to algorithm
-    resultArray.append(char(flags)); //encryption flags
+    resultArray.append(char(0x03));  // version for future updates to algorithm
+    resultArray.append(char(flags)); // encryption flags
     resultArray.append(ba);
     m_lastError = ErrorNoError;
     return resultArray;
@@ -194,12 +194,12 @@ QByteArray SimpleCrypt::decryptToByteArray(QByteArray cypher)
 
     QByteArray ba = cypher;
 
-    if ( cypher.count() < 3 )
+    if (cypher.count() < 3)
         return QByteArray();
 
     char version = ba.at(0);
 
-    if (version != 3)   //we only work with version 3
+    if (version != 3) // we only work with version 3
     {
         m_lastError = ErrorUnknownVersion;
         qWarning() << "Invalid version or not a cyphertext.";
@@ -220,7 +220,7 @@ QByteArray SimpleCrypt::decryptToByteArray(QByteArray cypher)
         ++pos;
     }
 
-    ba = ba.mid(1); //chop off the random number at the start
+    ba = ba.mid(1); // chop off the random number at the start
     bool integrityOk(true);
 
     if (flags.testFlag(CryptoFlagChecksum))

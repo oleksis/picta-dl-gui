@@ -1,11 +1,8 @@
 #include "testmainwindow.h"
-#include <QtTest/QtTest>
 #include <QDebug>
+#include <QtTest/QtTest>
 
-TestMainWindow::TestMainWindow(QObject *parent) :
-    QObject(parent)
-{
-}
+TestMainWindow::TestMainWindow(QObject *parent) : QObject(parent) {}
 
 void TestMainWindow::initTestCase()
 {
@@ -70,8 +67,6 @@ void TestMainWindow::find_line()
     QCOMPARE(w.find_line(stringline, stringsearch), false);
 }
 
-void TestMainWindow::cleanupTestCase()
-{
-}
+void TestMainWindow::cleanupTestCase() {}
 
 QTEST_MAIN(TestMainWindow)

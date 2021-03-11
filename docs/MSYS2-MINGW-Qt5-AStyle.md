@@ -121,6 +121,10 @@ astyle --project --recursive *.cpp,*.h
 sudo apt-get install clang-7 clang-7-doc llvm-7-doc clang-format-7 clang-tidy-7 clang-tools-7
 ```
 
+### Clang-Format
+```bash
+find . -regex '.*\.\(cpp\|hpp\|c\|h\)' -exec clang-format-7 -style=file -i {} \;
+```
 
 ## Links:
 * https://gist.github.com/oleksis/459ec563b7d11a2a1856cec6c35d286e

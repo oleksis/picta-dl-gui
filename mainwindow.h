@@ -1,36 +1,36 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QMessageBox>
-#include <QFile>
-#include <QFileInfo>
-#include <QDir>
-#include <QFileDialog>
-#include <QStandardPaths>
-#include <QToolTip>
-#include <QProcess>
-#include <QClipboard>
-#include <QMimeData>
-#include <QRegularExpression>
-#include <QMovie>
-#include <QtNetwork/QNetworkInterface>
-#include <QSettings>
-#include <QMenu>
-#include <QSystemTrayIcon>
-#include <QAction>
-#include <QCloseEvent>
-#include <QTime>
-#include <QPointer>
-#include <QStyleFactory>
-#include <QPalette>
-#include <QColor>
-#include <QScreen>
-#include <QWidget>
-#include <QGuiApplication>
 #include "configuration.h"
-#include "simplecrypt.h"
 #include "information.h"
+#include "simplecrypt.h"
+#include <QAction>
+#include <QClipboard>
+#include <QCloseEvent>
+#include <QColor>
+#include <QDir>
+#include <QFile>
+#include <QFileDialog>
+#include <QFileInfo>
+#include <QGuiApplication>
+#include <QMainWindow>
+#include <QMenu>
+#include <QMessageBox>
+#include <QMimeData>
+#include <QMovie>
+#include <QPalette>
+#include <QPointer>
+#include <QProcess>
+#include <QRegularExpression>
+#include <QScreen>
+#include <QSettings>
+#include <QStandardPaths>
+#include <QStyleFactory>
+#include <QSystemTrayIcon>
+#include <QTime>
+#include <QToolTip>
+#include <QWidget>
+#include <QtNetwork/QNetworkInterface>
 namespace Ui
 {
     class MainWindow;
@@ -86,7 +86,7 @@ protected:
      * That it is minimized to tray when we want
      */
 
-    void changeEvent ( QEvent *event );
+    void changeEvent(QEvent *event);
 
 private slots:
     void on_cmmd_config_clicked();

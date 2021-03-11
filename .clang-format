@@ -1,0 +1,40 @@
+---
+# PICTA-DL-GUI Style
+Language: Cpp
+# BasedOnStyle: LLVM
+AccessModifierOffset: -4
+AlignAfterOpenBracket: Align
+AllowShortBlocksOnASingleLine: false
+# AllowAllConstructorInitializersOnNextLine: true
+AllowShortFunctionsOnASingleLine: Inline
+BreakBeforeBinaryOperators: All
+BraceWrapping:
+#  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  BeforeCatch: true
+  BeforeElse: true
+#  BeforeLambdaBody: true 
+  IndentBraces: false
+  SplitEmptyNamespace: true
+BreakBeforeBraces: Allman
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+BreakStringLiterals: true
+ColumnLimit: 120
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+IndentWidth: 4
+#IndentCaseBlocks: true
+IndentCaseLabels: true
+Standard: Cpp11
+NamespaceIndentation: All
+TabWidth: 4
+#UseCRLF: false
+UseTab: Never
+...
