@@ -14,6 +14,21 @@
             "compilerPath": "D:/msys64/mingw64/bin/g++.exe",
             "cStandard": "c11",
             "cppStandard": "c++11"
+        },
+        {
+            "name": "WSL",
+            "includePath": [
+                "/usr/include/x86_64-linux-gnu/qt5/**",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++11"
         }
     ],
     "version": 4

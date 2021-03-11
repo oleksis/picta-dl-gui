@@ -24,6 +24,20 @@
             }
         },
         {
+            "label": "Run qmake WSL",
+            "type": "shell",
+            "command": "qmake",
+            "args": [
+                "Picta-dl_GUI.pro",
+                "-spec",
+                "linux-clang",
+                "CONFIG+=release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
             "label": "Run make",
             "type": "shell",
             "command": "D:/msys64/mingw64/bin/mingw32-make.exe -j2",
@@ -32,9 +46,25 @@
             }
         },
         {
+            "label": "Run make WSL",
+            "type": "shell",
+            "command": "make -j2",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
             "label": "Clear build folder",
             "type": "shell",
             "command": "D:/msys64/mingw64/bin/mingw32-make.exe clean",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Clear build folder WSL",
+            "type": "shell",
+            "command": "make clean",
             "options": {
                 "cwd": "${workspaceFolder}"
             }
@@ -55,11 +85,34 @@
             }
         },
         {
+            "label": "Build WSL",
+            "dependsOn": [
+                "Run qmake WSL",
+                "Run make WSL"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
             "label": "Clean build",
             "dependsOn": [
                 "Clear build folder",
                 "Run qmake",
                 "Run make"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Clean build WSL",
+            "dependsOn": [
+                "Clear build folder WSL",
+                "Run qmake WSL",
+                "Run make WSL"
             ],
             "dependsOrder": "sequence",
             "problemMatcher": [
