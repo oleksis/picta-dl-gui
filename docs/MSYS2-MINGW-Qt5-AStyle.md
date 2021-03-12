@@ -118,13 +118,31 @@ astyle --project --recursive *.cpp,*.h
 
 ## Clang
 ```bash
-sudo apt-get install clang-7 clang-7-doc llvm-7-doc clang-format-7 clang-tidy-7 clang-tools-7
+sudo apt-get install clang-8 clang-8-doc llvm-8-doc clang-format-8 clang-tidy-8 clang-tools-8
 ```
 
 ### Clang-Format
 ```bash
-find . -regex '.*\.\(cpp\|hpp\|c\|h\)' -exec clang-format-7 -style=file -i {} \;
+find . -regex '.*\.\(cpp\|hpp\|c\|h\)' -exec clang-format-8 -style=file -i {} \;
 ```
+
+### Clang Update Alternatives
+
+```bash
+sudo update-alternatives \
+  --install /usr/bin/clang                clang        /usr/bin/clang-8     10 \
+  --slave   /usr/bin/clang++              clang++      /usr/bin/clang++-8 \
+  --slave   /usr/bin/clang-format         clang-format /usr/bin/clang-format-8  \
+  --slave   /usr/bin/clang-tidy           clang-tidy   /usr/bin/clang-tidy-8  \
+  --slave   /usr/bin/clang-tidy-diff.py   clang-tidy-diff.py /usr/bin/clang-tidy-diff-8.py
+```
+
+### Check Clang Version
+
+```bash
+clang++ --version
+```
+
 
 ## Links:
 * https://gist.github.com/oleksis/459ec563b7d11a2a1856cec6c35d286e

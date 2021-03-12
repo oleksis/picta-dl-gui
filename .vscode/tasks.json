@@ -130,7 +130,7 @@
         {
             "label": "Format Clang",
             "type": "shell",
-            "command":"find . -regex '.*\\.\\(cpp\\|hpp\\|c\\|h\\)' -exec clang-format-7 -style=file -i {} \\;",
+            "command":"find . -regex '.*\\.\\(cpp\\|hpp\\|c\\|h\\)' -exec clang-format-8 -style=file -i {} \\;",
             "options": {
                 "cwd": "${workspaceFolder}"
             }
