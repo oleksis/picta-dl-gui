@@ -29,13 +29,7 @@ void MainWindow::on_cmmd_config_clicked()
 void MainWindow::configure()
 {
     QString defaultpath(QStandardPaths::standardLocations(QStandardPaths::DownloadLocation)[0]);
-
-    if (!roamingDirPath.exists())
-        roamingDirPath.mkpath(roamingDirPath.absolutePath());
-
-    if (!loadConfigFile(roamingDirPath))
-        createConfigFile(roamingDirPath);
-
+    defaultDownloadpath = defaultpath;
 #ifdef Q_OS_WIN
     pictadlDLLpath = appDirPath.absolutePath().append("\\picta-dl.exe");
     ffmpegDLLpath = appDirPath.absolutePath().append("\\ffmpeg.exe");
@@ -44,9 +38,6 @@ void MainWindow::configure()
     if (!envpictadl && !pictadlExe.exists())
         ui->cmmd_help->click();
 
-#endif
-    defaultDownloadpath = defaultpath;
-#ifdef Q_OS_WIN
     QChar backslash(92);
     ui->lineEdit_Location->setText(defaultpath.replace("/", backslash));
 #else
@@ -62,6 +53,12 @@ void MainWindow::configure()
             SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
     ui->tableWidget->verticalHeader()->setDefaultAlignment(Qt::AlignVCenter);
+
+    if (!roamingDirPath.exists())
+        roamingDirPath.mkpath(roamingDirPath.absolutePath());
+
+    if (!loadConfigFile(roamingDirPath))
+        createConfigFile(roamingDirPath);
 }
 
 bool MainWindow::loadConfigFile(QDir &roamingDirPath)

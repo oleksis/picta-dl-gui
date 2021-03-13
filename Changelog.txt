@@ -1,3 +1,7 @@
+v0.12.27
+* Fix save ffmpeg_conf when the configuration file is created
+
+
 v0.12.26
 * Use QStandardPaths::AppDataLocation for configuration files
 

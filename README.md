@@ -25,13 +25,13 @@ Imagen de muestra con las opciones:
 ![picta-dl-gui config window](Resources/Ayuda/picta-dl-config.png)
 
 ## Downloads
-* [SHA2-256SUMS](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.26/SHA2-256SUMS)
-* [picta-dl-gui_21.02.24-1_amd64.deb](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.26/picta-dl-gui_21.02.24-1_amd64.deb)
-* [picta-dl-gui-21.02.24-1.x86_64.rpm](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.26/picta-dl-gui-21.02.24-1.x86_64.rpm)
-* [Instalador Offline/Online](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.26/PictaDownloaderGUI-Installer.exe)
-* [Picta-dl_GUI.exe](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.26/Picta-dl_GUI.exe)
-* [Source (.zip)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.26.zip)
-* [Source (.tar.gz)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.26.tar.gz)
+* [SHA2-256SUMS](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.27/SHA2-256SUMS)
+* [picta-dl-gui_21.03.12-1_amd64.deb](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.27/picta-dl-gui_21.03.12-1_amd64.deb)
+* [picta-dl-gui-21.03.12-1.x86_64.rpm](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.27/picta-dl-gui-21.03.12-1.x86_64.rpm)
+* [Instalador Offline/Online](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.27/PictaDownloaderGUI-Installer.exe)
+* [Picta-dl_GUI.exe](https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.27/Picta-dl_GUI.exe)
+* [Source (.zip)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.27.zip)
+* [Source (.tar.gz)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.27.tar.gz)
 
 ## Preguntas y respuestas frecuentes (F.A.Q)
 [FAQ](docs/faq.md)
