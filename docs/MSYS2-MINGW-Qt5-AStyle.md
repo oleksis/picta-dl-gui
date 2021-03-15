@@ -143,6 +143,26 @@ sudo update-alternatives \
 clang++ --version
 ```
 
+## Install CMake
+
+```bash
+sudo apt-get install cmake cmake-doc
+```
+
+### Check CMake Version
+
+```bash
+cmake --version
+```
+
+### Build with CMake
+
+```bash
+mkdir -p build
+cd build
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+make
+```
 
 ## Links:
 * https://gist.github.com/oleksis/459ec563b7d11a2a1856cec6c35d286e

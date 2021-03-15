@@ -85,7 +85,6 @@ picta-dl-gui.qmodel
 
 # CMake files
 CMakeLists.txt.*
-CMakeLists.txt
 build/
 
 # Bouml files
