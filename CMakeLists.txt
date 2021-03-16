@@ -67,6 +67,14 @@ add_executable(${TARGET} ${HEADERS} ${FORMS} ${SOURCES} ${RESOURCES})
 
 target_link_libraries(${TARGET} ${QT5_LIBRARIES})
 
+if(UNIX)
+    include(GNUInstallDirs)
+    install(TARGETS ${TARGET} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(PROGRAMS picta-dlg DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(FILES picta-dl-gui.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+    install(FILES Resources/Logos/picta-dl-gui.svg DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps)
+endif(UNIX)
+
 # set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 # set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 # include(CPack)

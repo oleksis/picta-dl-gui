@@ -164,5 +164,18 @@ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
 make
 ```
 
+### Install with CMake
+
+```bash
+sudo cmake -DBUILD_TYPE=Release -P cmake_install.cmake
+```
+
+### Run Picta Downloader GUI in Dark Mode
+
+```bash
+picta-dlg -d
+```
+
+
 ## Links:
 * https://gist.github.com/oleksis/459ec563b7d11a2a1856cec6c35d286e
