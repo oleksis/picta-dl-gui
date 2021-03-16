@@ -167,6 +167,7 @@ make
 ### Install with CMake
 
 ```bash
+cd build
 sudo cmake -DBUILD_TYPE=Release -P cmake_install.cmake
 ```
 
@@ -174,6 +175,15 @@ sudo cmake -DBUILD_TYPE=Release -P cmake_install.cmake
 
 ```bash
 picta-dlg -d
+```
+
+### Use Clang-Tidy (Modernize use nullptr)
+
+```bash
+cd build
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+
+run-clang-tidy-8.py -header-filter='.*' -checks='-*,modernize-use-nullptr' -fix
 ```
 
 

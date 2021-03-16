@@ -13,7 +13,7 @@ class information : public QDialog
     Q_OBJECT
 
 public:
-    explicit information(QWidget *parent = 0);
+    explicit information(QWidget *parent = nullptr);
     ~information();
 
 private slots:
