@@ -33,6 +33,25 @@ Imagen de muestra con las opciones:
 * [Source (.zip)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.27.zip)
 * [Source (.tar.gz)](https://github.com/oleksis/picta-dl-gui/archive/v0.12.27.tar.gz)
 
+## Instalación
+
+La GUI para su correcto funcionamiento depende de la herramienta de líneas de comando (__CLI__) `picta-dl`
+
+En GNU/Linux puedes seguir los pasos de [instalación](https://github.com/oleksis/picta-dl#installation) ó si tienes el intérprete de __Python__ puedes ejecutar:
+```bash
+    sudo pip install -U picta-dl
+```
+
+En GNU/Linux __Debian/Ubuntu__ puedes descargar el paquete .deb e instalarlo manualmente:
+```bash
+    sudo wget https://github.com/oleksis/picta-dl-gui/releases/download/v0.12.27/picta-dl-gui_21.03.12-1_amd64.deb
+    sudo dpkg -i picta-dl-gui_21.03.12-1_amd64.deb
+```
+
+### Windows
+
+En Windows se recomienda [descargar el Instalador Offline/Online](#downloads) para faclitar la instalación/actualización de la GUI y sus componentes dependientes. Si tienes una versión anterior puedes actualizar la GUI manualmente descargando y sobreescribiendo el ejecutable Picta-dl_GUI.exe
+
 ## Preguntas y respuestas frecuentes (F.A.Q)
 [FAQ](docs/faq.md)
 

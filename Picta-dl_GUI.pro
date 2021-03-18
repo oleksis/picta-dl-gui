@@ -53,12 +53,12 @@ macx {
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android {
-    target.path = /usr/bin/
-    script.path = /usr/bin/
+    target.path = /usr/bin
+    script.path = /usr/bin
     script.files += picta-dlg
-    iconsvg.path = /usr/share/icons/hicolor/scalable/apps/
+    iconsvg.path = /usr/share/icons/hicolor/scalable/apps
     iconsvg.files += Resources/Logos/picta-dl-gui.svg
-    desktop.path = /usr/share/applications/
+    desktop.path = /usr/share/applications
     desktop.files += picta-dl-gui.desktop
     
     INSTALLS += script iconsvg desktop
