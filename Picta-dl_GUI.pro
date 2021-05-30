@@ -30,7 +30,8 @@ HEADERS += mainwindow.h \
     RunGuard.h \
     configuration.h \
     simplecrypt.h \
-    information.h
+    information.h \
+    version.h
 
 FORMS += mainwindow.ui \
     configuration.ui \
@@ -67,5 +68,4 @@ else: unix:!android {
 
 DISTFILES += \
     .astylerc \
-    Resources/Logos/icon.icns \
-    Resources/Styles/winApp.qss
+    Resources/Logos/icon.icns

@@ -10,13 +10,12 @@
         <file>Logos/deletebutton.png</file>
         <file>Logos/helpbutton.png</file>
         <file>Logos/refresh_rotate_light.gif</file>
-		<file>Logos/refresh_rotate_dark.gif</file>
+        <file>Logos/refresh_rotate_dark.gif</file>
         <file>Logos/download_button_light.gif</file>
-		<file>Logos/download_button_dark.gif</file>
+        <file>Logos/download_button_dark.gif</file>
         <file>Ayuda/picta-dl-config.png</file>
         <file>Ayuda/icono_de_lista.png</file>
         <file>Ayuda/picta_lista_canal.png</file>
         <file>Logos/icon.icns</file>
-        <file>Styles/winApp.qss</file>
     </qresource>
 </RCC>
