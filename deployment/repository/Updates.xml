@@ -1,0 +1,23 @@
+<Updates>
+ <ApplicationName>{AnyApplication}</ApplicationName>
+ <ApplicationVersion>1.0.0</ApplicationVersion>
+ <Checksum>true</Checksum>
+ <PackageUpdate>
+  <Name>cu.pictadl.gui</Name>
+  <DisplayName>Picta DL GUI</DisplayName>
+  <Description>Picta Downloader GUI</Description>
+  <Version>0.12.28</Version>
+  <ReleaseDate>2021-06-29</ReleaseDate>
+  <Default>true</Default>
+  <Script>installscript.qs</Script>
+  <SortingPriority>30</SortingPriority>
+  <UpdateFile UncompressedSize="24787705" CompressedSize="8292905" OS="Any"/>
+  <DownloadableArchives>content.7z</DownloadableArchives>
+  <Licenses>
+   <License file="LICENSE" name="License Agreement"/>
+  </Licenses>
+  <SHA1>5e369162dce1b47eb3ef0427472b3b1395f0e3c2</SHA1>
+ </PackageUpdate>
+ <SHA1>e08646a661ea9f018cb538e0d6552c43a0ad6de9</SHA1>
+ <MetadataName>2021-06-29-2027_meta.7z</MetadataName>
+</Updates>
