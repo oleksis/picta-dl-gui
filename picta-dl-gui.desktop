@@ -6,6 +6,6 @@ Exec=Picta-dl_GUI
 Icon=picta-dl-gui
 MimeType=
 Terminal=False
-Type=Appication
+Type=Application
 Categories=Qt;AudioVideo;Utility;
 Keywords=Multimedia;Video;Audio;
