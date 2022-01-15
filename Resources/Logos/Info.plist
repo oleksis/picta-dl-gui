@@ -17,7 +17,7 @@
         <key>CFBundleGetInfoString</key>
         <string>Created by Qt/QMake</string>
         <key>CFBundleExecutable</key>
-        <string>Pista-dl_GUI</string>
+        <string>Picta-dl_GUI</string>
         <key>CFBundlePackageType</key>
         <string>APPL</string>
         <key>LSMinimumSystemVersion</key>
